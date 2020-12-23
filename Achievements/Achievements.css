@@ -1,0 +1,117 @@
+.kpiDisplay{
+    display: none;
+}
+#titleButtonChng{
+    width: 100%;
+    height: 40px;
+    background-color: #F7D1D3;
+    display: inline-grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        "Left-side Right-side";
+}
+.item-alpha{
+    grid-area: Left-side;
+}
+.item-beta{
+    grid-area: Right-side;
+}
+#businessSNHeader-2v{
+    text-align: center;
+    background-color: #F5C6C3 !important;
+    opacity: 1;
+    transition: 0.3s;
+}
+#businessSNHeader-2v:hover{
+    opacity: 1;
+    background-color: #F2B3AE !important;
+}
+.BSHeaderT{
+    text-align: center;
+    background-color: #F7D1D3;
+    color: #fff;
+    height: 100%;
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.BSHeaderT:hover{
+    opacity: 1;
+    background-color: #F5C6C3;
+}
+#firsttlt{
+    background-color: #F7D1D3;
+}
+#firsttlt:hover{
+    background-color: #F5C6C3;
+}
+#secondtlt{
+    background-color: #F7D1D3;
+}
+#secondtlt:hover{
+    background-color: #F5C6C3;
+}
+#BSHeaderTAfterChange{
+    background-color: #F5C6C3;
+}
+.BSTitle{
+    padding: 8px;
+}
+#achievements-wg-grid-2v{
+    position: relative;
+    background-color: #F7D1D3 !important;
+    height: 268.76px;
+    width: 100%;
+    display: grid;
+    border-radius: 0 0 1.4em 1.4em;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "Top-left Top-right"
+        "Bot-left Bot-right";
+    justify-items: stretch;
+    padding: 0 !important;
+}
+#All-metric-multy-1tlt{white-space:pre-wrap;}
+#All-metric-multy-2tlt{white-space:pre-wrap;}
+#All-metric-multy-3tlt{white-space:pre-wrap;}
+#All-metric-multy-4tlt{white-space:pre-wrap;}
+.ach-item-a-2v{
+    grid-area: Top-left;
+}
+.ach-item-b-2v{
+    grid-area: Top-right;
+}
+.ach-item-c-2v{
+    grid-area: Bot-left;
+    border-radius: 0 0 0 1.6em;
+}
+.ach-item-d-2v{
+    grid-area: Bot-right;
+    border-radius: 0 0 1.6em 0;
+}
+.ach-metric-main-div-2v{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+.ach-metric-main-div-2v:hover{
+    opacity: 1;
+}
+.ach-metric-div-2v{
+    text-align: center;
+}
+.ach-metric-div-2v h1{
+    font-weight: 600;
+    font-size: 180%;
+    color: #ED91B5;
+    display: inline;
+}
+.ach-metric-div-2v h2{
+    font-weight: 450;
+    font-size: 18px;
+    color: #fff;
+}

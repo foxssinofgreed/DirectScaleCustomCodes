@@ -1,0 +1,30 @@
+<div class="card minheight" id="referralmw">
+    <div class="card-header bgm-color1">
+        <h2 class="card-title">My Referral Links</h2>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <div class="CopyLinkFlex"><p class="c-gray m-0 ng-scope ReferralLinkTitles" translate="">My Shop Link</p><button class="CopyBackground" onclick="copyToClipboardLink('#ReferralLink')">Copy</button></div>
+            <p class="ng-binding ng-scope"><a href="https://businessbombshells.shop/?ref=@User.AssociateUserName" target="_blank" style="overflow-wrap: break-word;">businessbombshells.shop/?ref=@User.AssociateUserName </a></p>
+        </div>
+        <br>
+        <div>
+            <div class="CopyLinkFlex"><p class="c-gray m-0 ng-scope ReferralLinkTitles" translate="">Join My Team Link</p><button class="CopyBackground" onclick="copyToClipboardLink('#ReferralLinkShop')">Copy</button></div>
+            <p class="ng-binding ng-scope"><a href="https://shop.businessbombshells.team/@User.AssociateUserName/Application?type=1" target="_blank" style="overflow-wrap: break-word;"> shop.businessbombshells.team/@User.AssociateUserName/Application </a></p>
+        </div>
+    </div>
+</div>
+<div style="display: none;">
+    <p id="ReferralLink">https://businessbombshells.shop/?ref=@User.AssociateUserName</p>
+    <p id="ReferralLinkShop">https://shop.businessbombshells.team/@User.AssociateUserName/Application?type=1</p>
+</div>
+<script>
+    function copyToClipboardLink(element) {
+        let $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+</script>

@@ -1,0 +1,208 @@
+#ds_custom_application {
+  .md-card {
+    box-sizing: border-box;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin: 8px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+    color: rgba(0, 0, 0, 0.87);
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+  }
+
+  .help-block {
+    position: absolute;
+  }
+
+  span>a {
+    color: red;
+  }
+
+  .ds-checkbox + .help-block {
+    margin-bottom: 0;
+    position: relative !important;
+    clear: both;
+  }
+
+  .card-flatter {
+    box-shadow: none;
+  }
+
+  .md-headline {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .ds-card__header {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  .welcome_title {
+    font-weight: bolder;
+    font-size: 45px;
+    font-style: italic;
+    color: #000;
+
+    @media only screen and (max-width: 767px) {
+      font-size: 35px;
+    }
+  }
+
+  .ds-card--flatter{
+    box-shadow: none;
+  }
+
+  .md-button {
+    padding: 8px 30px;
+    font-size: 18px;
+  }
+
+  .disabled-step{
+    cursor: default;
+    opacity: 0.3;
+  }
+
+  .step-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .find-enroller .align-center {
+    text-align: center;
+  }
+}
+
+.text-muted {
+  color: #777 !important;
+}
+
+.word_break {
+  word-break: break-all;
+}
+
+.overflow-initial {
+  overflow: initial;
+}
+
+.widgetTooltip {
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 425px) {
+  .widgetTooltip {
+    font-size: 18px;
+  }
+  .widgetTooltip.c-gray {
+    font-size: 14px;
+  }
+  .mob-font-12 {
+    font-size: 12px;
+  }
+  .left-40 {
+    left: 30px;
+  }
+  // floating label
+  .ds-field__label {
+    font-size: 12px;
+
+    .ds-field__input:focus ~ &,
+    .ds-field--is-dirty & {
+      font-size: 10px;
+      bottom: 25px;
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .left-40 {
+    left: 45px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .left-40 {
+    left: 40px;
+  }
+
+  .ds-carts__grid-wrapper {
+    width: 100%;
+  }
+
+  .ds-product__item {
+    width: 100%;
+  }
+
+  .ds-product__item__image img {
+    height: auto;
+    width: 100%;
+  }
+  .mob-t-20 {
+    margin-top: 20px !important;
+  }
+  .ds-row + .ds-row {
+    margin-top: 15px;
+  }
+}
+
+.reffered_by {
+  float: left;
+  margin-top: -3px;
+  margin-right: 5px;
+}
+
+.m-t-7 {
+  margin-top: 7px;
+}
+
+ds-product {
+  border: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+ds-product {
+  margin: 7px 5px;
+}
+
+.terms-and-condition {
+  padding: 10px;
+  margin-left: 10px;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: aliceblue;
+}
+
+.font-style-normal {
+  font-style: normal  !important;
+}
+
+.sub-text {
+  padding: 12px 200px 0 200px;
+}
+
+.ShippingAddress {
+  display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .sub-text {
+    padding: 12px 0 0 0;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  #ds_custom_application .welcome_title {
+    font-size: 25px;
+  }
+  .ds-card {
+    margin-bottom: 5px;
+  }
+
+}

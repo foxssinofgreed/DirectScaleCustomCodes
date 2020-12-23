@@ -1,0 +1,1011 @@
+
+<!--
+ **********************IMPORTANT*******************************
+Please replace ng-controller value with your new controller name
+     so that it will not conflict with old controller.
+-->
+
+<div class="ds-carts__container" id="ds_custom_application" ng-controller="CustomApplicationCtrl123">
+    <div class="ds-cart__page ds-cart__page--application">
+        <div class="ds-cart__page-container">
+            <!-- Current enroller -->
+            <div class="ds-card ds-card--flatter">
+                <div class="ds-card__header ds-card__header--body ds-card__header--center">
+                    <h2 class="ds-card__title welcome_title font-style-normal" translate="welcome_title"></h2>
+                    <div class="c-black sub-text" translate="complete_the_fields_below"></div>
+                </div>
+            </div>
+            <!-- Expand Collapse Functionality Start -->
+            <custom-member-enrollment></custom-member-enrollment>
+            <custom-mailing-address></custom-mailing-address>
+            <custom-account-info></custom-account-info>
+
+            <custom-payment-method></custom-payment-method>
+
+
+
+
+            <!-- Expand Collapse Functionality End -->
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="memberenrollment.tpl.html">
+    <!-- Step 1 -->
+    <md-content class="md-padding p-0 m-b-30 card_mid" style="overflow:hidden">
+        <div id="step_1" class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 m-b-0 p-0 b-b">
+            <div class="card-body col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="m-h-40" ng-click="isShowUpDown[1] = !isShowUpDown[1]"
+                     ng-attr-toggle_widgetsmenu="{{noOfStepsVerified >= 0}}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-10 step-head">
+                        <h4 class="widgetTooltip pull-left m-t-10 c-black" translate="step_1_team_member_enrollment"></h4>
+                        <button class="md-icon-button md-button-toggle md-button md-ink-ripple pull-right"
+                                type="button" aria-label="Settings">
+                            <md-icon class="c-black md-default-theme md-toggle-icon ng-scope material-icons"
+                                     ng-class="{'toggled' : isShowUpDown[1]}" role="img">keyboard_arrow_up</md-icon>
+                            <div class="md-ripple-container"></div>
+                        </button>
+                    </div>
+                </div>
+                <ul style="display:none"
+                    class="toggle-ul step_1 p-t-15 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
+                    <li style="list-style:none;">
+
+                        <!-- Personal information -->
+                        <div class="ds-card ds-card--flatter">
+                            <div class="ds-card__body">
+                                <div class="ds-row">
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.personalInfo.FirstName">
+                                            <input type="text" ng-model="userService.personalInfo.FirstName"
+                                                   inputmobilespacendash="true" ng-change="UpdateSteps(0)"
+                                                   noempty="true" validname="true" Step1="true" validate>
+                                            <label translate="first_name"></label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.personalInfo.LastName">
+                                            <input type="text" ng-model="userService.personalInfo.LastName"
+                                                   inputmobilespacendash="true" ng-change="UpdateSteps(0)"
+                                                   noempty="true" validname="true" Step1="true" validate>
+                                            <label translate="last_name"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ds-row">
+
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.personalInfo.phoneNumber.Phone1">
+                                            <input type="tel"
+                                                   ng-model="userService.personalInfo.phoneNumber.Phone1"
+                                                   ng-change="UpdateSteps(0)" phoneno="true" inputspace="true"
+                                                   noempty="true" validate Step1="true" maxlength="20"
+                                                   inputonlynumber="true">
+                                            <label translate="mobile_phone"></label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.personalInfo.Email">
+                                            <input type="text" ng-model="userService.personalInfo.Email"
+                                                   email="true" ng-change="UpdateSteps(0)" noempty="true" validate
+                                                   Step1="true" focusout="verifyUserNameAndEmail(false);">
+                                            <label translate="email_Add"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ds-row ds-age-field m-b--10"
+                                >
+                                    <!-- ng-if="userService.customerTypeID==1 || userService.customerTypeID==3" -->
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.personalInfo.birthMonth" class="dsError">
+                                            <select ng-model="userService.personalInfo.birthMonth"
+                                                    ng-change="UpdateSteps(0);birthDays()" noempty="true" validate
+                                                    validate-select="true" Step1="true"
+                                                    agelimit="{{userService.personalInfo.birthMonth +'/'+ userService.personalInfo.birthDay +'/'+ userService.personalInfo.birthYear}}"
+                                                    ng-options="month.value as (month.text | translate) for month in months"></select>
+                                            <label translate="birthdate"></label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.personalInfo.birthDay" class="dsError">
+                                            <select ng-model="userService.personalInfo.birthDay"
+                                                    ng-change="UpdateSteps(0)" noempty="true" validate
+                                                    validate-select="true" Step1="true"
+                                                    agelimit="{{userService.personalInfo.birthMonth +'/'+ userService.personalInfo.birthDay +'/'+ userService.personalInfo.birthYear}}"
+                                                    ng-options="(day +' '+ (jpChar.day | translate)) for day in birthDaysAll"></select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.personalInfo.birthYear" class="dsError">
+                                            <select ng-model="userService.personalInfo.birthYear"
+                                                    ng-change="UpdateSteps(0);birthDays()" noempty="true" validate
+                                                    validate-select="true" Step1="true"
+                                                    agelimit="{{userService.personalInfo.birthMonth +'/'+ userService.personalInfo.birthDay +'/'+ userService.personalInfo.birthYear}}"
+                                                    ng-options="year.value as (year.text +' '+ (jpChar.year | translate)) for year in BirthYears"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ds-row m-t-25">
+                                    <div class="ds-row__item">
+                                        <label class="ds-checkbox">
+                                            <input type="checkbox" ng-model="userService.personalInfo.SendMail">
+                                            <t translate="yes_receive_emails_about_business"></t>
+                                            <span class="ds-checkbox__button zmdi zmdi-check"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 p-0">
+                        <button class="md-primary md-raised md-button md-ink-ripple pull-left bgm-color2"
+                                type="button" validate trigger-checksection="true" sectiontype="Step1"
+                                success="UpdateSteps(1);scrollTo(1);" ng-disabled="EmailCheck"
+                                translate="continue"></button>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </md-content>
+</script>
+
+<script type="text/ng-template" id="mailingAddress.tpl.html">
+    <!-- Step 2 -->
+    <md-content class="md-padding p-0 m-b-30 card_mid" style="overflow:hidden">
+        <div id="step_2" class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 m-b-0 p-0 b-b">
+            <div class="card-body col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="m-h-40"
+                     ng-click="(noOfStepsVerified >= 1) ? (isShowUpDown[2] = !isShowUpDown[2]): ''"
+                     ng-class="{'disabled-step': noOfStepsVerified < 1}"
+                     ng-attr-toggle_widgetsmenu="{{noOfStepsVerified >= 1}}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-10 step-head">
+                        <h4 class="widgetTooltip pull-left m-t-10 c-black" translate="step_2_your_mailing_address"></h4>
+                        <button class="md-icon-button md-button-toggle md-button md-ink-ripple pull-right"
+                                type="button" aria-label="Settings">
+                            <md-icon class="c-black md-default-theme md-toggle-icon ng-scope material-icons"
+                                     ng-class="{'toggled' : isShowUpDown[2]}" role="img">keyboard_arrow_up</md-icon>
+                            <div class="md-ripple-container"></div>
+                        </button>
+                    </div>
+                </div>
+                <ul style="display:none"
+                    class="toggle-ul step_2 p-t-15 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
+                    <li style="list-style:none;">
+
+                        <!-- Address -->
+                        <div class="ds-card ds-card--flatter" id="IdMailingAddress">
+                            <div class="ds-card__body">
+                                <div class="ds-row">
+                                    <div class="control-group ds-row__item ds-w--2-3">
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.StreetAddress">
+                                            <input type="text"
+                                                   ng-model="userService.mailingAddress.StreetAddress"
+                                                   ng-change="UpdateSteps(1)" Step2="true" validate noempty="true">
+                                            <label translate="street_address"></label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item ds-w--1-3">
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.Apartment">
+                                            <input type="text" id="Email4"
+                                                   ng-model="userService.mailingAddress.Apartment">
+                                            <label translate="apartment_unit"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ds-row">
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.City">
+                                            <input type="text" ng-model="userService.mailingAddress.City"
+                                                   ng-change="UpdateSteps(1)" inputmobilespacendash="true"
+                                                   noempty="true" validname="true" Step2="true" validate>
+                                            <label translate="city"> </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.Country">
+                                            <select ng-change="getStates(userService.mailingAddress.Country);" validate
+                                                    validate-select Step2="true" noempty="true"
+                                                    ng-model="userService.mailingAddress.Country"
+                                            >
+                                                <option value="" >Select Country</option>
+                                                <option value="AU" >Australia</option>
+                                                <option value="BE">Belgium</option>
+                                                <option value="NL">Netherlands</option>
+                                                <option value="GB" >United Kingdom</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group ds-row__item" >
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.State">
+                                            <select ng-change="GetStateName(true);UpdateSteps(1);" validate
+                                                    validate-select Step2="true" noempty="true"
+                                                    ng-model="userService.mailingAddress.State"
+                                                    ng-options="states.RegionCode as states.RegionDescription for states in StatesResponse" ng-disabled="!(userService.mailingAddress.Country)">
+                                                <option value="" translate>select_state</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item" ng-if="userService.mailingAddress.Country == 'GB' && false">
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.State">
+                                            <select ng-change="differentShippingAddress(true);GetStateName(true);UpdateSteps(1);" validate
+                                                    validate-select Step2="true" noempty="true"
+                                                    ng-model="userService.mailingAddress.State"
+                                            >
+                                                <option value="" translate>select_state</option>
+                                                <option value="ENG">England</option>
+                                                <option value="NIR">Northern Ireland</option>
+                                                <option value="SCT">Scotland</option>
+                                                <option value="WLS">Wales</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.ZipCode">
+                                            <input type="text" ng-model="userService.mailingAddress.ZipCode"
+                                                   ng-change="differentShippingAddress(true);UpdateSteps(1)"
+                                                   regexcountry="{{userService.mailingAddress.Country}}"
+                                                   regxvalidzip="true" noempty="true" validate Step2="true"
+
+                                                   focusout="getShippingTypes(false, true, userService.mailingAddress.ZipCode);">
+                                            <label translate="zip_postcode"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Shipping & handling -->
+                                <div class="ds-row ShippingAddress">
+                                    <div class="ds-row__item">
+                                        <h4 class="m-0" translate="what_shipping_address"></h4>
+                                    </div>
+                                </div>
+                                <div class="ds-row ShippingAddress">
+                                    <div class="control-group ds-row__item">
+                                        <label class="ds-radio">
+                                            <input type="radio" ng-value="1" name="shipping"
+                                                   ng-model="userService.shippingAddress.Check"
+                                                   ng-change="differentShippingAddress(true);UpdateSteps(1);">
+                                            <t translate="use_same_address"></t>
+                                            <span class="ds-radio__button"></span>
+                                        </label>
+                                        <label class="control-group ds-radio">
+                                            <input type="radio" ng-value="2" name="shipping"
+                                                   ng-model="userService.shippingAddress.Check"
+                                                   ng-change="differentShippingAddress(true);UpdateSteps(1);"
+                                                   validate>
+                                            <t translate="different_shipping_adddress"></t>
+                                            <span class="ds-radio__button"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="ds-row" ng-if="ShippingAddressCheck">
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.shippingAddress.FirstName">
+                                            <input type="text" ng-model="userService.shippingAddress.FirstName"
+                                                   ng-change="UpdateSteps(1)" inputmobilespacendash="true"
+                                                   noempty="true" validname="true" validate Step2="true">
+                                            <label translate="first_name"></label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.shippingAddress.LastName">
+                                            <input type="text" ng-model="userService.shippingAddress.LastName"
+                                                   ng-change="UpdateSteps(1)" inputmobilespacendash="true"
+                                                   noempty="true" validname="true" validate Step2="true">
+                                            <label translate="last_name"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ds-row" ng-if="ShippingAddressCheck">
+                                    <div class="control-group ds-row__item ds-w--2-3">
+                                        <div class="ds-validate" ds-field="userService.shippingAddress.StreetAddress">
+                                            <input type="text"
+                                                   ng-model="userService.shippingAddress.StreetAddress"
+                                                   ng-change="UpdateSteps(1)" noempty="true" validate Step2="true">
+                                            <label translate="street_address"></label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item ds-w--1-3">
+                                        <div class="ds-validate" ds-field="userService.shippingAddress.Apartment">
+                                            <input type="text" id="Text2"
+                                                   ng-model="userService.shippingAddress.Apartment">
+                                            <label translate="apartment_unit"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ds-row" ng-if="ShippingAddressCheck">
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.shippingAddress.City">
+                                            <input type="text" ng-model="userService.shippingAddress.City"
+                                                   ng-change="UpdateSteps(1)" inputmobilespacendash="true"
+                                                   noempty="true" validname="true" validate Step2="true">
+                                            <label translate="city"></label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.shippingAddress.State">
+                                            <select ng-change="GetStateName(false);UpdateSteps(1);" validate
+                                                    validate-select="true" Step2="true" noempty="true"
+                                                    ng-model="userService.shippingAddress.State"
+                                                    data-ng-options="states.RegionCode as states.RegionDescription for states in StatesResponse">
+                                                <option value="" translate>select_state</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.shippingAddress.ZipCode">
+                                            <input type="text" ng-model="userService.shippingAddress.ZipCode"
+                                                   ng-change="UpdateSteps(1)"
+                                                   regexcountry="{{commonSetting.commonData.selectedCountry}}"
+                                                   regxvalidzip="true" noempty="true" validate Step2="true"
+                                                   focusout="getShippingTypes(false, false, userService.shippingAddress.ZipCode)">
+                                            <label translate="zip"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 p-0">
+                        <button class="md-primary md-raised md-button md-ink-ripple pull-left bgm-color2"
+                                type="button" validate trigger-checksection="true" sectiontype="Step2"
+                                success="UpdateSteps(2);scrollTo(2)" translate="continue"></button>
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+    </md-content>
+</script>
+
+<script type="text/ng-template" id="accountInfo.tpl.html">
+    <!-- Step 3 -->
+    <md-content class="md-padding p-0 m-b-30 card_mid" style="overflow:hidden">
+        <div id="step_3" class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 m-b-0 p-0 b-b">
+            <div class="card-body col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="m-h-40"
+                     ng-click="(noOfStepsVerified >= 2) ? (isShowUpDown[3] = !isShowUpDown[3]): ''"
+                     ng-class="{'disabled-step': noOfStepsVerified < 2}"
+                     ng-attr-toggle_widgetsmenu="{{noOfStepsVerified >= 2}}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-10 step-head">
+                        <h4 class="widgetTooltip pull-left m-t-10 c-black" translate="
+                        step_3_ account_info"></h4>
+                        <button class="md-icon-button md-button-toggle md-button md-ink-ripple pull-right"
+                                type="button" aria-label="Settings">
+                            <md-icon class="c-black md-default-theme md-toggle-icon ng-scope material-icons"
+                                     ng-class="{'toggled' : isShowUpDown[3]}" role="img">keyboard_arrow_up</md-icon>
+                            <div class="md-ripple-container"></div>
+                        </button>
+                    </div>
+                </div>
+                <ul style="display:none"
+                    class="toggle-ul step_3 p-t-15 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
+                    <li style="list-style:none;">
+
+                        <!-- Account Information -->
+                        <div class="ds-card ds-card--flatter overflow-initial">
+                            <div class="ds-card__body">
+                                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                                    <div class="control-group col-lg-4 col-md-4 col-sm-4 m-t-10"
+                                         ng-class="userService.customerTypeID===1 ? 'col-xs-6': 'col-xs-12'">
+                                        <div class="ds-validate" ds-field="userService.webOffice.UserName">
+                                            <input type="text" id="username" autocomplete="off"
+                                                   ng-model="userService.webOffice.UserName"
+                                                   ng-change="removeSpecialSymbol();UpdateSteps(2)" inputspace="true" noempty="true"
+                                                   validname="true" validate Step3="true"
+                                                   focusout="verifyUsername(false);"
+                                                   ng-copy="$event.preventDefault()"
+                                                   ng-paste="$event.preventDefault()">
+                                            <label translate="choose_username"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 m-t-10">
+                                        <div ng-if="userService.customerTypeID===1">
+                                            <div class="ds-field">
+                                                <!-- <t ng-bind="userService.webOffice.UserName+'.'"></t> -->
+                                                <!-- #126331 [CS]: Fix rep site URL -->
+                                                <span class="word_break mob-font-12"
+                                                      ng-bind="'shop.'+ companyDetails.detail.ReplicatedSiteUrl + '/' + (userService.webOffice.UserName ? userService.webOffice.UserName: '{webalias}') + '/Home'"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group col-lg-4 col-md-4 col-sm-4 col-xs-12 m-t-10">
+                                        <div class="ds-validate" ds-field="userService.webOffice.Password">
+                                            <input type="password" id="txtPassword" autocomplete="off"
+                                                   ng-model="userService.webOffice.Password"
+                                                   ng-change="UpdateSteps(2)" name="txtPassword" nospaces="true"
+                                                   zxcvbn="" noempty="true" nospaceallow="true" regxvalid="true"
+                                                   regxvalidValue="((?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,})" validate
+                                                   Step3="true">
+                                            <label translate="choose_password"></label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 m-t-15">
+                                    <div ng-if="userService.customerTypeID != 3 && false">
+                                        <div class="control-group col-lg-4 col-md-4 col-sm-4 col-xs-6 m-t-10">
+                                            <div class="ds-validate" ds-field="userService.commissionPayment">
+                                                <input type="text" value=""
+                                                       ng-model="userService.commissionPayment"
+                                                       ng-change="UpdateSteps(2)" minlength="9" maxlength="9"
+                                                       noempty="true" ng-keypress="toggled=true"
+                                                       inputspacehypens="true" Step3="true" validate>
+                                                <label>
+                                                    <span translate>ssn_txnid</span> (
+                                                    <span translate>nospacehypen</span>)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 m-t-10">
+                                            <div class="ds-field m-t-15">
+                                                <a class="c-color2" tooltip-placement="top"
+                                                   uib-tooltip="{{'in_order_paid_commissions_you_provide_ssn_taxid' | translate}}"
+                                                   translate="what_is_this"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group col-lg-4 col-md-4 col-sm-4 col-xs-12 m-t-10">
+                                        <div class="ds-validate" ds-field="userService.webOffice.ConfirmPassword">
+                                            <input type="password"
+                                                   ng-model="userService.webOffice.ConfirmPassword"
+                                                   ng-change="UpdateSteps(2)" name="weboffice_pswrd_verify"
+                                                   nospaces="true" pw="#txtPassword" password-match="true"
+                                                   noempty="true" validate Step3="true">
+                                            <label translate="verify_password"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ds-row" ng-if="false">
+                                    <div class="control-group ds-row__item">
+                                        <div class="ds-validate" ds-field="userService.webOffice.DomainName">
+                                            <input type="text" ng-model="userService.webOffice.DomainName"
+                                                   ng-change="UpdateSteps(2)" inputspace="true" noempty="true"
+                                                   validname="true" validate focusout="verifyDomainName();"
+                                                   Step3="true">
+                                            <label translate="domain_name"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 p-0">
+                        <button
+                                class="md-primary md-raised md-button md-ink-ripple pull-left bgm-color2 mob-t-20"
+                                type="button" validate trigger-checksection="true" sectiontype="Step3"
+                                success="UpdateSteps(3);scrollTo(5);" translate="continue"> </button>
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+    </md-content>
+</script>
+
+<script type="text/ng-template" id="placeOrder.tpl.html">
+    <!-- Step 4 -->
+    <md-content class="md-padding p-0 m-b-30 card_mid" style="overflow:hidden">
+        <div id="step_4" class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 m-b-0 p-0 b-b">
+            <div class="card-body col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="m-h-40"
+                     ng-click="(noOfStepsVerified >= 3) ? (isShowUpDown[4] = !isShowUpDown[4]): ''"
+                     ng-class="{'disabled-step': noOfStepsVerified < 3}"
+                     ng-attr-toggle_widgetsmenu="{{noOfStepsVerified >= 3}}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-10 step-head">
+                        <div>
+                            <h4 class="widgetTooltip pull-left m-t-10 c-black" translate="step4"></h4>
+                        </div>
+                        <button class="md-icon-button md-button-toggle md-button md-ink-ripple pull-right"
+                                type="button" aria-label="Settings">
+                            <md-icon class="c-black md-default-theme md-toggle-icon ng-scope material-icons"
+                                     ng-class="{'toggled' : isShowUpDown[4]}" role="img">keyboard_arrow_up</md-icon>
+                            <div class="md-ripple-container"></div>
+                        </button>
+                    </div>
+                </div>
+                <ul style="display:none"
+                    class="toggle-ul step_4 p-t-15 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
+                    <li style="list-style:none;">
+                        <!-- Payment information -->
+                        <div class="ds-card ds-card--flatter">
+
+                            <div class="ds-card__body">
+                                <!-- ng-if="isAllowEnrollmentTermandCondition" -->
+                                <div class="m-t-15 control-group">
+                                    <label class="ds-checkbox">
+                                        <input type="checkbox" id="application1" value="option2" Step5="true"
+                                               checkbox-validate="true" validate
+                                               ng-click="ClearApplication($event);">
+                                        <span
+                                                translate="by_checkmark_this_box_iam_giving_the_company_permission_type_{{userService.customerTypeID}}"></span>
+                                        <i class="ds-checkbox__button zmdi zmdi-check"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 p-0">
+
+                        <button class="md-primary md-raised md-button md-ink-ripple pull-left bgm-color2"
+                                type="button" validate trigger-checksection="true" sectiontype="Step5"
+                                success="checkList()" translate="continue"></button>
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+    </md-content>
+</script>
+
+<script type="text/ng-template" id="paymentMethod.tpl.html">
+    <!-- Step 5 -->
+    <md-content class="md-padding p-0 m-b-30 card_mid" style="overflow:hidden">
+        <div id="step_4" class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 m-b-0 p-0 b-b">
+            <div class="card-body col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="m-h-40"
+                     ng-click="(noOfStepsVerified >= 3) ? (isShowUpDown[4] = !isShowUpDown[4]): ''"
+                     ng-class="{'disabled-step': noOfStepsVerified < 3}"
+                     ng-attr-toggle_widgetsmenu="{{noOfStepsVerified >= 3}}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-10 step-head">
+                        <div>
+                            <h4 class="widgetTooltip pull-left m-t-10 c-black" translate="step4"></h4>
+                        </div>
+                        <button class="md-icon-button md-button-toggle md-button md-ink-ripple pull-right"
+                                type="button" aria-label="Settings">
+                            <md-icon class="c-black md-default-theme md-toggle-icon ng-scope material-icons"
+                                     ng-class="{'toggled' : isShowUpDown[4]}" role="img">keyboard_arrow_up</md-icon>
+                            <div class="md-ripple-container"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <ul style="display:none"
+                    class="toggle-ul step_4 p-t-15 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
+                    <li style="
+    padding: 10px;
+    margin-left: 10px;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+">
+
+                        <p ><strong>Business Bombshells Ambassador Terms</strong></p>
+                        <p >&nbsp;Please ensure that you fully read and understand this Ambassador Terms, Our Policies and Procedures, Rewards Plan and Social Media Guide.</p>
+                        <p >This agreement is between Bombshells Investments LTD, trading as Business Bombshells, a company incorporated in England and Wales under registered number 12596237, whose registered office is at 85 Great Portland Street, London, W1W 7LT (the&nbsp;<strong>Company)and yourself when applying to join as an ambassador of Business Bombshells.</strong></p>
+                        <p >1. &nbsp; &nbsp;I confirm that I am 18 or over and legally able to enter into this agreement.</p>
+                        <p >2. &nbsp; &nbsp;I agree that as an Independent Ambassador, I am responsible for my own activity and that I am not an employee, partner, franchisee, or legal representative of Business Bombshells. I understand and agree that I will not receive any employee benefits or rights from Business Bombshells.</p>
+                        <p >3. &nbsp; &nbsp;I agree that I am responsible for the payment of all income taxes, any other taxes,&nbsp;business expenses and any other associated costs in being an ambassador.</p>
+                        <p >4. &nbsp; &nbsp;I agree that I have read the Ambassador terms, Policies and Procedures, Rewards Plan and Social Media Guilefully and that I understand fully the agreement which I am entering into. I agree to abide by all terms, covenants and agreements and understand that from time to time Business Bombshells may change these agreements and agree to abide by the current versions.</p>
+                        <p >5. &nbsp; &nbsp;I understand and agree that All success is down to myself. My passion, drive, skills and determination. Any materials, literature, social media content, videos or any other promotional materials are for illustrative purposes and do not represent a guarantee of income or success.</p>
+                        <p >6. &nbsp; &nbsp;I accept and understand that if I fail to comply with this agreement, including the Policies and Procedures and Social Media Guide then I will be subject to sanctions, up to and including forfeiture of commissions and termination of my agreement.</p>
+                        <p >7. &nbsp; &nbsp;I understand that I can terminate this agreement at any time by emailing legal@businessbombshells.shop</p>
+                        <p >8. &nbsp; &nbsp;The term of this agreement is for1 year. I understand that if I have been inactive for longer than 6 months thenI may be removed from the ambassador program at the discretion of the company. I understand Inactive is classed as I have made no personal sales in any given month. The agreement will automatically renew upon any sales being made after 1 year.</p>
+                        <p >9. &nbsp; &nbsp;I agree that I am rewarded a sales commission for sales made, as an Independent Business Bombshell ambassador and that I shall put my primary focus on referring customers to the company.</p>
+                        <p >10. I understand that no commissions will be paid for simply referring another person to the Business Bombshell Ambassador program. I also understand that I am prohibited from making claims that any remuneration is payable for anything other than helping customers to purchase products.</p>
+                        <p >11. I understand that there is no reason for me to purchase inventory and I understand that I am prohibited from buying commercially unreasonable amounts of products or form purchasing products to solely achieve a position or qualify for a bonus.</p>
+                        <p >12. I agree to paying the monthly VIP membership fee directly from any commissions I earn each month. I understand that if I do not earn any commissions then I am not liable for any fee.</p>
+                        <p >13.&nbsp;I agree that Bombshells Investments liability to me shall not under any circumstances and for any damage or loss of any kind including indirect, special, punitive, compensatory or consequential damages, losses or loss of profits which may result from any cause, including but not limited to, breach of warranty, delay, act, error or omission of Bombshells Investments, or the cancellation of my Bombshell Investments Ambassador business, exceed an amount equal to the remuneration paid to me by Bombshells Investments in the 12months prior to such liability arising. This provision does not exclude or limit any liability which may not be lawfully excluded or restricted.</p>
+                        <p >14. By joining the Business Bombshells as an independent ambassador, I understand the agreement grants me the limited authority to promote Business Bombshell products.</p>
+                        <p >15.&nbsp;I agree that I will operate in a lawful, ethical and moral manner and will not engage in or perform any misleading, deceptive or unethical practices in operating as an Independent Ambassador. In the event that I violate any of these conditions, this Agreement may be terminated by Business Bombshells without further payment or compensation of any kind.</p>
+                        <p >16.&nbsp;I acknowledge that Bombshells Investments expressly reserves all proprietary rights to the Business Bombshells name, logo, trademarks, service marks and copyrighted materials. I understand, acknowledge and agree Bombshells Investments has provided me with a non-exclusive licence, during the term of the Agreement to use the Business Bombshell Proprietary Marks and Copyrights in conjunction with the marketing programme provided to me. I further agree that I will not use Business Bombshells Proprietary Marks or Copyrights in any form whatsoever except as permitted in writing by Business Bombshells.</p>
+                        <p >17.&nbsp;I understand that as an Independent Ambassador, I am free to select my own means, methods, and manners of operation and that I am free to choose the hours and location of my activities.</p>
+                        <p >18.&nbsp;I agree to indemnify and hold harmless Bombshells Investments from any and all claims, losses, damages and expenses, including legal fees, arising out of my actions or conduct in violation of this Agreement, including the Bombshells Investments rewards Plan. I agree that in order to recoup any damages and expenses it has incurred due to such violations, Bombshells Investments may offset any commissions or other payments due to me.</p>
+                        <p >19.&nbsp;I understand and agree that Business Bombshells markets itself as a Social Selling company. I understand that I am prohibited from advertising or promoting Business Bombshells as a Network Marketing/Direct Sales or MLM company. I agree that Business Bombshells is not an MLM(or variant) company.</p>
+                        <p >20.&nbsp;I understand and agree that certain personal information relating to me and my business will be collected, used and retained by Business Bombshells in accordance with its Privacy Policy, as amended from time to time, and otherwise in accordance with applicable privacy laws, and I hereby consent to the same. I also consent to any amendments or revisions to the Business Bombshells Privacy Policy, provided such changes are not unreasonably made.</p>
+                        <p >21.&nbsp;I authorize Business Bombshells to send me email messages, and/or notify me by phone regarding its products, services, compensation, and offer other topics that Business Bombshells determines may be of interest or benefit to me. I agree that my receipt of such messages will not be deemed a violation of any legislation or regulations.</p>
+                        <p >22.&nbsp;I agree and acknowledge that I am voluntarily becoming an Independent Ambassador with Bombshells Investments LTD. I agree to act in good faith at all times and in an ethical manner. I agree to abide by the&nbsp;Policies and Procedures , Rewards Plan and Social media guide, as they are amended from time to time. I understand that all success is my own and Bombshells Investments makes no guarantees of earnings or success. I understand that if deemed in violation of these terms at any time then Bombshells Investments may terminate this agreement.</p>
+                        <p >23.&nbsp;I understand that Bombshells Investments may decline my application to join the Ambassador program for any reasons it deems fit within a reasonable time frame and this agreement is terminated immediately.</p>
+                        <p >24.&nbsp;In the event any provision of this agreement is deemed void or unenforceable for any reason, that provision may be severed and the rest of the agreement shall remain in full force and effect.</p>
+                        <p >25. This Agreement will be governed by and interpreted according to English and Welsh law. All disputes and claims arising under the Agreement (including non-contractual disputes or claims) will be subject to the exclusive jurisdiction of the English and Welsh courts.</p>
+
+                    </li>
+                    <li style="list-style:none;">
+                        <!-- Payment information -->
+                        <div class="ds-card ds-card--flatter">
+
+                            <div class="ds-card__body">
+                                <!-- ng-if="isAllowEnrollmentTermandCondition" -->
+                                <div class="m-t-15 control-group">
+                                    <label class="ds-checkbox">
+                                        <input type="checkbox" id="application1" ng-modal="isTermsChecked" value="option2" Step5="true"
+                                               checkbox-validate="true" validate
+                                               ng-click="ClearApplication($event);checkTerms();">
+                                        <span
+                                                translate="by_checkmark_this_box_iam_giving_the_company_permission_type_{{userService.customerTypeID}}"></span>
+                                        <i class="ds-checkbox__button zmdi zmdi-check"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 p-0">
+
+                        <button class="md-primary md-raised md-button md-ink-ripple pull-left bgm-color2"
+                                type="button" validate trigger-checksection="true" sectiontype="Step5"
+                                ng-click="submitCustomApplication()" translate="continue"></button>
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+    </md-content>
+</script>
+
+<script type="text/ng-template" id="enrollmentSummary.tpl.html">
+    <!-- Step 6 -->
+    <md-content class="md-padding p-0 m-b-30 card_mid" style="overflow:hidden">
+        <div id="step_6" class="card col-lg-12 col-md-12 col-sm-12 col-xs-12 m-b-0 p-0 b-b">
+            <div class="card-body col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                <div class="m-h-40" ng-click="(noOfStepsVerified >= 5) ? (isShowUpDown[6] = !isShowUpDown[6]): ''"
+                     ng-class="{'disabled-step': noOfStepsVerified < 5}"
+                     ng-attr-toggle_widgetsmenu="{{noOfStepsVerified >= 5}}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-10 step-head">
+                        <h4 class="widgetTooltip pull-left m-t-10 c-black" translate="step_6:_summary"></h4>
+                        <button class="md-icon-button md-button-toggle md-button md-ink-ripple pull-right" type="button"
+                                aria-label="Settings">
+                            <md-icon class="c-black md-default-theme md-toggle-icon ng-scope material-icons"
+                                     ng-class="{'toggled' : isShowUpDown[6]}" role="img">keyboard_arrow_up</md-icon>
+                            <div class="md-ripple-container"></div>
+                        </button>
+                    </div>
+                </div>
+                <ul style="display:none"
+                    class="toggle-ul step_6 p-t-15 col-lg-12 col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0">
+                    <li style="list-style:none;">
+
+                        <!-- Summary -->
+                        <div class="ds-card ds-card--flatter">
+                            <div class="ds-card__body">
+                                <div class="container">
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 ds-summary-page" id="autoshipdiv">
+                                        <div class="clearfix"></div>
+                                        <div class="card z-depth-2">
+                                            <div class="card-body card-padding">
+                                                <div id="summary-initial-order-total-details"
+                                                     class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-l-10"
+                                                     ng-if="orderService.calculateOrderResponse.Details.length > 0">
+                                                    <h4 class="p-l-28" translate="order_summary"></h4>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped enroll_summry">
+                                                            <thead>
+                                                            <tr class="b-b">
+                                                                <th class="m-w-450" translate="items_">
+                                                                <th translate="price">
+                                                                <th translate="global_quantity"></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr class="t-r-body" a-t-itemcode="{{item.ItemCode}}"
+                                                                ng-repeat="item in itemsService.selectedPacks track by $index">
+                                                                <td style="display:inline-flex">
+                                                                    <div>
+                                                                        <img ng-src="{{item.LargeImageUrl}}"
+                                                                             class="img-responsive"
+                                                                             style="width:55px; height: 55px;"
+                                                                             onerror="this.src='assets/img/noimage.png'" />
+                                                                    </div>
+                                                                    <div style="display:inline-grid" class="p-l-10">
+                                                                        <a ng-bind="item.ItemName"
+                                                                           ng-class="{'m-t-15':!item.selectedOptions}"></a>
+                                                                        <span class="f-s-12"
+                                                                              ng-if="item.selectedOptions"
+                                                                              ng-bind="item.selectedOptions"></span>
+                                                                    </div>
+                                                                </td>
+                                                                <td
+                                                                        ng-bind="item.Price | currency : (item.CurrencySymbol || commonSetting.commonData.CurrencySymbol[0].symbol)">
+                                                                </td>
+                                                                <td>
+                                                                    <!-- Quantity stepper -->
+                                                                    <div class="input-group"
+                                                                         ng-if="item.ItemCode != '46'">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-default waves-effect"
+                                                                                    type="button"
+                                                                                    ng-click="decreaseQuantiy(item,false,true);">
+                                                                                <span class="zmdi zmdi-minus"></span>
+                                                                            </button>
+                                                                        </span>
+                                                                        <input type="text" class="form-control"
+                                                                               ng-model="getQuantityModel(true,false)[item.ItemCode]"
+                                                                               ng-disabled="cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') ||
+                                                                cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])"
+                                                                               ng-change="checkQuantity(item,false,true)"
+                                                                               validate inputonlynumber="true"
+                                                                               ng-keyup="($event.which === 38) ? increaseQuantiy(item,false,true) : 0"
+                                                                               ng-keydown="($event.which === 40) ? decreaseQuantiy(item,false,true) : 0"
+                                                                               maxlength="4" class="text-center">
+                                                                        <span class="input-group-btn">
+                                                                            <button
+                                                                                    class="btn btn-default waves-effect quantity_disable"
+                                                                                    type="button"
+                                                                                    ng-class="{ 'disabled': cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') ||
+                                                                 cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])}"
+                                                                                    ng-attr-uib-tooltip="{{(cartsService.isAddToCartDisabled(item,itemType === 'autoship')
+                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship'))
+                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true)
+                                                                 && cartsService.addToCartDisabledQTYTooltip(item,itemType === 'autoship')) || undefined}}"
+                                                                                    ng-click="increaseQuantiy(item,false,true); $event.stopPropagation();">
+                                                                                <span class="zmdi zmdi-plus"></span>
+                                                                            </button>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="input-group text-center"
+                                                                         ng-if="item.ItemCode == '46'">
+                                                                        <span
+                                                                                ng-bind="getQuantityModel(true,false)[item.ItemCode]"></span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="t-r-body" a-t-itemcode="{{item.ItemCode}}"
+                                                                ng-repeat="item in itemsService.selectedOrderItems track by $index">
+                                                                <td style="display:inline-flex">
+                                                                    <div>
+                                                                        <img ng-src="{{item.LargeImageUrl}}"
+                                                                             class="img-responsive"
+                                                                             style="width:55px; height: 55px;"
+                                                                             onerror="this.src='assets/img/noimage.png'" />
+                                                                    </div>
+                                                                    <div style="display:inline-grid" class="p-l-10">
+                                                                        <a ng-bind="item.ItemName"
+                                                                           ng-class="{'m-t-15':!item.selectedOptions}"></a>
+                                                                        <span class="f-s-12"
+                                                                              ng-if="item.selectedOptions"
+                                                                              ng-bind="item.selectedOptions"></span>
+                                                                    </div>
+                                                                </td>
+                                                                <td
+                                                                        ng-bind="item.Price | currency :(item.CurrencySymbol || commonSetting.commonData.CurrencySymbol[0].symbol)">
+                                                                </td>
+                                                                <td>
+                                                                    <!-- Quantity stepper -->
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-default waves-effect"
+                                                                                    type="button"
+                                                                                    ng-click="decreaseQuantiy(item,false,false);">
+                                                                                <span class="zmdi zmdi-minus"></span>
+                                                                            </button>
+                                                                        </span>
+                                                                        <input type="text" class="form-control"
+                                                                               ng-model="getQuantityModel(false,false)[item.ItemCode]"
+                                                                               ng-disabled="cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') || cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])"
+                                                                               ng-change="checkQuantity(item,false,false)"
+                                                                               validate inputonlynumber="true"
+                                                                               ng-keyup="($event.which === 38) ? increaseQuantiy(item,false,false) : 0"
+                                                                               ng-keydown="($event.which === 40) ? decreaseQuantiy(item,false,false) : 0"
+                                                                               maxlength="4" class="text-center">
+                                                                        <span class="input-group-btn">
+                                                                            <button
+                                                                                    class="btn btn-default waves-effect quantity_disable"
+                                                                                    type="button"
+                                                                                    ng-class="{ 'disabled': cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') ||
+                                                                 cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])}"
+                                                                                    ng-attr-uib-tooltip="{{(cartsService.isAddToCartDisabled(item,itemType === 'autoship')
+                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship'))
+                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true)
+                                                                 && cartsService.addToCartDisabledQTYTooltip(item,itemType === 'autoship')) || undefined}}"
+                                                                                    ng-click="increaseQuantiy(item,false,false); $event.stopPropagation();">
+                                                                                <span class="zmdi zmdi-plus"></span>
+                                                                            </button>
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="p-b-0">
+                                                                    <div class="text-right"><span
+                                                                            translate>shippingtotal</span>
+                                                                        <strong>
+                                                                            <span data-text="taxtotal"
+                                                                                  ng-bind="orderService.calculateOrderResponse.ShippingTotal | currency :(orderService.calculateOrderResponse.CurrencySymbol ||commonSetting.commonData.CurrencySymbol[0].symbol)"></span>
+                                                                        </strong>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="p-b-0">
+                                                                    <div class="text-right"><span
+                                                                            translate>taxtotal</span>
+                                                                        <strong>
+                                                                            <span data-text="taxtotal"
+                                                                                  ng-bind="orderService.calculateOrderResponse.TaxTotal | currency :(orderService.calculateOrderResponse.CurrencySymbol ||commonSetting.commonData.CurrencySymbol[0].symbol)"></span>
+                                                                        </strong>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="p-b-0">
+                                                                    <div class="text-right"><span
+                                                                            translate>discounttotal</span>
+                                                                        <strong>
+                                                                            <span data-text="discounttotal"
+                                                                                  ng-bind="orderService.calculateOrderResponse.DiscountTotal | currency :(orderService.calculateOrderResponse.CurrencySymbol ||commonSetting.commonData.CurrencySymbol[0].symbol)"></span>
+                                                                        </strong>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    <div style="border-top: 1px solid #c3c3c3;"
+                                                                         class="p-t-15">
+                                                                        <div class="text-right">
+                                                                            {{'global_total'|translate}} (
+                                                                            <span data-text="quantity"
+                                                                                  ng-bind="itemsService.selectedPacks.length + itemsService.selectedOrderItems.length"></span>
+                                                                            {{'items_'|translate}} ):
+                                                                            <strong>
+                                                                                <span data-text="Total"
+                                                                                      ng-bind="orderService.calculateOrderResponse.Total | currency :(orderService.calculateOrderResponse.CurrencySymbol ||commonSetting.commonData.CurrencySymbol[0].symbol)"></span>
+                                                                            </strong>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div id="summary-initial-autoship-total-details"
+                                                     class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-l-10 b-t"
+                                                     ng-if="itemsService.selectedAutoOrderItems.length > 0">
+                                                    <div class="card-header" style="padding: 25px 15px 25px 10px;">
+                                                        <div>
+                                                            <h2 translate="autoship_order"></h2>
+                                                        </div>
+                                                        <div style="text-align: right;" ng-if="userService.autoshipDate">
+                                                            <span translate="your_autoship_will_process"></span> &nbsp;
+                                                            <span
+                                                                    ng-bind="userService.autoshipDate | date : 'dd MMM yyyy'"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                            <tr class="b-b">
+                                                                <th class="m-w-450" translate="items_"></th>
+                                                                <th translate="price"></th>
+                                                                <th translate="global_quantity"></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr a-t-itemcode="{{item.ItemCode}}"
+                                                                ng-repeat="item in itemsService.selectedAutoOrderItems track by $index">
+                                                                <td style="display:inline-flex">
+                                                                    <div>
+                                                                        <img ng-src="{{item.LargeImageUrl}}"
+                                                                             class="img-responsive"
+                                                                             style="width:55px; height: 55px;"
+                                                                             onerror="this.src='assets/img/noimage.png'" />
+                                                                    </div>
+                                                                    <div style="display:inline-grid" class="p-l-10">
+                                                                        <a ng-bind="item.ItemName"
+                                                                           ng-class="{'m-t-15':!item.selectedOptions}"></a>
+                                                                        <span class="f-s-12"
+                                                                              ng-if="item.selectedOptions"
+                                                                              ng-bind="item.selectedOptions"></span>
+                                                                    </div>
+                                                                </td>
+                                                                <td
+                                                                        ng-bind="item.Price | currency :(item.CurrencySymbol || commonSetting.commonData.CurrencySymbol[0].symbol)">
+                                                                </td>
+                                                                <td>
+                                                                    <!-- Quantity stepper -->
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-default waves-effect"
+                                                                                    type="button"
+                                                                                    ng-click="decreaseQuantiy(item,true,false);">
+                                                                                <span class="zmdi zmdi-minus"></span>
+                                                                            </button>
+                                                                        </span>
+                                                                        <input type="text" class="form-control"
+                                                                               ng-model="getQuantityModel(false,true)[item.ItemCode]"
+                                                                               ng-disabled="cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') || cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])"
+                                                                               validate inputonlynumber="true"
+                                                                               ng-model-options="{ debounce: 500 }"
+                                                                               ng-change="checkQuantity(item,true,false)"
+                                                                               ng-keyup="($event.which === 38) ? increaseQuantiy(item,true,false) : 0"
+                                                                               ng-keydown="($event.which === 40) ? decreaseQuantiy(item,true,false) : 0"
+                                                                               maxlength="4" class="text-center">
+                                                                        <span class="input-group-btn">
+                                                                            <button
+                                                                                    class="btn btn-default waves-effect quantity_disable"
+                                                                                    type="button"
+                                                                                    ng-class="{ 'disabled': cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') ||
+                                                                 cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])}"
+                                                                                    ng-attr-uib-tooltip="{{(cartsService.isAddToCartDisabled(item,itemType === 'autoship')
+                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship'))
+                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true)
+                                                                 && cartsService.addToCartDisabledQTYTooltip(item,itemType === 'autoship')) || undefined}}"
+                                                                                    ng-click="increaseQuantiy(item,true,false);$event.stopPropagation();">
+                                                                                <span class="zmdi zmdi-plus"></span>
+                                                                            </button>
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="p-b-0">
+                                                                    <div class="text-right"><span
+                                                                            translate>shippingtotal</span>
+                                                                        <strong>
+                                                                            <span data-text="taxtotal"
+                                                                                  ng-bind="orderService.calculateAutoOrderResponse.ShippingTotal | currency :(orderService.calculateAutoOrderResponse.CurrencySymbol ||commonSetting.commonData.CurrencySymbol[0].symbol)"></span>
+                                                                        </strong>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="p-b-0">
+                                                                    <div class="text-right"><span
+                                                                            translate>taxtotal</span>
+                                                                        <strong>
+                                                                            <span data-text="taxtotal"
+                                                                                  ng-bind="orderService.calculateAutoOrderResponse.TaxTotal | currency :(orderService.calculateAutoOrderResponse.CurrencySymbol ||commonSetting.commonData.CurrencySymbol[0].symbol)"></span>
+                                                                        </strong>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="p-b-0">
+                                                                    <div class="text-right"><span
+                                                                            translate>discounttotal</span>
+                                                                        <strong>
+                                                                            <span data-text="discounttotal"
+                                                                                  ng-bind="orderService.calculateAutoOrderResponse.DiscountTotal | currency :(orderService.calculateAutoOrderResponse.CurrencySymbol ||commonSetting.commonData.CurrencySymbol[0].symbol)"></span>
+                                                                        </strong>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    <div style="border-top: 1px solid #c3c3c3;"
+                                                                         class="p-t-15">
+                                                                        <div class="text-right">
+                                                                            {{'global_total'|translate}} (
+                                                                            <span data-text="quantity"
+                                                                                  ng-bind="itemsService.selectedAutoOrderItems.length"></span>
+                                                                            {{'items_'|translate}} ):
+                                                                            <strong>
+                                                                                <span data-text="Total"
+                                                                                      ng-bind="orderService.calculateAutoOrderResponse.Total | currency :(orderService.calculateAutoOrderResponse.CurrencySymbol ||commonSetting.commonData.CurrencySymbol[0].symbol)"></span>
+                                                                            </strong>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="place_order_div">
+                                            <button id="placeorder" validate trigger-check="true"
+                                                    ng-disabled="IsSubmitDisable"
+                                                    class="btn bgm-color2 waves-effect pull-right f-s-18 text-uppercase  waves-effect quantity_disable"
+                                                    ng-attr-uib-tooltip="{{(cartsService.isReviewOrderDisabled() && cartsService.reviewOrderDisabledTooltip()) || (cartsService.isReviewOrderDisabledQTY() && cartsService.reviewOrderDisabledQTYTooltip()) || undefined}}"
+                                                    ng-class="{'disabled': cartsService.isReviewOrderDisabled() || cartsService.isReviewOrderDisabledQTY()}"
+                                                    success="(cartsService.isReviewOrderDisabled() || cartsService.isReviewOrderDisabledQTY())?'':checkCvvModal()"
+                                                    translate="place_order_"></button>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </md-content>
+</script>

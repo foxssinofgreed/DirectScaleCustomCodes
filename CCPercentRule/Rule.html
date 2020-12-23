@@ -1,0 +1,169 @@
+<div class="card minheight" id="idNumeroUno">
+    <div id="divNumeroQuatro">
+        <div class="card-body divNumeroUno">
+            <div class="divNumeroTres">
+                <h1 id="idNumeroTres">Team Sales Total</h1>
+            </div>
+            <div class="divNumeroDos">
+                <h1 id="idNumeroDos">@User.CommissionsStatsNCRV</h1>
+            </div>
+        </div>
+    </div>
+    <div class="divNumeroQuatro">
+        <h1 id="BLTitle">Builder Legs</h1><br/>
+        <div style="display: none;" id="AssociateAssociateIDKPI">@User.AssociateAssociateID</div>
+        <div style="display: none;" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</div>
+
+        <h1 id="NumberOneOLeg"></h1>
+        <h1 id="NumberTwoOLeg"></h1>
+        <h1 id="NumberThreeOLeg"></h1>
+        <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff" id="L9">
+            <g fill="none" fill-rule="evenodd">
+                <g transform="translate(1 1)" stroke-width="2">
+                    <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
+                    <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform
+                                attributeName="transform"
+                                type="rotate"
+                                from="0 18 18"
+                                to="360 18 18"
+                                dur="1s"
+                                repeatCount="indefinite"/>
+                    </path>
+                </g>
+            </g>
+        </svg>
+
+    </div>
+</div>
+<script>
+    $(function (){
+        let countryCD = $("#AssociateAssociateCountryKPI")[0].innerHTML;
+        let Volume35PrstR = $("#idNumeroDos")[0].innerHTML;
+        if (countryCD === 'AU'){
+            $("#idNumeroDos")[0].innerHTML = 'A$' + Volume35PrstR * 2;
+        }
+        else {
+            $("#idNumeroDos")[0].innerHTML = '£' + Volume35PrstR;
+        }
+    });
+    $(function() {
+        let params = {
+            // Request parameters
+            "tree": "{}",
+            "levels": "{1}",
+        };
+        let paramsID = $("#AssociateAssociateIDKPI")[0].innerHTML;
+        let assosiateCountry = $("#AssociateAssociateCountryKPI")[0].innerHTML;
+        let DownlineIDsss;
+        $.ajax({
+            url: "https://vast-hamlet-17171.herokuapp.com/https://dsapi.directscale.com/v1/customers/" + paramsID + "/downline?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","98b198fed48d4aceb8d362c2c931572d");
+                xhrObj.setRequestHeader("Access-Control-Allow-Origin","*");
+            },
+            type: "GET",
+            // Request body
+            data: "{body}",
+        })
+            .done(function(dataLA) {
+                DownlineIDsss = dataLA;
+                //console.log('IDs' + DownlineIDsss);
+                let MoreNumbers = [];
+                let MoreNames = [];
+                if(dataLA.length <= 0){
+                    $('#NumberThreeOLeg')[0].innerHTML = $('#NumberThreeOLeg')[0].innerHTML + "You have no builder legs";
+                    $('#L9')[0].setAttribute("style", "display: none;");
+                }
+                else {
+                    for (let iccr = 0; iccr < DownlineIDsss.length; iccr++) {
+                        let AssosiateIDs = DownlineIDsss[iccr];
+                        //console.log('IDs: ' + AssosiateIDs);
+                        $(function () {
+                            let params = {
+                                // Request parameters
+                                "date": new Date().toISOString(),
+                            };
+
+                            $.ajax({
+                                url: "https://vast-hamlet-17171.herokuapp.com/https://dsapi.directscale.com/v1/customers/" + AssosiateIDs + "/stats?" + $.param(params),
+                                beforeSend: function (xhrObj) {
+                                    // Request headers
+                                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "98b198fed48d4aceb8d362c2c931572d");
+                                    xhrObj.setRequestHeader("Access-Control-Allow-Origin", "*");
+                                },
+                                type: "GET",
+                                // Request body
+                                data: "{body}",
+                            })
+                                .done(function (data) {
+                                    if(assosiateCountry === 'AU') {
+                                        MoreNumbers[iccr] = data.Stats.GVKPI.Value * 2;
+                                        MoreNames[iccr] = data.Name + ': A$' + MoreNumbers[iccr];
+                                    }
+                                    else{
+                                        MoreNumbers[iccr] = data.Stats.GVKPI.Value;
+                                        MoreNames[iccr] = data.Name + ': £' + MoreNumbers[iccr];
+                                    }
+                                    if (iccr === DownlineIDsss.length - 1) {
+                                        LastHope();
+                                    }
+                                })
+                                .fail(function () {
+                                    console.log("error");
+                                });
+                        });
+                    }
+                }
+                function LastHope(){
+                    function SortoooAU(a, b) {
+                        let parts = {
+                            a: a.split(': A$'),
+                            b: b.split(': A$')
+                        }
+                        return parseFloat(parts.b[1]) - parseFloat(parts.a[1]);
+                    }
+                    function SortoooUK(a, b) {
+                        let parts = {
+                            a: a.split(': £'),
+                            b: b.split(': £')
+                        }
+                        return parseFloat(parts.b[1]) - parseFloat(parts.a[1]);
+                    }
+                    //console.log('before: ' + MoreNames);
+                    if(MoreNames !== undefined || MoreNames.length !== 0) {
+                        if(assosiateCountry === 'AU')
+                            MoreNames.sort(SortoooAU);
+                        else
+                            MoreNames.sort(SortoooUK);
+
+                        if(MoreNames[0] !== undefined)
+                            $('#NumberOneOLeg')[0].innerHTML = $('#NumberOneOLeg')[0].innerHTML + MoreNames[0];
+                        else
+                            $('#NumberOneOLeg')[0].innerHTML = $('#NumberOneOLeg')[0].innerHTML + ' ';
+                        if(MoreNames[1] !== undefined)
+                            $('#NumberTwoOLeg')[0].innerHTML = $('#NumberTwoOLeg')[0].innerHTML + MoreNames[1];
+                        else
+                            $('#NumberTwoOLeg')[0].innerHTML = $('#NumberTwoOLeg')[0].innerHTML + ' ';
+                        if(MoreNames[2] !== undefined)
+                            $('#NumberThreeOLeg')[0].innerHTML = $('#NumberThreeOLeg')[0].innerHTML + MoreNames[2];
+                        else
+                            $('#NumberThreeOLeg')[0].innerHTML = $('#NumberThreeOLeg')[0].innerHTML + ' ';
+
+                        $('#L9')[0].setAttribute("style", "display: none;");
+                        //console.log('after: ' + MoreNames);
+                    }
+                    else {
+                        $('#NumberThreeOLeg')[0].innerHTML = $('#NumberThreeOLeg')[0].innerHTML + "You have no builder legs";
+                        $('#L9')[0].setAttribute("style", "display: none;");
+                    }
+                }
+
+            })
+            .fail(function() {
+                console.log("error");
+            });
+
+    });
+</script>

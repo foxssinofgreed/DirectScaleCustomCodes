@@ -1,0 +1,704 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Template>
+    <ComPeriod TrackRealtimeRankAdvancements="False" EnrollTree="Unilevel" RoundPrecision="3" Usage="CommissionRun, StateStats, RealtimeStats" Name="MonthlyBB">
+        <VolumeRange>
+            <VolumeRange Name= "Monthly">
+                <RangeType>
+                    <Monthly StartOffset="0" EndOffset="0" />
+                </RangeType>
+            </VolumeRange>
+        </VolumeRange>
+    </ComPeriod>
+
+    <VolumeRanges>
+    </VolumeRanges>
+
+    <Volumes>
+        <VA_RetailRollup Name="QualifiedVolume">
+            <VolumeType>
+                <DefVolType VolumeGroup="QV" />
+            </VolumeType>
+        </VA_RetailRollup>
+        <VA_RetailRollup Name="CommissionableVolume">
+            <VolumeType>
+                <DefVolType VolumeGroup="CV" />
+            </VolumeType>
+        </VA_RetailRollup>
+        <!-- NEW -->
+        <VA_RetailRollup Name="EnrolledDownlines">
+            <VolumeType>
+                <DefVolType VolumeGroup="EDs" />
+            </VolumeType>
+        </VA_RetailRollup>
+
+    </Volumes>
+
+    <TreeVolumes>
+        <TreeVolume Name="OGroupVolume" Tree="Unilevel" Volume="QualifiedVolume" />
+        <GVGenerationsTreeVolume Name="GroupVolume" TreeVolume="OGroupVolume" Generations="5" CompressRule="1S" />
+    </TreeVolumes>
+
+    <Pools>
+        <GVPaymentPool GVPercent="50" TreeVolume="GroupVolume" Name="MasterPool" />
+    </Pools>
+
+    <PVAccumulator Volume="QualifiedVolume" />
+
+    <GroupVolumeTree TreeVolume="GroupVolume" />
+
+    <Rules>
+        <Rule Description="Enrolled Ambassador" Name="EnrollA">
+            <And>
+                <AssociateTypeCondition AssociateBaseType="1" />
+            </And>
+        </Rule>
+
+        <Rule Description="Ambassador" Name="A">
+            <And>
+                <MeetsRule Rule="EnrollA" />
+            </And>
+            <Result>
+                <SetRank Rank="10" />
+                <SetStat Name="Ambassador" Description="Ambassador" />
+            </Result>
+        </Rule>
+
+        <Rule Description="1 Star" Name="1S">
+            <And>
+                <MeetsRule Rule="A" />
+                <PVCondition Max="-1" Min="250" Volume="QualifiedVolume" Description="Personal Sales"/>
+            </And>
+            <Result>
+                <SetRank Rank="20" />
+                <SetStat Name="1 Star" Description="1 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="2 Star" Name="2S">
+            <And>
+                <MeetsRule Rule="1S" />
+                <PVCondition Max="-1" Min="300" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="-1" Max="-1" Min="1000" TreeVolume="GroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="2" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="30" />
+                <SetStat Name="2 Star" Description= "2 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="3 Star" Name="3S">
+            <And>
+                <MeetsRule Rule="2S" />
+                <PVCondition Max="-1" Min="300" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="-1" Max="-1" Min="2000" TreeVolume="GroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="2" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="40" />
+                <SetStat Name="3 Star" Description= "3 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="4 Star" Name="4S">
+            <And>
+                <MeetsRule Rule="3S" />
+                <PVCondition Max="-1" Min="500" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="1400" Max="-1" Min="4000" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="3" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="50" />
+                <SetStat Name="4 Star" Description= "4 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="5 Star" Name="5S">
+            <And>
+                <MeetsRule Rule="4S" />
+                <PVCondition Max="-1" Min="500" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="2625" Max="-1" Min="7500" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="3" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="60" />
+                <SetStat Name="5 Star" Description= "5 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="6 Star" Name="6S">
+            <And>
+                <MeetsRule Rule="5S" />
+                <PVCondition Max="-1" Min="500" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="5250" Max="-1" Min="15000" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="3" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="70" />
+                <SetStat Name="6 Star" Description= "6 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="7 Star" Name="7S">
+            <And>
+                <MeetsRule Rule="6S" />
+                <PVCondition Max="-1" Min="500" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="8750" Max="-1" Min="25000" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="4" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="80" />
+                <SetStat Name="7 Star" Description= "7 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="8 Star" Name="8S">
+            <And>
+                <MeetsRule Rule="7S" />
+                <PVCondition Max="-1" Min="600" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="14000" Max="-1" Min="40000" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="4" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="90" />
+                <SetStat Name="8 Star" Description= "8 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="9 Star" Name="9S">
+            <And>
+                <MeetsRule Rule="8S" />
+                <PVCondition Max="-1" Min="600" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="21000" Max="-1" Min="60000" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="4" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="100" />
+                <SetStat Name="9 Star" Description= "9 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="10 Star" Name="10S">
+            <And>
+                <MeetsRule Rule="9S" />
+                <PVCondition Max="-1" Min="600" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="31500" Max="-1" Min="90000" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="5" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="110" />
+                <SetStat Name="10 Star" Description= "10 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="11 Star" Name="11S">
+            <And>
+                <MeetsRule Rule="10S" />
+                <PVCondition Max="-1" Min="600" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="43750" Max="-1" Min="125000" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="5" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="120" />
+                <SetStat Name="11 Star" Description= "11 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="12 Star" Name="12S">
+            <And>
+                <MeetsRule Rule="11S" />
+                <PVCondition Max="-1" Min="600" Volume="QualifiedVolume" Description="Personal Sales"/>
+                <GVCondition PersonalVolume="QualifiedVolume" MaxPersonal="-1" IncludeCompressed="True" CompressRule="" Level="-1" MaxPerLeg="61250" Max="-1" Min="175000" TreeVolume="OGroupVolume" Description="Team Sales"/>
+                <LegsWithRule Tree="Unilevel" RequiredLegs="6" Rule="1S" PersonalSponsored="False" Description="Active Lines"/>
+            </And>
+            <Result>
+                <SetRank Rank="130" />
+                <SetStat Name="12 Star" Description= "12 Star" />
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 1" Name="Gen1S">
+            <And>
+                <MeetsRule Rule="1S" />
+                <NotHitOption Rule="2S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="8" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 2" Name="Gen2S">
+            <And>
+                <MeetsRule Rule="2S" />
+                <NotHitOption Rule="3S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="8" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 3" Name="Gen3S">
+            <And>
+                <MeetsRule Rule="3S" />
+                <NotHitOption Rule="4S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="8" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 4" Name="Gen4S">
+            <And>
+                <MeetsRule Rule="4S" />
+                <NotHitOption Rule="5S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="10" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 5" Name="Gen5S">
+            <And>
+                <MeetsRule Rule="5S" />
+                <NotHitOption Rule="6S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="10" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 3" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="3" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 6" Name="Gen6S">
+            <And>
+                <MeetsRule Rule="6S" />
+                <NotHitOption Rule="7S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="10" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 3" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="3" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 7" Name="Gen7S">
+            <And>
+                <MeetsRule Rule="7S" />
+                <NotHitOption Rule="8S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="10" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 3" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="3" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 4" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="4" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 8" Name="Gen8S">
+            <And>
+                <MeetsRule Rule="8S" />
+                <NotHitOption Rule="9S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="12" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 3" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="3" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 4" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="4" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 9" Name="Gen9S">
+            <And>
+                <MeetsRule Rule="9S" />
+                <NotHitOption Rule="10S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="12" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 3" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="3" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 4" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="4" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="3" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 10" Name="Gen10S">
+            <And>
+                <MeetsRule Rule="10S" />
+                <NotHitOption Rule="11S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="12" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="6" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 3" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="3" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 4" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="4" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="3" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 5" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="5" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 11" Name="Gen11S">
+            <And>
+                <MeetsRule Rule="11S" />
+                <NotHitOption Rule="12S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="12" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="6" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 3" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="3" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 4" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="4" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="3" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 5" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="5" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+
+        <Rule Description="Generational Payouts Rank 12" Name="Gen12S">
+            <And>
+                <MeetsRule Rule="12S" />
+            </And>
+            <Result>
+                <Payments>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 1" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="1" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="12" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 2" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="2" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="7" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 3" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="3" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="4" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 4" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="4" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="3" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                    <Payment Pool="MasterPool" Bonus="Team Commission Generation 5" Tag="" MetaData="">
+                        <Group>
+                            <GenerationGroup Tree="Unilevel" Generation="5" CompressOption="1S" BeginLevel="1" />
+                        </Group>
+                        <Source>
+                            <PVPay Volume="CommissionableVolume" Percent="2" Comment="[backofficeId] ([percent]% of [acrVolume])" />
+                        </Source>
+                    </Payment>
+                </Payments>
+            </Result>
+        </Rule>
+    </Rules>
+
+    <KPIs>
+        <TemplateKPI Description="Group Volume" Key="GVKPI">
+            <Accumulator>
+                <VolumeSumAccumulator TreeVolume="GroupVolume" PersonalVolume="QualifiedVolume" Volume="QualifiedVolume" />
+            </Accumulator>
+        </TemplateKPI>
+        <TemplateKPI Description="Total Group Volume" Key="TGVKPI">
+            <Accumulator>
+                <VolumeSumAccumulator TreeVolume="OGroupVolume" PersonalVolume="QualifiedVolume" Volume="QualifiedVolume" />
+            </Accumulator>
+        </TemplateKPI>
+        <TemplateKPI Description="Personal Sales" Key="QVKPI">
+            <Accumulator>
+                <VolumeSumAccumulator PersonalVolume="QualifiedVolume" />
+            </Accumulator>
+        </TemplateKPI>
+        <TemplateKPI Description="Personal Earning" Key="CV_KPI">
+            <Accumulator>
+                <VolumeSumAccumulator PersonalVolume="CommissionableVolume" />
+            </Accumulator>
+        </TemplateKPI>
+        <TemplateKPI Description="Current Capped Rank Volume" Key="CCRV">
+            <Accumulator>
+                <QualifingGroupVolume RankVariation="0" RankConditionName="GVCondition" />
+            </Accumulator>
+        </TemplateKPI>
+        <TemplateKPI Description="Next Capped Rank Volume" Key="NCRV">
+            <Accumulator>
+                <QualifingGroupVolume RankVariation="10" RankConditionName="GVCondition" />
+            </Accumulator>
+        </TemplateKPI>
+    </KPIs>
+</Template>

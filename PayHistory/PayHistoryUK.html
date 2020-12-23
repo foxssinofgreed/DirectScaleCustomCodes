@@ -1,0 +1,661 @@
+<div ng-controller="CustomPayHistoryController as ctrl">
+    <div id="PayHistoryPage" >
+        <div ng-if="!SessionData.MobileScreen">
+            <headerpage id="header" class="bgm-color1"></headerpage>
+            <span id="customer-country" style="display:none">@User.AssociateAddressCountryCode</span>
+            <div class="empty_state common_placeholder position-static" ng-if="!ctrl.IsLoading && (ctrl.CommissionChecks.length===0 || !ctrl.IsShowView)"
+                 translate>payhistory_yet</div>
+            <div class="empty_state common_placeholder position-static" ng-if="ctrl.IsLoading" translate>loading_commissions</div>
+            <div class="p-page p-page--large m-secondary-sidebar clearfix" id="CommissionsPayHistory" ng-if="ctrl.CommissionChecks.length!=0">
+                <div class="sidebar-secondary overflow-hidden" ng-if="(!SessionData.MobileScreen && ctrl.CommissionChecks.length>0) || ctrl.IsShowView ">
+                    <div class="commission-balance" ng-class="{'b-blue': ctrl.ShowAccountBalanceDetails === true}" ng-if="ctrl.ShowAccountBalance" ng-click="ctrl.getAccountBalanceDetails()">
+                        <span translate>account_balance</span>: <span>{{ctrl.AccountBalance * ctrl.exchangeRate | currency:"&pound;":2}}</span>
+                    </div>
+                    <div class="custom-dp">
+                        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 p-0 custom-dp-header"
+                             ng-class="ctrl.IsShowOptions?'':'bgm-color3'" ng-click="ctrl.IsShowOptions = !ctrl.IsShowOptions">
+                            <div class="col-sm-10 col-md-10 col-xs-10 col-lg-10 p-0" ng-if="!ctrl.IsShowOptions">
+                            <span class="dp-head f-s-16 pull-left">
+                                <span translate>payhistory_show</span>
+                                <span ng-if="ctrl.SelectedFilters == 'All'" translate>all_</span>
+                                <span ng-if="ctrl.SelectedFilters != 'All'" translate>{{ctrl.SelectedFilters}}</span>
+                            </span>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-xs-12 p-t-20 p-b-20 p-l-10 p-r-10" ng-if="ctrl.IsShowOptions">
+                                <span class="f-s-14 pull-left" translate>show_payments_that_include</span>
+                            </div>
+                            <div class="col-sm-2 col-md-2 col-xs-2 col-lg-2 m-t-15 dp-icon" ng-if="!ctrl.IsShowOptions">
+                                <i class="zmdi zmdi-caret-down zmdi-hc-fw pull-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 p-0 custom-dp-body" ng-if="ctrl.IsShowOptions"
+                             ng-class="ctrl.ShowAccountBalance?'accountBalance' :''">
+                            <ul class="p-l-0">
+                                <li ng-repeat="PaymentTypeFilter in ctrl.PaymentTypeFilters">
+                                    <label class="checkbox checkbox-inline" for="{{PaymentTypeFilter.Id}}">
+                                        <input type="checkbox" id="{{PaymentTypeFilter.Id}}" ng-click="ctrl.OnChangeFilter(PaymentTypeFilter.Id, PaymentTypeFilter.IsChecked)"
+                                               ng-model="PaymentTypeFilter.IsChecked">
+                                        <span class="input-helper"></span>
+                                        <span class="f-500 ng-scope" translate="{{PaymentTypeFilter.Name}}" translate-default="{{PaymentTypeFilter.Name}}"></span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <hr class="m-b-0">
+                            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 p-5 dp-bottom">
+                                <a class="dp-done c-gray pull-right p-5" ng-click="ctrl.filterChecks();" translate>done</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="PeriodList" class="card mwidth" style="height:calc(100% - 30px) !important;" loader>
+                        <div class="listview custom_scrollbar" id="CommissionPeriodVolume" style="height:94%;overflow-y:auto;" when-scroll-element="ctrl.GetRecordsOnScroll()"
+                             scroll-bottom-on="status.loaded">
+                            <div class="lv-body" ng-repeat="CommissionCheck in ctrl.CommissionChecks track by $index">
+                                <div class="lv-item b-b cursor-pointer p-l-5 p-r-5" ng-class="$first && !ctrl.ShowAccountBalanceDetails?'b-blue':''" ng-click="getCommissionCheckDetails(CommissionCheck);">
+                                    <div class="media">
+                                        <div class="media-body period-item">
+                                            <div class="lv-title ng-binding">
+                                                <span translate ng-if="!ctrl.isProjected(CommissionCheck)">paid_on</span>
+                                                <span class="projected-text" translate ng-if="ctrl.isProjected(CommissionCheck)">period_ending</span>
+                                                <a id="1" class="CommunityfontStyle c-black" ng-bind="CommissionCheck.DatePaid | date:SessionData.DateFormatType" ng-class="{'projected-text': ctrl.isProjected(CommissionCheck)}"></a>
+                                            </div>
+                                            <div class="Dateswitch m-t-5" ng-class="{'projected-text': ctrl.isProjected(CommissionCheck)}">
+                                                <span ng-bind="CommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                            </div>
+                                            <span ng-repeat="paymentType in CommissionCheck.PaymentTypes track by $index" class="badge pull-left m-t-5 m-r-5" ng-class="{'projected-badge': paymentType === 'Projected'}" translate="">{{paymentType | translate}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Check Section -->
+
+                <div ng-show="!ctrl.ShowInvoice && !ctrl.ShowAccountBalanceDetails">
+                    <div ng-if="ctrl.isProjected(ctrl.SelectedCommissionCheck)" class="row check-section" style="background-color: #FFA5A5; border: none; padding: 20px;">
+                        <span translate>projected_comission_alert</span>
+                    </div>
+
+                    <div ng-if="ctrl.CommissionChecks.length > 0 || ctrl.IsShowView" class="row check-section p-5" id="PayHistoryLoad" ng-class="{'projected-check': ctrl.isProjected(ctrl.SelectedCommissionCheck)}" loader>
+                        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12  p-0 m-0">
+                            <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 pull-left">
+                                <img class="comp-logo" ng-src="{{SessionData.CompanyDetail.LogoUrl}}">
+                            </div>
+                            <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 address">
+
+                                <span ng-bind="SessionData.CompanyDetail.Address1"></span>
+                                &nbsp;
+                                <span ng-bind="SessionData.CompanyDetail.Address2"></span>
+                                <br ng-if="SessionData.CompanyDetail.Address2" /> &nbsp;
+                                <span ng-bind="SessionData.CompanyDetail.City"></span>
+                                &nbsp;
+                                <span ng-bind="SessionData.CompanyDetail.State"></span>
+                                &nbsp;
+                                <span ng-bind="SessionData.CompanyDetail.Zip"></span>
+                                &nbsp;
+                                <span ng-bind="SessionData.CompanyDetail.Country"></span>
+                                &nbsp;
+                                <span ng-bind="SessionData.CompanyDetail.SupportPhone"></span>
+
+                            </div>
+                            <div class="col-sm-5 col-xs-12 col-md-5 col-lg-5 pull-right m-t-20">
+                                <div class="pull-right">
+                                    <span ng-if="!ctrl.isProjected(ctrl.SelectedCommissionCheck)" class="f-s-12 f-700 text-uppercase" translate>date_</span>
+                                    <span ng-if="ctrl.isProjected(ctrl.SelectedCommissionCheck)" class="f-s-12 f-700 text-uppercase" translate>period_ending</span>&nbsp;
+                                    <span ng-bind="ctrl.SelectedCommissionCheck.DatePaid | date:SessionData.DateFormatType"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 p-0 m-0 p-t-10">
+                            <div class="col-sm-2 col-xs-2 pay-to">
+                                <span translate="">pay_to_the_order_of</span>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 payee-name">
+                                <span class="f-700 f-s-16" ng-bind="ctrl.UserService.LoggedInUser.Name"></span>
+                            </div>
+                            <div class="col-sm-4 col-xs-4 p-t-5">
+                                <div class="pull-right f-700">
+                                    <span class="amount m-l-0" ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 p-t-10 p-b-20">
+                            <div class="amount-word p-b-5">
+                                <span class="f-s-12 text-uppercase" ng-bind="ctrl.SelectedCommissionCheck.AmountPaidInWords | TranslatePayHistoryWord"></span>
+                                <span class="f-s-12 pull-right text-uppercase" translate="POUND STERLING"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 p-0 m-0 p-t-20 p-b-10">
+                            <div class="col-sm-2 col-xs-2 p-t-10" ng-if="!ctrl.isProjected(ctrl.SelectedCommissionCheck)">
+                                <span translate="">memo_</span>
+                            </div>
+                            <div class="col-sm-4 col-xs-4 memo-content" ng-if="!ctrl.isProjected(ctrl.SelectedCommissionCheck)">
+                            <span>
+                                <span class="f-s-12" translate="">paid_via</span>&nbsp;
+                                <span class="f-s-12">Bank Transfer</span>
+                            </span>
+                            </div>
+                            <div class="col-sm-4 col-xs-3 pull-right memo-content">
+                                <span class="f-s-14 pull-right" translate>sample_check</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-repeat="(key,value) in ctrl.CommissionCheckDetailsData.Details | orderBy : '-SortOrder' | groupBy:'PeriodInfo.Type'">
+
+                        <div class="card clearfix" ng-if="(key==='Adjustment')">
+                            <div class="card-header ch-alt no-pad-header" style="background-color: #efefef;">
+                                <div>
+                                    <div class="lv-title ng-binding">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 comm-header f-500 text-uppercase" translate>
+                                                payhistory_adjustments_title
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <table class="table table-vmiddle" id="bonusdetailtable_Adjustment" style="overflow:hidden!important">
+                                    <thead>
+                                    <tr>
+                                        <th class="f-500" style="background-color:hsl(0, 0%, 100%) !important;" ng-repeat="adjustmentFilterBonus in (GetCommissionReportSettingsResponse.Node | filter: {BonusName: 'Adjustment',CommissionType:'1'})[0].Columns"
+                                            ng-bind="adjustmentFilterBonus.DisplayName | translate" translate></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="bgm-white" ng-repeat="(key,value) in value | orderBy:SortColumnName">
+                                        <td ng-repeat="adjustmentFilterBonus in (GetCommissionReportSettingsResponse.Node | filter: {BonusName: 'Adjustment',CommissionType:'1'})[0].Columns" translate>
+                                            <div ng-if="(adjustmentFilterBonus.Name==='AmountPaid' || adjustmentFilterBonus.Name==='AmountEarned' || adjustmentFilterBonus.Name==='Fees' || adjustmentFilterBonus.Name ==='Holding')">
+                                                <span ng-bind="value[adjustmentFilterBonus.Name] * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                            </div>
+                                            <span ng-bind="(value[adjustmentFilterBonus.Name] | translate)" translate ng-if="(adjustmentFilterBonus.Name!=='AmountPaid' && adjustmentFilterBonus.Name!=='AmountEarned' && adjustmentFilterBonus.Name!=='Fees' && adjustmentFilterBonus.Name !=='Holding')">
+                                            </span>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 b-b p-t-10 p-b-10 p-l-0 p-r-0 b-t">
+                                <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
+                                    <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
+                                    <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'&pound;&pound;':2"></span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div ng-if="(key!=='Adjustment')">
+                            <div id="payHistoryCommissionMain{{key}}_{{periodValue.PeriodInfo.PeriodId}}" loader ng-repeat="periodValue in value" class="card clearfix">
+                                <div class="card-header ch-alt no-pad-header" style="background-color: #efefef;">
+                                    <div>
+                                        <div class="lv-title ng-binding">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 comm-header f-500 text-uppercase">
+                                                    <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0" ng-if="!ctrl.isProjected(ctrl.SelectedCommissionCheck)">
+                                                        <span translate="{{key}}_payhistory_commission" translate-default="{{key=='null'?'':key}}"></span>
+                                                    </div>
+                                                    <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0 projected-text" ng-if="ctrl.isProjected(ctrl.SelectedCommissionCheck)">
+                                                        <span translate>weekly_commissions_projection</span>
+                                                    </div>
+                                                    <div class="col-sm-7 col-xs-7 col-md-5 col-lg-7 p-0" ng-bind="((periodValue.PeriodInfo.BeginDate | date:SessionData.DateFormatType) +' -  ' + (periodValue.PeriodInfo.EndDate | date:SessionData.DateFormatType))"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body p-0">
+                                    <div id="accordion" ng-show="ctrl.ShowSales" class="accordion">
+                                        <div class="pos-r" ng-repeat="parent in CommissionBonusName[key+periodValue.PeriodInfo.PeriodId].Bonuses | orderBy:'BonusSortOrder'">
+                                            <div id="T_{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}" class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 b-b panel m-b-0" ng-repeat="Bonuse in GetCommissionReportSettingsResponse.Node"
+                                                 ng-if="parent.BonusId==Bonuse.BonusId" Bonuse="{{Bonuse}}">
+                                            <span class="col-md-9 col-sm-9 col-xs-9 accordion-toggle m-0 p-r-0 m-t-10 m-b-10 cursor-pointer" data-toggle="collapse" data-parent="#accordion"
+                                                  ng-click="Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=!Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId];(Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]?clearpreviousData(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId):Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=false)"
+                                                  data-target="#A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}">
+                                                <a class="c-color1 f-500" ng-bind="Bonuse.DisplayName | translate" translate></a>
+                                                <span class="zmdi f-s-18 m-l-5 c-color1" ng-class="Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId] ? 'zmdi-chevron-up' : 'zmdi-chevron-down'"></span>
+                                            </span>
+
+                                                <span class="col-md-3 col-sm-3 col-xs-3 text-right accordion-toggle m-0 m-t-10 m-b-10 cursor-pointer f-500" data-toggle="collapse"
+                                                      data-parent="#accordion" data-target="#A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}"
+                                                      ng-click="Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=!Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId];(Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]?clearpreviousData(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId):Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=false)"
+                                                      ng-model="Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId]">
+                                                <span ng-bind="parent.Amount?parent.Amount * ctrl.exchangeRate:'0' | currency:'&pound;':2"></span>
+                                            </span>
+                                                <div class="col-md-12 col-sm-12 col-xs-12 b-b p-l-0 p-r-0 b-t  table-responsive collapse" id="A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}" ng-class="Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId]?'':'collapse'"
+                                                     style="overflow-y:scroll;max-height:300px;" when-scroll-element="ctrl.FnCommissionBonuseDetails(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId);"
+                                                     scroll-bottom-on="status.loaded">
+                                                    <table class="table table-vmiddle" id="bonusdetailtable_{{Bonuse.BonusId}}" ng-if="(GetCommissionBonusDetailData | filter: {BonusId: (parent.BonusFilter || Bonuse.BonusId)}).length>0 && Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]"
+                                                           style="overflow:hidden!important">
+                                                        <div class="col-md-9 col-sm-9 col-xs-9 accordion-toggle m-0 p-r-0 m-t-10 m-b-10 c-blue f-s-13" ng-if="((GetCommissionBonusDetailData | filter: {BonusId: (parent.BonusFilter || Bonuse.BonusId)}).length==0) && Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId] && Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId] && !ShowLoader['commision']"
+                                                             translate>payhistory_no_record</div>
+
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="cursor-pointer shadow text-center bgm-color-fix" ng-repeat="item in Bonuse.Columns | orderBy:'SequenceNumber'">
+                                                                <div class="m-0" ng-click="SortBy(item.FieldId,Bonuse.BonusId, parent.BonusDescription,key,parent.PeriodId)" style="white-space:nowrap">
+                                                                    <div>
+                                                                        <span translate ng-bind="item.DisplayName | translate" translate></span>
+                                                                        <i class="zmdi zmdi-long-arrow-down zmdi-hc-fw c-darkgray" ng-if="!reverse && SortColumnId === item.FieldId.toString().trim()"></i>
+                                                                        <i class="zmdi zmdi-long-arrow-up zmdi-hc-fw c-darkgray" ng-if="reverse && SortColumnId === item.FieldId.toString().trim()"></i>
+                                                                    </div>
+                                                                </div>
+
+                                                            </th>
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+
+                                                        <tr ng-repeat="BonusDetail in GetCommissionBonusDetailData | orderBy:predicate['+Bonuse.BonusId+']:reverse[Bonuse.BonusId] | filter: {BonusId: (parent.BonusFilter || Bonuse.BonusId)}">
+                                                            <td ng-repeat="item in Bonuse.Columns | orderBy:'SequenceNumber'" class="text-center bgm-color-fix">
+                                                                <div ng-bind="Addcolumnsign(BonusDetail[item.Name],item.FieldId) | translate" ng-if="item.Name!=='FromCustomerName' && item.Name!=='FromCustomerId' && item.Name!=='OrderId'" translate></div>
+                                                                <div class="cursor-pointer" ng-click="ctrl.ShowInvoiceDetail(BonusDetail[item.Name],BonusDetail['CustomerId'], key, parent.PeriodId);" ng-bind="BonusDetail[item.Name] | translate"
+                                                                     ng-if="item.Name==='OrderId'" translate></div>
+                                                                <a class="c-color1" ng-click="ctrl.GoToDashboard(BonusDetail['FromCustomerId']);" ng-bind="BonusDetail[item.Name] | translate"
+                                                                   ng-if="(item.Name==='FromCustomerName' || item.Name==='FromCustomerId')"
+                                                                   translate></a>
+                                                            </td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 col-sm-12 col-xs-12 b-b p-t-10 p-b-10 p-l-0 p-r-0 b-t">
+                                    <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
+                                        <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
+                                        <span class="p-r-0 text-right p-l-30">
+                                        <span ng-bind="periodValue.AmountEarned * ctrl.exchangeRate  | currency:'&pound;':2"></span>
+                                    </span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 p-t-10 p-b-10 p-l-0 p-r-0">
+                        <div class="pull-right p-r-15 f-s-24 f-500">
+                            <span translate>payhistory_net_total</span>
+                            <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card clearfix" ng-show="ctrl.ShowInvoice">
+                    <div class="card-header ch-alt">
+                        <div>
+                            <div class="lv-title ng-binding">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="col-sm-1 col-xs-1">
+                                            <i class="zmdi zmdi-close cursor-pointer f-s-20" ng-click="ctrl.ShowSalesDetail();"></i>
+                                        </div>
+                                        <div class="col-sm-11 col-xs-11">
+                                            <h2 translate>payhistory_order_break</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="m-t-20">
+                            <invoice></invoice>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Account Balance section-->
+        <div class="p-page" ng-class="{ 'p-page--large m-secondary-sidebar account-balance-detail-fw' : !SessionData.AccountBalanceHeader}" ng-show="ctrl.ShowAccountBalanceDetails">
+            <div>
+                <div class="row check-section" ng-class="{'m-t-10' : SessionData.AccountBalanceHeader }" style="background-color: #FFA5A5; border: none; padding: 20px;">
+                    <span translate="account_balance_disclaimer" translate-values="{ paymentAttemptFee: ctrl.AccountBalanceDetails.Data.PaymentAttemptFee, minReqBalance: ctrl.AccountBalanceDetails.Data.MinimumRequiredBalance }"></span>
+                </div>
+                <div class="card clearfix">
+                    <div class="card-header ch-alt text-uppercase account-balance-header">
+                        <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0">
+                            <span translate>account_balance</span>
+                        </div>
+                        <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0">
+                            <span translate>{{ctrl.AccountBalance * ctrl.exchangeRate | currency:'&pound;':2}}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="table table-vmiddle" style="overflow:hidden!important">
+                            <thead>
+                            <tr>
+                                <th class="f-500" style="background-color:hsl(0, 0%, 100%) !important;" translate>note</th>
+                                <th class="f-500" style="background-color:hsl(0, 0%, 100%) !important;" translate>status</th>
+                                <th class="f-500" style="background-color:hsl(0, 0%, 100%) !important;" translate>total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="bgm-white" ng-repeat="item in ctrl.AccountBalanceDetails.Data.BalanceDetails">
+                                <td>{{item.Description}}</td>
+                                <td>{{item.Status}}</td>
+                                <td>{{item.Total * ctrl.exchangeRate | currency:'&pound;':2}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /*****************************************Mobile View Start HERE *****************************************/ -->
+        <div ng-if="SessionData.MobileScreen" id="PayHistoryLoad" loader>
+            <headerpage id="header" class="bgm-color1"></headerpage>
+
+            <div class="card-header bgm-color1 fixedheader  fixedheader_mobile p-b-0 p-l-0" ng-if="SessionData.ItemDetailsHeader">
+                <div class="row">
+                    <h1>
+                        <i class="zmdi zmdi-arrow-left zmdi-hc-fw f-s-22 pull-left m-l-20 iconsize" style="color:hsl(0, 0%, 100%);height:50px" ng-click="ctrl.FShowCommissionList();"></i>
+                    </h1>
+                    <h1 class="header__title p-l-20-p" translate>pay_summary</h1>
+
+                </div>
+            </div>
+            <div class="card-header bgm-color1 fixedheader  fixedheader_mobile p-b-0 p-l-0" ng-if="SessionData.AccountBalanceHeader">
+                <div class="row">
+                    <h1>
+                        <i class="zmdi zmdi-arrow-left zmdi-hc-fw f-s-22 pull-left m-l-20 iconsize" style="color:hsl(0, 0%, 100%);height:50px" ng-click="ctrl.FShowCommissionList();"></i>
+                    </h1>
+                    <h1 class="header__title p-l-20-p" translate>account_balance</h1>
+
+                </div>
+            </div>
+            <!-- Invoice Section for Mobile -->
+            <div class="card-header bgm-color1 fixedheader fixedheader_mobile" ng-show="ctrl.ShowInvoice">
+                <div class="row">
+                    <a>
+                        <i class="zmdi zmdi-close zmdi-hc-fw font-large pull-left m-l-20 iconsize" style="color:hsl(0, 0%, 100%);height:10px" ng-click="ctrl.backToHome();"></i>
+                    </a>
+                    <span class="c-white p-l-15 f-s-14" ng-bind="'Order # '+GetOrder.OrderID"></span>
+                    <br />
+                    <br />
+                    <span class="c-white p-l-15 f-s-16 p-l-25" ng-bind="GetOrder.FirstName+' '+GetOrder.LastName"></span>
+                    <br />
+
+                </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 p-l-0 p-r-0 " ng-show="ctrl.ShowInvoice">
+                <div class="card clearfix">
+
+                    <div class="card-body p-0">
+                        <div class="m-t-20">
+                            <invoice></invoice>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Check Section for Mobile -->
+            <div ng-show="!ctrl.ShowInvoice && !SessionData.AccountBalanceHeader">
+                <div ng-if="ctrl.CommissionChecks.length > 0 && !ctrl.ShowPeriodMobile" class="row check-section-mobile p-5">
+                    <div class="col-sm-12 col-xs-12 p-0 m-0">
+                        <div class="col-sm-4 col-xs-4 pull-left">
+                            <img class="comp-logo" ng-src="{{SessionData.CompanyDetail.LogoUrl}}">
+                        </div>
+                        <div class="col-sm-8 col-xs-8 pull-right m-t-10">
+                            <div class="pull-right">
+                                <span class="f-s-12 f-700 text-uppercase" translate>date_</span>&nbsp;
+                                <span ng-bind="ctrl.SelectedCommissionCheck.DatePaid | date:SessionData.DateFormatType"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 p-0 m-0 p-t-10">
+                        <div class="col-sm-4 col-xs-4 pay-to">
+                            <span translate="">pay_to_the_order_of</span>
+                        </div>
+                        <div class="col-sm-8 col-xs-8 payee-name">
+                            <span class="f-700 f-s-16" ng-bind="ctrl.UserService.LoggedInUser.Name"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 p-0 m-0 p-t-10">
+                        <div class="col-sm-6 col-xs-6 p-t-5 p-r-0 pull-right">
+                            <div class="pull-right f-700">
+                                <span class="amount m-l-0" ng-bind="ctrl.SelectedCommissionCheck.AmountPaid | currency:'&pound;$':2"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 p-0 m-0 p-t-20 p-b-10">
+                        <div class="col-sm-3 col-xs-3 p-t-10">
+                            <span translate="">memo_</span>
+                        </div>
+                        <div class="col-sm-9 col-xs-9 memo-content">
+                        <span>
+                            <span class="f-s-12" translate="paid_via"></span>&nbsp;
+                            <span class="f-s-12" ng-if="ctrl.SelectedCommissionCheck.MerchantName != 'Check'" ng-bind="ctrl.SelectedCommissionCheck.MerchantName"></span>
+                            <span class="f-s-12" ng-if="ctrl.SelectedCommissionCheck.MerchantName == 'Check'" ng-bind="ctrl.SelectedCommissionCheck.MerchantName + ' '+ ctrl.CommissionCheckDetailsData.CheckNumber"></span>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12  p-l-0 p-r-0" id="CommissionsPageMobile">
+                    <div class="col-sm-12 col-xs-12 p-l-0 p-r-0" ng-if="ctrl.ShowPeriodMobile">
+                        <div class="account-balance" ng-class="{'b-blue': ctrl.ShowAccountBalanceDetails === true}" ng-if="ctrl.ShowAccountBalance" ng-click="ctrl.GetAccountBalanceMobile()">
+                            <span translate>account_balance</span>: <span>{{ctrl.AccountBalance * ctrl.exchangeRate | currency:'&pound;':2}}</span>
+                        </div>
+                        <div class="custom-dp custom-filter" ng-if="ctrl.CommissionChecks.length > 0">
+                            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 p-0 custom-dp-header" ng-class="ctrl.IsShowOptions?'':'bgm-color3'" ng-click="ctrl.IsShowOptions = !ctrl.IsShowOptions">
+                                <div class="col-sm-10 col-md-10 col-xs-10 col-lg-10 p-0" ng-if="!ctrl.IsShowOptions">
+                                <span class="dp-head f-s-16 pull-left">
+                                    <span translate>payhistory_show</span>
+                                    <span ng-if="ctrl.SelectedFilters == 'All'" translate>all_</span>
+                                    <span ng-if="ctrl.SelectedFilters != 'All'" translate>{{ctrl.SelectedFilters}}</span>
+                                </span>
+                                </div>
+
+                                <div class="col-sm-2 col-md-2 col-xs-2 col-lg-2 m-t-15 dp-icon" ng-if="!ctrl.IsShowOptions">
+                                    <i class="zmdi zmdi-caret-down zmdi-hc-fw pull-right"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 p-0 custom-dp-body-mobile" ng-if="ctrl.IsShowOptions">
+
+                                <div class="p-t-20 b-b p-b-20 p-l-10 p-r-10">
+                                    <span class="f-s-14 " translate>show_payments_that_include</span>
+                                </div>
+
+                                <ul class="p-l-0">
+                                    <li ng-repeat="PaymentTypeFilter in ctrl.PaymentTypeFilters">
+                                        <label class="checkbox checkbox-inline" for="{{PaymentTypeFilter.Id}}">
+                                            <input type="checkbox" id="{{PaymentTypeFilter.Id}}" ng-click="ctrl.OnChangeFilter(PaymentTypeFilter.Id, PaymentTypeFilter.IsChecked)"
+                                                   ng-model="PaymentTypeFilter.IsChecked">
+                                            <span class="input-helper"></span>
+                                            <span class="f-500 ng-scope" translate="{{PaymentTypeFilter.Name}}" translate-default="{{PaymentTypeFilter.Name}}"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                                <hr class="m-b-0">
+                                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 p-5 dp-bottom">
+                                    <a class="dp-done c-gray pull-right p-5" ng-click="ctrl.filterChecks();" translate="">done</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="bgm-color3" ng-if="ctrl.CommissionChecks.length > 0" id="CommissionPeriodTab">
+                            <div class="card mwidth period-list-mobile" style="max-height: 78vh; overflow-y: scroll;" when-scroll-element="ctrl.GetRecordsOnScroll()"
+                                 scroll-bottom-on="status.loaded">
+                                <div class="listview" id="CommissionPeriodVolume">
+                                    <div class="lv-body" ng-repeat="commissioncheck in ctrl.CommissionChecks track by $index">
+                                        <div class="lv-item p-l-10 b-b">
+                                            <div class="media">
+                                                <div class="media-body" ng-click="ctrl.FGetCommissionDetailClickMobile(commissioncheck)">
+                                                    <div class="lv-title ng-binding col-sm-8 col-xs-8  p-l-0">
+                                                        <a id="1" class="CommunityfontStyle" ng-bind="commissioncheck.DatePaid | date:SessionData.DateFormatType" translate></a>
+                                                    </div>
+                                                    <div class="Dateswitch col-sm-4 col-xs-4">
+                                                        <span ng-bind="commissioncheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                                    </div>
+                                                    <br>
+
+                                                    <span ng-repeat="paymentType in commissioncheck.PaymentTypes track by $index" class="badge m-t-5 m-r-5" translate>{{paymentType | translate}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lv-body" ng-if="ctrl.CommissionChecks.length===0 || !ctrl.IsShowView">
+                            <div class="empty_state common_placeholder" translate>payhistory_yet</div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12  p-l-0 p-r-0 " id="commision" ng-if="ctrl.ShowPeriodDetailMobile" loader>
+                        <div class="clearfix col-lg-12 col-sm-12 col-md-12 col-xs-12 p-l-0 p-r-0 m-t-10" ng-repeat="(key,value) in ctrl.CommissionCheckDetailsData.Details | orderBy : '-SortOrder' | groupBy:'PeriodInfo.Type'">
+                            <div class="card clearfix" ng-if="(key==='Adjustment')">
+                                <div class="card-header ch-alt no-pad-header" style="background-color: #efefef;">
+                                    <div>
+                                        <div class="lv-title ng-binding">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 comm-header f-500 text-uppercase" translate>
+                                                    payhistory_adjustments_title
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <table class="table table-vmiddle" id="bonusdetailtable_Adjustment" style="overflow:hidden!important">
+                                        <thead>
+                                        <tr>
+                                            <th class="f-500" style="background-color:hsl(0, 0%, 100%) !important;" ng-repeat="adjustmentFilterBonus in (GetCommissionReportSettingsResponse.Node | filter: {BonusName: 'Adjustment',CommissionType:'1'})[0].Columns"
+                                                ng-bind="adjustmentFilterBonus.DisplayName | translate" translate></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="bgm-white" ng-repeat="(key,value) in value | orderBy:SortColumnName">
+                                            <td ng-repeat="adjustmentFilterBonus in (GetCommissionReportSettingsResponse.Node | filter: {BonusName: 'Adjustment',CommissionType:'1'})[0].Columns">
+                                                <span ng-if="(adjustmentFilterBonus.Name==='AmountPaid' || adjustmentFilterBonus.Name==='AmountEarned' ||   adjustmentFilterBonus.Name==='Fees' || adjustmentFilterBonus.Name ==='Holding')">
+                                                    <span ng-bind="value[adjustmentFilterBonus.Name] * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                                </span>
+                                                <span ng-bind="(value[adjustmentFilterBonus.Name] | translate)" translate ng-if="(adjustmentFilterBonus.Name!=='AmountPaid' && adjustmentFilterBonus.Name!=='AmountEarned' && adjustmentFilterBonus.Name!=='Fees' && adjustmentFilterBonus.Name !=='Holding')">
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 b-b p-t-10 p-b-10 p-l-0 p-r-0 b-t">
+                                    <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
+                                        <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
+                                        <span class="p-r-0 text-right p-l-30">
+                                        <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                    </span>
+                                    </h5>
+                                </div>
+                            </div>
+
+                            <div ng-if="(key!=='Adjustment')">
+                                <div id="payHistoryCommissionMain{{key}}_{{periodValue.PeriodInfo.PeriodId}}" loader ng-repeat="periodValue in value" class="card clearfix">
+                                    <div class="card-header ch-alt no-pad-header" style="background-color: #efefef;">
+                                        <div>
+                                            <div class="lv-title ng-binding">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 comm-header f-500 text-uppercase">
+                                                        <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0">
+                                                            <span translate="{{key}}_payhistory_commission" translate-default="{{key=='null'?'':key}}"></span>
+                                                        </div>
+                                                        <div class="col-sm-7 col-xs-7 col-md-5 col-lg-7 p-0" ng-bind="((periodValue.PeriodInfo.BeginDate | date:SessionData.DateFormatType) +' -  ' + (periodValue.PeriodInfo.EndDate | date:SessionData.DateFormatType))"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body no-pad-header">
+                                        <div id="accordion" ng-show="ctrl.ShowSales" class="accordion">
+                                            <div class="pos-r" ng-repeat="parent in CommissionBonusName[key+periodValue.PeriodInfo.PeriodId].Bonuses | orderBy:'BonusSortOrder'">
+                                                <div id="T_{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}" class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 b-b panel m-b-0" ng-repeat="Bonuse in GetCommissionReportSettingsResponse.Node"
+                                                     ng-if="parent.BonusId==Bonuse.BonusId" Bonuse="{{Bonuse}}">
+                                                <span class="col-md-9 col-sm-9 col-xs-9 accordion-toggle m-0 p-r-0 m-t-10 m-b-10 cursor-pointer" data-toggle="collapse" data-parent="#accordion"
+                                                      ng-click="Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=!Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId];(Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]?clearpreviousData(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId):Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=false)"
+                                                      data-target="#A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}">
+                                                    <a class="c-color1 f-500" ng-bind="Bonuse.DisplayName | translate" translate></a>
+                                                    <span class="zmdi f-s-18 m-l-5 c-color1" ng-class="Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId] ? 'zmdi-chevron-up' : 'zmdi-chevron-down'"></span>
+                                                </span>
+                                                    <span class="col-md-3 col-sm-3 col-xs-3 text-right accordion-toggle m-0 m-t-10 m-b-10 cursor-pointer f-500" data-toggle="collapse"
+                                                          data-parent="#accordion" data-target="#A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}"
+                                                          ng-click="Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=!Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId];(Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]?clearpreviousData(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId):Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=false)"
+                                                          ng-model="Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId]">
+                                                    <span ng-bind="parent.Amount * ctrl.exchangeRate?parent.Amount * ctrl.exchangeRate :'0'  | currency:'&pound;':2"></span>
+                                                </span>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 b-b p-l-0 p-r-0 b-t  table-responsive collapse" id="A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}" ng-class="Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId]?'':'collapse'"
+                                                         style="overflow-y:scroll;max-height:300px;" when-scroll-element="ctrl.FnCommissionBonuseDetails(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId);"
+                                                         scroll-bottom-on="status.loaded">
+                                                        <table class="table table-vmiddle" id="bonusdetailtable_{{Bonuse.BonusId}}" ng-if="(GetCommissionBonusDetailData | filter: {BonusId: (parent.BonusFilter || Bonuse.BonusId)}).length>0 && Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]"
+                                                               style="overflow:hidden!important">
+                                                            <div class="col-md-9 col-sm-9 col-xs-9 accordion-toggle m-0 p-r-0 m-t-10 m-b-10 c-blue f-s-13" ng-if="((GetCommissionBonusDetailData | filter: {BonusId: (parent.BonusFilter || Bonuse.BonusId)}).length==0) && Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId] && Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId] && !ShowLoader['commision']"
+                                                                 translate>payhistory_no_record</div>
+
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="cursor-pointer shadow text-center bgm-color-fix" ng-repeat="item in Bonuse.Columns | orderBy:'SequenceNumber'">
+                                                                    <div class="m-0" ng-click="SortBy(item.FieldId,Bonuse.BonusId, parent.BonusDescription,key,parent.PeriodId)" style="white-space:nowrap">
+                                                                        <div>
+                                                                            <span translate ng-bind="item.DisplayName | translate" translate></span>
+                                                                            <i class="zmdi zmdi-long-arrow-down zmdi-hc-fw c-darkgray" ng-if="!reverse && SortColumnId === item.FieldId.toString().trim()"></i>
+                                                                            <i class="zmdi zmdi-long-arrow-up zmdi-hc-fw c-darkgray" ng-if="reverse && SortColumnId === item.FieldId.toString().trim()"></i>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </th>
+                                                            </tr>
+
+                                                            </thead>
+                                                            <tbody>
+
+                                                            <tr ng-repeat="BonusDetail in GetCommissionBonusDetailData | orderBy:predicate['+Bonuse.BonusId+']:reverse[Bonuse.BonusId] | filter: {BonusId: (parent.BonusFilter || Bonuse.BonusId)}">
+                                                                <td ng-repeat="item in Bonuse.Columns | orderBy:'SequenceNumber'" class="text-center bgm-color-fix">
+                                                                    <div ng-bind="Addcolumnsign(BonusDetail[item.Name],item.FieldId) | translate" ng-if="item.Name!=='FromCustomerName' && item.Name!=='FromCustomerId' && item.Name!=='OrderId'" translate></div>
+                                                                    <div class="cursor-pointer" ng-click="ctrl.ShowInvoiceDetail(BonusDetail[item.Name],BonusDetail['CustomerId'], key, parent.PeriodId);" ng-bind="BonusDetail[item.Name] | translate"
+                                                                         ng-if="item.Name==='OrderId'" translate></div>
+                                                                    <a class="c-color1" ng-click="ctrl.GoToDashboard(BonusDetail['FromCustomerId']);" ng-bind="BonusDetail[item.Name] | translate"
+                                                                       ng-if="(item.Name==='FromCustomerName' || item.Name==='FromCustomerId')"
+                                                                       translate></a>
+                                                                </td>
+                                                            </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 b-b p-t-10 p-b-10 p-l-0 p-r-0 b-t">
+                                        <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
+                                            <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
+                                            <span class="p-r-0 text-right p-l-30">
+                                            <span ng-bind="periodValue.AmountEarned * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                        </span>
+
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 p-t-10 p-b-10 p-l-0 p-r-0">
+                            <div class="pull-right p-r-15 f-s-20 f-500">
+                                <span translate>payhistory_net_total</span>
+                                <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

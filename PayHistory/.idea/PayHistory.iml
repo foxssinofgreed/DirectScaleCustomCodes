@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="untitled" />
+    <orderEntry type="module" module-name="Achievements" />
+    <orderEntry type="module" module-name="slider" />
+    <orderEntry type="module" module-name="CCPercentRule" />
+    <orderEntry type="module" module-name="XMLes" />
+    <orderEntry type="module" module-name="Banners" />
+    <orderEntry type="module" module-name="SignUp" />
+    <orderEntry type="module" module-name="snowForDashboard" />
+    <orderEntry type="module" module-name="RegistrationPage" />
+    <orderEntry type="module" module-name="TotalEnrolledPPL" />
+    <orderEntry type="module" module-name="RefLinks" />
+    <orderEntry type="module" module-name="RankInformation" />
+    <orderEntry type="module" module-name="ReportCenter" />
+  </component>
+</module>

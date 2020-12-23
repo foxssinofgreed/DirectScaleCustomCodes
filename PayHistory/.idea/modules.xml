@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Achievements/.idea/Achievements.iml" filepath="$PROJECT_DIR$/../Achievements/.idea/Achievements.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Banners/.idea/Banners.iml" filepath="$PROJECT_DIR$/../Banners/.idea/Banners.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CCPercentRule/.idea/CCPercentRule.iml" filepath="$PROJECT_DIR$/../CCPercentRule/.idea/CCPercentRule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PayHistory.iml" filepath="$PROJECT_DIR$/.idea/PayHistory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RankInformation/.idea/RankInformation.iml" filepath="$PROJECT_DIR$/../RankInformation/.idea/RankInformation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RefLinks/.idea/RefLinks.iml" filepath="$PROJECT_DIR$/../RefLinks/.idea/RefLinks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RegistrationPage/.idea/RegistrationPage.iml" filepath="$PROJECT_DIR$/../RegistrationPage/.idea/RegistrationPage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ReportCenter/.idea/ReportCenter.iml" filepath="$PROJECT_DIR$/../ReportCenter/.idea/ReportCenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SignUp/.idea/SignUp.iml" filepath="$PROJECT_DIR$/../SignUp/.idea/SignUp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../TotalEnrolledPPL/.idea/TotalEnrolledPPL.iml" filepath="$PROJECT_DIR$/../TotalEnrolledPPL/.idea/TotalEnrolledPPL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../XMLes/.idea/XMLes.iml" filepath="$PROJECT_DIR$/../XMLes/.idea/XMLes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../slider/.idea/slider.iml" filepath="$PROJECT_DIR$/../slider/.idea/slider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../snowForDashboard/.idea/snowForDashboard.iml" filepath="$PROJECT_DIR$/../snowForDashboard/.idea/snowForDashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../untitled/.idea/untitled.iml" filepath="$PROJECT_DIR$/../untitled/.idea/untitled.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,120 @@
+<div class="card">
+    <span class="kpiDisplay au-currency-change" id="prevMP">@User.CommissionsCV.MonthsAgo(1)</span>
+    <span class="kpiDisplay au-currency-change" id="prevMT">@User.CommissionsStatsGVKPI.MonthsAgo(1)</span>
+    <span class="kpiDisplay" id="prevRank">@User.CommissionsRankName.MonthsAgo(1)</span>
+    <span class="kpiDisplay" id="Rank">@User.CommissionsRankName</span>
+    <span class="kpiDisplay au-currency-change" id="MP">@User.CommissionsCV</span>
+    <span class="kpiDisplay au-currency-change" id="MT">@User.CommissionsStatsGVKPI</span>
+    <span class="kpiDisplay" id="HRank">@User.CommissionsHighestRankName</span>
+    <div class="card-header" id="businessSNHeader-2v-TD"><h1>Business Snapshot</h1></div>
+    <div id="titleButtonChng">
+        <div class="BSHeaderT item-alpha" id="BSHeaderTAfterChange"><h1 class="BSTitle">Current</h1></div>
+        <div class="BSHeaderT item-beta" id="secondtlt"><h1 class="BSTitle">Previous</h1></div>
+    </div>
+    <div class="card-body" id="achievements-wg-grid-2v">
+        <div class="ach-item-a-2v ach-metric-main-div-2v">
+            <div class="ach-metric-div-2v">
+                <h1>A&dollar;</h1><h1 id="au-metric-multy-1"></h1>
+            </div>
+            <div class="ach-metric-div-2v">
+                <h2 id="au-metric-multy-1tlt"></h2>
+            </div>
+        </div>
+        <div class="ach-item-b-2v ach-metric-main-div-2v">
+            <div class="ach-metric-div-2v">
+                <h1>A&dollar;</h1><h1 id="au-metric-multy-2"></h1>
+            </div>
+            <div class="ach-metric-div-2v">
+                <h2 id="au-metric-multy-2tlt"></h2>
+            </div>
+        </div>
+        <div class="ach-item-c-2v ach-metric-main-div-2v">
+            <div class="ach-metric-div-2v">
+                <h1 id="au-metric-multy-3"></h1>
+            </div>
+            <div class="ach-metric-div-2v">
+                <h2 id="au-metric-multy-3tlt"></h2>
+            </div>
+        </div>
+        <div class="ach-item-d-2v ach-metric-main-div-2v">
+            <div class="ach-metric-div-2v">
+                <h1 id="au-metric-multy-4"></h1>
+            </div>
+            <div class="ach-metric-div-2v">
+                <h2 id="au-metric-multy-4tlt"></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        for(let i = 0; i < $(".au-currency-change").length; i++){
+            $(".au-currency-change")[i].innerHTML = $(".au-currency-change")[i].innerHTML * 2;
+        }
+
+        let a = document.getElementById("au-metric-multy-1").innerHTML;
+        document.getElementById("au-metric-multy-1").innerHTML = Math.floor(a);
+        a = document.getElementById("au-metric-multy-2").innerHTML;
+        document.getElementById("au-metric-multy-2").innerHTML = Math.floor(a);
+        a = document.getElementById("MT").innerHTML;
+        document.getElementById("MT").innerHTML = Math.floor(a);
+        a = document.getElementById("prevMT").innerHTML;
+        document.getElementById("prevMT").innerHTML = Math.floor(a);
+        a = document.getElementById("MP").innerHTML;
+        document.getElementById("MP").innerHTML = Math.floor(a);
+        a = document.getElementById("prevMP").innerHTML;
+        document.getElementById("prevMP").innerHTML = Math.floor(a);
+        $("#au-metric-multy-1tlt").text('Current\nTeam Sales');
+        $("#au-metric-multy-2tlt").text('Current\nPersonal Sales');
+        $("#au-metric-multy-3tlt").text('Current\nPosition');
+        $("#au-metric-multy-4tlt").text('Lifetime Highest\nPosition');
+        $("#au-metric-multy-1").text($("#MT").text());
+        $("#au-metric-multy-2").text($("#MP").text());
+        $("#au-metric-multy-3").text($("#Rank").text());
+        $("#au-metric-multy-4").text($("#HRank").text());
+        $("#BSTitle").text('Current');
+
+        // On Click
+        $("#titleButtonChng").click(function () {
+
+            // Team Sales
+            $("#au-metric-multy-1").fadeOut(10, function () {
+                $("#au-metric-multy-1").text(($("#au-metric-multy-1").text() === $("#MT").text()) ? $("#prevMT").text() : $("#MT").text()).fadeIn();
+            })
+            $("#au-metric-multy-1tlt").fadeOut(10, function () {
+                $("#au-metric-multy-1tlt").text(($("#au-metric-multy-1tlt").text() === 'Current\nTeam Sales') ? 'Previous\nTeam Sales' : 'Current\nTeam Sales').fadeIn();
+            })
+
+            // Personal Sales
+            $("#au-metric-multy-2").fadeOut(10, function () {
+                $("#au-metric-multy-2").text(($("#au-metric-multy-2").text() === $("#MP").text()) ? $("#prevMP").text() : $("#MP").text()).fadeIn();
+            })
+            $("#au-metric-multy-2tlt").fadeOut(10, function () {
+                $("#au-metric-multy-2tlt").text(($("#au-metric-multy-2tlt").text() === 'Current\nPersonal Sales') ? 'Previous\nPersonal Sales' : 'Current\nPersonal Sales').fadeIn();
+            })
+
+            // Rank
+            $("#au-metric-multy-3").fadeOut(10, function () {
+                $("#au-metric-multy-3").text(($("#au-metric-multy-3").text() === $("#Rank").text()) ? $("#prevRank").text() : $("#Rank").text()).fadeIn();
+            })
+            $("#au-metric-multy-3tlt").fadeOut(10, function () {
+                $("#au-metric-multy-3tlt").text(($("#au-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Previous\nPosition' : 'Current\nPosition').fadeIn();
+            })
+
+            // Main Title
+            $("#BSTitle").fadeOut(10, function () {
+                $("#BSTitle").text(($("#BSTitle").text() === 'Current') ? 'Previous' : 'Current').fadeIn();
+            })
+
+            // Color Change
+            $('.item-alpha').attr('id', function(index, attr){
+                return attr === 'BSHeaderTAfterChange' ? 'firsttlt' : 'BSHeaderTAfterChange';
+            });
+            $('.item-beta').attr('id', function(index, attr){
+                return attr === 'secondtlt' ? 'BSHeaderTAfterChange' : 'secondtlt';
+            });
+        })
+        console.log("Easter egg: you found me girl, you're the chosen one");
+    });
+</script>

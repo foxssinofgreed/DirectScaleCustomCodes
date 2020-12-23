@@ -1,0 +1,255 @@
+<div class="card">
+    <span class="kpiDisplay au-currency-change" id="prevMP">@User.CommissionsCV.MonthsAgo(1)</span>
+    <span class="kpiDisplay au-currency-change" id="prevMT">@User.CommissionsStatsTGVKPI.MonthsAgo(1)</span>
+    <span class="kpiDisplay" id="prevRank">@User.CommissionsRankName.MonthsAgo(1)</span>
+    <span class="kpiDisplay" id="Rank">@User.CommissionsRankName</span>
+    <span class="kpiDisplay au-currency-change" id="MP">@User.CommissionsCV</span>
+    <span class="kpiDisplay au-currency-change" id="MT">@User.CommissionsStatsTGVKPI</span>
+    <span class="kpiDisplay" id="HRank">@User.CommissionsHighestRankName</span>
+    <span class="kpiDisplay" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</span>
+    <a href="app.html#/TeamDashboard"><div class="card-header" id="businessSNHeader-2v"><h1>Business Snapshot</h1></div></a>
+    <div id="titleButtonChng">
+        <div class="BSHeaderT item-alpha" id="BSHeaderTAfterChange"><h1 class="BSTitle">Current</h1></div>
+        <div class="BSHeaderT item-beta" id="secondtlt"><h1 class="BSTitle">Previous</h1></div>
+    </div>
+    <div class="card-body" id="achievements-wg-grid-2v">
+        <div class="ach-item-a-2v ach-metric-main-div-2v">
+            <div class="ach-metric-div-2v">
+                <h1 id="au-metric-multy-1"></h1>
+            </div>
+            <div class="ach-metric-div-2v">
+                <h2 id="au-metric-multy-1tlt"></h2>
+            </div>
+        </div>
+        <div class="ach-item-b-2v ach-metric-main-div-2v">
+            <div class="ach-metric-div-2v">
+                <h1 id="au-metric-multy-2"></h1>
+            </div>
+            <div class="ach-metric-div-2v">
+                <h2 id="au-metric-multy-2tlt"></h2>
+            </div>
+        </div>
+        <div class="ach-item-c-2v ach-metric-main-div-2v">
+            <div class="ach-metric-div-2v">
+                <h1 id="au-metric-multy-3"></h1>
+            </div>
+            <div class="ach-metric-div-2v">
+                <h2 id="au-metric-multy-3tlt"></h2>
+            </div>
+        </div>
+        <div class="ach-item-d-2v ach-metric-main-div-2v">
+            <div class="ach-metric-div-2v">
+                <h1 id="au-metric-multy-4"></h1>
+            </div>
+            <div class="ach-metric-div-2v">
+                <h2 id="au-metric-multy-4tlt"></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        let CountryCodeA = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+
+        if (CountryCodeA === 'AU'){
+            for(let i = 0; i < $(".au-currency-change").length; i++){
+                $(".au-currency-change")[i].innerHTML = $(".au-currency-change")[i].innerHTML * 2;
+            }
+        }
+
+        let a = document.getElementById("au-metric-multy-1").innerHTML;
+        document.getElementById("au-metric-multy-1").innerHTML = Math.floor(a);
+        a = document.getElementById("au-metric-multy-2").innerHTML;
+        document.getElementById("au-metric-multy-2").innerHTML = Math.floor(a);
+        a = document.getElementById("MT").innerHTML;
+        document.getElementById("MT").innerHTML = Math.floor(a);
+        a = document.getElementById("prevMT").innerHTML;
+        document.getElementById("prevMT").innerHTML = Math.floor(a);
+        a = document.getElementById("MP").innerHTML;
+        document.getElementById("MP").innerHTML = Math.floor(a);
+        a = document.getElementById("prevMP").innerHTML;
+        document.getElementById("prevMP").innerHTML = Math.floor(a);
+        if (CountryCodeA === 'AU'){
+            for(let i = 0; i < $(".au-currency-change").length; i++){
+                $(".au-currency-change")[i].innerHTML = 'A$' + $(".au-currency-change")[i].innerHTML;
+            }
+        }
+        else {
+            for(let i = 0; i < $(".au-currency-change").length; i++){
+                $(".au-currency-change")[i].innerHTML = '£' + $(".au-currency-change")[i].innerHTML;
+            }
+        }
+        $("#au-metric-multy-1tlt").text('Current\nTeam Sales');
+        $("#au-metric-multy-2tlt").text('Current\nPersonal Sales');
+        $("#au-metric-multy-3tlt").text('Current\nPosition');
+        $("#au-metric-multy-4tlt").text('Lifetime Highest\nPosition');
+        $("#au-metric-multy-1").text($("#MT").text());
+        $("#au-metric-multy-2").text($("#MP").text());
+        $("#au-metric-multy-3").text($("#Rank").text());
+        $("#au-metric-multy-4").text($("#HRank").text());
+        $("#BSTitle").text('Current');
+
+        // On Click
+        $("#titleButtonChng").click(function () {
+
+            // Team Sales
+            $("#au-metric-multy-1").fadeOut(10, function () {
+                $("#au-metric-multy-1").text(($("#au-metric-multy-1").text() === $("#MT").text()) ? $("#prevMT").text() : $("#MT").text()).fadeIn();
+            })
+            $("#au-metric-multy-1tlt").fadeOut(10, function () {
+                $("#au-metric-multy-1tlt").text(($("#au-metric-multy-1tlt").text() === 'Current\nTeam Sales') ? 'Previous\nTeam Sales' : 'Current\nTeam Sales').fadeIn();
+            })
+
+            // Personal Sales
+            $("#au-metric-multy-2").fadeOut(10, function () {
+                $("#au-metric-multy-2").text(($("#au-metric-multy-2").text() === $("#MP").text()) ? $("#prevMP").text() : $("#MP").text()).fadeIn();
+            })
+            $("#au-metric-multy-2tlt").fadeOut(10, function () {
+                $("#au-metric-multy-2tlt").text(($("#au-metric-multy-2tlt").text() === 'Current\nPersonal Sales') ? 'Previous\nPersonal Sales' : 'Current\nPersonal Sales').fadeIn();
+            })
+
+            // Rank
+            $("#au-metric-multy-3").fadeOut(10, function () {
+                $("#au-metric-multy-3").text(($("#au-metric-multy-3").text() === $("#Rank").text()) ? $("#prevRank").text() : $("#Rank").text()).fadeIn();
+            })
+            $("#au-metric-multy-3tlt").fadeOut(10, function () {
+                $("#au-metric-multy-3tlt").text(($("#au-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Previous\nPosition' : 'Current\nPosition').fadeIn();
+            })
+
+            // Main Title
+            $("#BSTitle").fadeOut(10, function () {
+                $("#BSTitle").text(($("#BSTitle").text() === 'Current') ? 'Previous' : 'Current').fadeIn();
+            })
+
+            // Color Change
+            $('.item-alpha').attr('id', function(index, attr){
+                return attr === 'BSHeaderTAfterChange' ? 'firsttlt' : 'BSHeaderTAfterChange';
+            });
+            $('.item-beta').attr('id', function(index, attr){
+                return attr === 'secondtlt' ? 'BSHeaderTAfterChange' : 'secondtlt';
+            });
+        })
+        console.log("Easter egg: you found me girl, you're the chosen one");
+    });
+</script>
+
+<style>
+    .kpiDisplay{
+        display: none;
+    }
+    #titleButtonChng{
+        width: 100%;
+        height: 40px;
+        background-color: #F7D1D3;
+        display: inline-grid;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+        "Left-side Right-side";
+    }
+    .item-alpha{
+        grid-area: Left-side;
+    }
+    .item-beta{
+        grid-area: Right-side;
+    }
+    #businessSNHeader-2v{
+        text-align: center;
+        background-color: #F5C6C3 !important;
+        opacity: 1;
+        transition: 0.3s;
+    }
+    #businessSNHeader-2v:hover{
+        opacity: 1;
+        background-color: #F2B3AE !important;
+    }
+    .BSHeaderT{
+        text-align: center;
+        background-color: #F7D1D3;
+        color: #fff;
+        height: 100%;
+        opacity: 1;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .BSHeaderT:hover{
+        opacity: 1;
+        background-color: #F5C6C3;
+    }
+    #firsttlt{
+        background-color: #F7D1D3;
+    }
+    #firsttlt:hover{
+        background-color: #F5C6C3;
+    }
+    #secondtlt{
+        background-color: #F7D1D3;
+    }
+    #secondtlt:hover{
+        background-color: #F5C6C3;
+    }
+    #BSHeaderTAfterChange{
+        background-color: #F5C6C3;
+    }
+    .BSTitle{
+        padding: 8px;
+    }
+    #achievements-wg-grid-2v{
+        position: relative;
+        background-color: #F7D1D3 !important;
+        height: 268.76px;
+        width: 100%;
+        display: grid;
+        border-radius: 0 0 1.4em 1.4em;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        grid-template-areas:
+        "Top-left Top-right"
+        "Bot-left Bot-right";
+        justify-items: stretch;
+        padding: 0 !important;
+    }
+    #au-metric-multy-1tlt{white-space:pre-wrap;}
+    #au-metric-multy-2tlt{white-space:pre-wrap;}
+    #au-metric-multy-3tlt{white-space:pre-wrap;}
+    #au-metric-multy-4tlt{white-space:pre-wrap;}
+    .ach-item-a-2v{
+        grid-area: Top-left;
+    }
+    .ach-item-b-2v{
+        grid-area: Top-right;
+    }
+    .ach-item-c-2v{
+        grid-area: Bot-left;
+        border-radius: 0 0 0 1.6em;
+    }
+    .ach-item-d-2v{
+        grid-area: Bot-right;
+        border-radius: 0 0 1.6em 0;
+    }
+    .ach-metric-main-div-2v{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        opacity: 0.7;
+        transition: 0.3s;
+    }
+    .ach-metric-main-div-2v:hover{
+        opacity: 1;
+    }
+    .ach-metric-div-2v{
+        text-align: center;
+    }
+    .ach-metric-div-2v h1{
+        font-weight: 600;
+        font-size: 180%;
+        color: #ED91B5;
+        display: inline;
+    }
+    .ach-metric-div-2v h2{
+        font-weight: 450;
+        font-size: 18px;
+        color: #fff;
+    }
+</style>
