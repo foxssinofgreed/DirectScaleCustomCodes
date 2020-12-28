@@ -11,11 +11,21 @@
     border: 0;
     color: #FFFFFF;
     width: 4em;
+    transition: 0.4s;
 }
 .CopyBackground:hover{
-
+    background-color: #FFFFFF;
+    color: #fc91b0;
 }
 .ReferralLinkTitles{
     font-size: 20px;
+    font-weight: bold;
     color: #FE91B0 !important;
+}
+#refLinkBod{
+    background-image: url('https://az708413.vo.msecnd.net/bombshells/resources/69eff0e0-a08c-45ab-89e1-db14d21eafac/widget-%20bg.png');
+    border-radius: 0 0 1.4em 1.4em;
+}
+.LinkContainer a{
+    color: #FFFFFF;
 }

@@ -3,14 +3,14 @@
         <h2 class="card-title">My Referral Links</h2>
     </div>
 
-    <div class="card-body">
-        <div>
-            <div class="CopyLinkFlex"><p class="c-gray m-0 ng-scope ReferralLinkTitles" translate="">My Shop Link</p><button class="CopyBackground" onclick="copyToClipboardLink('#ReferralLink')">Copy</button></div>
+    <div class="card-body" id="refLinkBod">
+        <div class="LinkContainer">
+            <div class="CopyLinkFlex"><p class="c-gray m-0 ng-scope ReferralLinkTitles" translate="">My Shop Link</p><button class="CopyBackground" id="CopyRefLinkOne" onclick="copyToClipboardLink('#ReferralLink'); ChangeToCopied('#CopyRefLinkOne');">Copy</button></div>
             <p class="ng-binding ng-scope"><a href="https://businessbombshells.shop/?ref=@User.AssociateUserName" target="_blank" style="overflow-wrap: break-word;">businessbombshells.shop/?ref=@User.AssociateUserName </a></p>
         </div>
         <br>
-        <div>
-            <div class="CopyLinkFlex"><p class="c-gray m-0 ng-scope ReferralLinkTitles" translate="">Join My Team Link</p><button class="CopyBackground" onclick="copyToClipboardLink('#ReferralLinkShop')">Copy</button></div>
+        <div class="LinkContainer">
+            <div class="CopyLinkFlex"><p class="c-gray m-0 ng-scope ReferralLinkTitles" translate="">Join My Team Link</p><button class="CopyBackground" id="CopyRefLinkTwo" onclick="copyToClipboardLink('#ReferralLinkShop'); ChangeToCopied('#CopyRefLinkTwo');">Copy</button></div>
             <p class="ng-binding ng-scope"><a href="https://shop.businessbombshells.team/@User.AssociateUserName/Application?type=1" target="_blank" style="overflow-wrap: break-word;"> shop.businessbombshells.team/@User.AssociateUserName/Application </a></p>
         </div>
     </div>
@@ -26,5 +26,11 @@
         $temp.val($(element).text()).select();
         document.execCommand("copy");
         $temp.remove();
+    }
+    function ChangeToCopied(element){
+        $(element)[0].innerHTML = "Copied";
+        setTimeout(
+            function(){$(element)[0].innerHTML = "Copy";}
+        , 2000);
     }
 </script>

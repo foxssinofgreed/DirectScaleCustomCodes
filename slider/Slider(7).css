@@ -99,6 +99,9 @@ article img {
 #Mslide7:checked ~ .Mslider-wrapper .inneruo {
     margin-left: -600%;
 }
+.inneruo{
+    transition: 0.5s;
+}
 #hederu{
     background-color: #F7D1D3 !important;
     font-size: 22px;

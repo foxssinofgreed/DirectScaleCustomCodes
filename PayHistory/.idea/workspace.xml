@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="" />
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefLinks/Referral.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RefLinks/Referral.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RefLinks/referral.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RefLinks/referral.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../slider/Slider(7).css" beforeDir="false" afterPath="$PROJECT_DIR$/../slider/Slider(7).css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +20,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1kDrdF4bhNWTjHfg9Cb5dh9dudm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -35,6 +43,7 @@
     <property name="nodejs.mocha.mocha_node_package_dir" value="" />
     <property name="nodejs.protractor.protractor_package" value="" />
     <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -85,7 +94,8 @@
       <workItem from="1608192724523" duration="4435000" />
       <workItem from="1608526554513" duration="3539000" />
       <workItem from="1608614139891" duration="12984000" />
-      <workItem from="1608698777755" duration="2220000" />
+      <workItem from="1608698777755" duration="2782000" />
+      <workItem from="1609132922871" duration="3192000" />
     </task>
     <servers />
   </component>
@@ -93,6 +103,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1608704257255">
+      <screen x="64" y="27" width="1856" height="1053" />
+    </state>
+    <state x="704" y="420" width="555" height="279" key="#Updates/64.27.1856.1053@64.27.1856.1053" timestamp="1608704257255" />
     <state x="754" y="337" width="467" height="439" key="#Web_Browsers" timestamp="1605246271605">
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
