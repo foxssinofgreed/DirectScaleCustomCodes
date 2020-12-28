@@ -15,6 +15,7 @@
 }
 .CopyBackground:hover{
     background-color: #FFFFFF;
+    box-shadow: 0 0 6px #fc91b0;
     color: #fc91b0;
 }
 .ReferralLinkTitles{
