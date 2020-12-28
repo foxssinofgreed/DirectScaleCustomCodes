@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RefLinks/Referral.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RefLinks/Referral.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RefLinks/referral.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RefLinks/referral.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../slider/Slider(7).css" beforeDir="false" afterPath="$PROJECT_DIR$/../slider/Slider(7).css" afterDir="false" />
-    </list>
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Update RefLinks and Sliders" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,12 +90,35 @@
       <workItem from="1608526554513" duration="3539000" />
       <workItem from="1608614139891" duration="12984000" />
       <workItem from="1608698777755" duration="2782000" />
-      <workItem from="1609132922871" duration="3192000" />
+      <workItem from="1609132922871" duration="3703000" />
     </task>
+    <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
+      <created>1609136575580</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609136575580</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update RefLinks and Sliders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update RefLinks and Sliders" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1608704257255">
