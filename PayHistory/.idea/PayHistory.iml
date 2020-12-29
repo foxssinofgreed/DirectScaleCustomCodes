@@ -21,5 +21,6 @@
     <orderEntry type="module" module-name="RefLinks" />
     <orderEntry type="module" module-name="RankInformation" />
     <orderEntry type="module" module-name="ReportCenter" />
+    <orderEntry type="module" module-name="DiscountCodes" />
   </component>
 </module>
