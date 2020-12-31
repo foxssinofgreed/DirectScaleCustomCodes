@@ -1,38 +1,10 @@
 <div class="card">
     <div id="DiscountCodesGridBody">
         <div class="DC-Content-Grid DC-item-1"><h1>Discount Code</h1></div>
-        <div class="DC-Content-Grid DC-item-2"><div><h2>Code Goes Here</h2></div></div>
-        <div class="DC-Content-Grid DC-item-3"><button>Copy</button></div>
+        <div class="DC-Content-Grid DC-item-2"><div><h2>@User.AssociateUserName</h2></div></div>
+        <div class="DC-Content-Grid DC-item-3"><button id="DiscountCodeButton" onclick="copyToClipboardLink('#DiscountCodeForCopy'); ChangeToCopied('#DiscountCodeButton');">Copy</button></div>
     </div>
 </div>
-
-<div flipper="{addDimensions: true, openButtons: '.ds-flipper__open'}">
-    <div style="overflow: hidden; font-size: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,.2), 0 2px 10px rgba(0,0,0,.12); border-radius: 1.4em;">
-        <a class="ds-flipper__open">
-            <div class="card minheight">
-                <div id="meowmw" class="card-body">
-                    <img id="testmw" src="https://az708413.vo.msecnd.net/bombshells/resources/53967cd4-5459-4e26-ba45-698dc70c62b1/BB-Re-Launch.png">
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="card card--dark">
-        <div class="card-header">
-
-            <button class="btn btn-icon btn-link card__close-button ds-flipper__close">
-                <span class="zmdi zmdi-close"></span>
-            </button>
-
-            <h3 class="card-title">WELCOME TO BB PRE-LAUNCH</h3>
-        </div>
-
-        <div class="card-body">
-            <p class="f-s-16"> Welcome to your back office, we are so excited to have you as part of our BB family and can’t wait for you to get started!! </p><p class="f-s-16">
-            Pre-launch is such an exciting time for us as we are rapidly evolving and growing every single day, stay tuned as we are adding new tools, resources and exciting announcements daily.
-        </p><p class="f-s-16"> Don’t forget to buy your bundle and go shout all things sisterhood from the rooftops. </p><p class="f-s-16">
-            With love,<br id="br">
-            BBHQ.</p>
-        </div>
-    </div>
+<div style="display: none;">
+    <p id="DiscountCodeForCopy">@User.AssociateUserName</p>
 </div>

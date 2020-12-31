@@ -1,6 +1,6 @@
 #DiscountCodesGridBody{
     display: grid;
-    grid-template-rows: 20% 50% 30%;
+    grid-template-rows: 30% 40% 30%;
     grid-template-areas:
         "DC-Row-1"
         "DC-Row-2"
@@ -10,45 +10,56 @@
     border-radius: 1.4em;
     width: 100%;
     height: 178px;
+    background: url("https://az708413.vo.msecnd.net/bombshells/resources/69eff0e0-a08c-45ab-89e1-db14d21eafac/widget-%20bg.png");
 }
 .DC-item-1{
     grid-area: DC-Row-1;
-    background-color: white;
 }
 .DC-item-2{
     grid-area: DC-Row-2;
-    background-color: pink;
 }
 .DC-item-3{
     grid-area: DC-Row-3;
-    background-color: red;
 }
 .DC-Content-Grid{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.DC-Content-Grid button{
-    width: 40%;
-    height: 80%
+.DC-item-1 h1{
+    font-size: 24px;
+    color: #FFFFFF;
 }
-
-
-
-#testmw{
+.DC-item-2 div{
+    cursor: text;
+    background: rgba(255, 255, 255, 0.3);
+    width: 75%;
+    height: 75%;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: text;
+}
+.DC-item-2 div h2{
+    color: rgba(254, 145, 176, 1);
+    font-size: 20px;
+    overflow-wrap: break-word;
     width: 100%;
-    padding: 0;
-    border-radius: 1.5em;
+    text-align: center;
 }
-
-#meowmw{
-    padding: 0;
+.DC-item-3 button{
+    background-color: #FE91B0;
+    border-radius: 0.8em;
+    padding: 0 0.5em;
+    border: 0;
+    color: #FFFFFF;
+    width: 40%;
+    height: 60%;
+    transition: 0.4s;
 }
-
-#linezero{
-    margin-top: 0;
-    margin-bottom: 0;
-}
-#br{
-    margin: 0;
+.DC-item-3 button:hover{
+    background-color: #FFFFFF;
+    box-shadow: 0 0 6px #fc91b0;
+    color: #fc91b0;
 }
