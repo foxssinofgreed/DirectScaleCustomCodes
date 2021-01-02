@@ -32,7 +32,7 @@
 }
 .DC-item-2 div{
     cursor: text;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 1);
     width: 75%;
     height: 75%;
     border-radius: 1em;
@@ -43,10 +43,11 @@
 }
 .DC-item-2 div h2{
     color: rgba(254, 145, 176, 1);
-    font-size: 20px;
+    font-size: 18px;
     overflow-wrap: break-word;
     width: 100%;
     text-align: center;
+    text-transform: uppercase;
 }
 .DC-item-3 button{
     background-color: #FE91B0;
