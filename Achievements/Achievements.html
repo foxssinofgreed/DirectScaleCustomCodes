@@ -80,14 +80,14 @@
                 $(".All-currency-change")[i].innerHTML = 'A$' + $(".All-currency-change")[i].innerHTML;
             }
         }
-        else if (CountryCodeA === 'ES' || CountryCodeA === 'BE' || CountryCodeA === 'NL' || CountryCodeA === 'IE'){
+        else if (CountryCodeA === 'GB'){
             for(let i = 0; i < $(".All-currency-change").length; i++){
-                $(".All-currency-change")[i].innerHTML = '€' + $(".All-currency-change")[i].innerHTML;
+                $(".All-currency-change")[i].innerHTML = '£' + $(".All-currency-change")[i].innerHTML;
             }
         }
         else {
             for(let i = 0; i < $(".All-currency-change").length; i++){
-                $(".All-currency-change")[i].innerHTML = '£' + $(".All-currency-change")[i].innerHTML;
+                $(".All-currency-change")[i].innerHTML = '€' + $(".All-currency-change")[i].innerHTML;
             }
         }
         $("#All-metric-multy-1tlt").text('Current\nTeam Sales');

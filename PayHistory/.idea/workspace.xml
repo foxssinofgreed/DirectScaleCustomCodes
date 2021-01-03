@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Discount Codes update">
-      <change beforePath="$PROJECT_DIR$/../DiscountCodes/DiscountCodes.css" beforeDir="false" afterPath="$PROJECT_DIR$/../DiscountCodes/DiscountCodes.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Achievements/Achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Achievements/Achievements.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PayHistory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PayHistory.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +117,7 @@
       <workItem from="1609222427714" duration="9960000" />
       <workItem from="1609242216042" duration="8795000" />
       <workItem from="1609414880512" duration="7452000" />
-      <workItem from="1609629467098" duration="1130000" />
+      <workItem from="1609629467098" duration="6271000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -166,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609422837097</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Discount Codes update">
+      <created>1609630741613</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1609630741613</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,10 +273,14 @@
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1609422842791">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1609630745889">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1609422842791" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1609630745889" />
+    <state x="773" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609630734233">
+      <screen x="64" y="27" width="1856" height="1053" />
+    </state>
+    <state x="773" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/64.27.1856.1053@64.27.1856.1053" timestamp="1609630734233" />
     <state x="713" y="364" width="550" height="384" key="jetbrains.nodejs.interpreters-dialog" timestamp="1605246448714">
       <screen x="66" y="27" width="1854" height="1053" />
     </state>

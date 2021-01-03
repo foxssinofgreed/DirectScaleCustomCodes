@@ -22,5 +22,6 @@
     <orderEntry type="module" module-name="RankInformation" />
     <orderEntry type="module" module-name="ReportCenter" />
     <orderEntry type="module" module-name="DiscountCodes" />
+    <orderEntry type="module" module-name="WelcomePack" />
   </component>
 </module>
