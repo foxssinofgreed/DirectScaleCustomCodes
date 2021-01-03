@@ -1,0 +1,32 @@
+<div class="card">
+    <div id="WelcomePackGridBody">
+        <div class="WP-Content-Grid WP-item-1"><h1>Welcome Pack</h1></div>
+        <div class="WP-Content-Grid WP-item-2"><h2>Get 2 Beauty Bundles <br> at an Exclusive Price</h2></div>
+        <div class="WP-Content-Grid WP-item-3"><button id="DiscountCodeButton" onclick="GoToLink('#WelcomePackLink')">Claim Now</button></div>
+    </div>
+</div>
+<div style="display: none;">
+    <p id="WelcomePackLink"></p>
+    <span id="WelcomePackUsername">@User.AssociateUserName</span>
+    <span id="AssociateAssociateCountryWelcomePack">@User.AssociateAddressCountryCode</span>
+</div>
+<script>
+    $(document).ready(function () {
+        let WPusername = $('#WelcomePackUsername')[0].innerHTML;
+        let CountryWP = $('#AssociateAssociateCountryWelcomePack')[0].innerHTML;
+        if (CountryWP === 'AU'){
+            $('#WelcomePackLink')[0].innerHTML = 'https://au.businessbombshells.shop/cart/37161993109658:1?ref=' + WPusername + '&discount=WELCOME' + WPusername + '&access_token=913b1573c2d0669c3ca4eb5b6501cc95';
+        }
+        else if (CountryWP === 'GB'){
+            $('#WelcomePackLink')[0].innerHTML = 'https://businessbombshells.shop/cart/36951341301928:1?ref=' + WPusername + '&discount=WELCOME' + WPusername + '&access_token=03ac709b3fc672b83f8727935d3d2d55';
+        }
+        else {
+            $('#WelcomePackLink')[0].innerHTML = 'https://eu.businessbombshells.shop/cart/37147287027871:1?ref=' + WPusername + '&discount=WELCOME' + WPusername + '&access_token=c28bd3e71c46cf2199560b44048368d2';
+        }
+    });
+    function GoToLink(element){
+        let LinkHere = $(element)[0].innerHTML;
+        let NewWindow = window.open(LinkHere, '_blank');
+        NewWindow.focus();
+    }
+</script>
