@@ -37,6 +37,7 @@
     width: 100%;
     text-align: center;
     text-transform: uppercase;
+    text-shadow: 1px 1px #FFFFFF;
 }
 .WP-item-3 button{
     background-color: #FE91B0;
