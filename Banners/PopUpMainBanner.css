@@ -1,0 +1,29 @@
+@media (max-width: 671px){
+    #Main-Banner-Body{
+        height: 177.75px !important;
+    }
+}
+#Main-Banner-Body{
+    background-color: transparent;
+    box-shadow: none;
+    z-index: 17;
+    height: 366.8px;
+}
+#Main-Banner-H{
+    width: 100%;
+    padding: 0;
+    border-radius: 1.5em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
+}
+
+#Main-Banner-Cover{
+    padding: 0;
+}
+
+#linezero{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#br{
+    margin: 0;
+}
