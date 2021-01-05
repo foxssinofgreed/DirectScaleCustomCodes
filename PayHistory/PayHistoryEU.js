@@ -27,8 +27,8 @@
         }
     ])
 
-        .controller('CustomPayHistoryControllerAU', CustomPayHistoryControllerAU);
-    CustomPayHistoryControllerAU.$inject = [
+        .controller('CustomPayHistoryControllerEU', CustomPayHistoryControllerEU);
+    CustomPayHistoryControllerEU.$inject = [
         '$scope',
         '$RestService',
         '$filter',
@@ -40,7 +40,7 @@
         'Notification',
         'GetPageSetting'
     ];
-    function CustomPayHistoryControllerAU(
+    function CustomPayHistoryControllerEU(
         $scope,
         $RestService,
         $filter,

@@ -57,7 +57,12 @@
                 $(".All-currency-change")[i].innerHTML = $(".All-currency-change")[i].innerHTML * 2;
             }
         }
-        else if (CountryCodeA === 'ES' || CountryCodeA === 'BE' || CountryCodeA === 'NL' || CountryCodeA === 'IE'){
+        else if (CountryCodeA === 'GB'){
+            for(let i = 0; i < $(".All-currency-change").length; i++){
+                $(".All-currency-change")[i].innerHTML = $(".All-currency-change")[i].innerHTML * 1;
+            }
+        }
+        else{
             for(let i = 0; i < $(".All-currency-change").length; i++){
                 $(".All-currency-change")[i].innerHTML = $(".All-currency-change")[i].innerHTML * 1.2;
             }

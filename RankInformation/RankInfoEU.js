@@ -25,13 +25,13 @@ if( document.readyState !== 'loading' ) {
                 if ($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g).length == 3){
                     var a = ($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[0] + $("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[1]) * 0.2;
                     var b = " / ";
-                    var c = $("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[2] * 1.2;
+                    var c = math.multiply($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[2] , 1.2).toFixed(1);
                     $('.m-l-10.ng-binding.ng-scope')[0].innerHTML = a + b + c;
                 }
                 else{
-                    var a2 = $("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[0] * 1.2;
+                    var a2 = math.multiply($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[0], 1.2).toFixed(1);
                     var b2 = " / ";
-                    var c2 = $("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[1] * 1.2;
+                    var c2 = math.multiply($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(2) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[1], 1.2).toFixed(1);
                     $('.m-l-10.ng-binding.ng-scope')[0].innerHTML = a2 + b2 + c2;
                 }
             },
@@ -39,13 +39,13 @@ if( document.readyState !== 'loading' ) {
                 if ($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g).length == 3){
                     var a3 = ($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[0] + $("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[1]) * 0.2;
                     var b3 = " / ";
-                    var c3 = $("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[2] * 1.2;
+                    var c3 = math.multiply($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[2], 1.2).toFixed(1);
                     $('.m-l-10.ng-binding.ng-scope')[1].innerHTML = a3 + b3 + c3;
                 }
                 else {
-                    var a4 = $("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[0] * 1.2;
+                    var a4 = math.multiply($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[0], 1.2).toFixed(1);
                     var b4 = " / ";
-                    var c4 = $("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[1] * 1.2;
+                    var c4 = math.multiply($("body > div.ds-flipper__modals.ds-flipper__modals--active > div > div.card.card--dark.ds-flipper__back > div.card-body.card_flipper_scroll > div > span:nth-child(3) > p > span.no-wrap-word > span")[0].innerHTML.match(/\d+/g)[1], 1.2).toFixed(1);
                     $('.m-l-10.ng-binding.ng-scope')[1].innerHTML = a4 + b4 + c4;
                 }
 
