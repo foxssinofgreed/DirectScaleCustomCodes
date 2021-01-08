@@ -1,32 +1,26 @@
 /* This code adds $ sign to each value and multiplies them by 2 to get Australian dollar currency */
 if( document.readyState !== 'loading' ) {
-// DO NOT DELETE OR PUBLISH THIS SCRIPT
-// MAIN INTERVAL
+    // DO NOT DELETE OR PUBLISH THIS SCRIPT
+    // MAIN INTERVAL
     var temp0 = 0;
-    var temp1 = 0;
     var intervalForZero = setInterval(startForZero, 503);
     function startForZero() {
-        if( location.href === "https://office2.businessbombshells.team/app.html#/Home" && temp0 === 0){
-            startForFunctionOne(); //main function on MultiplyValueForRankInformationWidget
+        if(( location.href === 'https://office2.businessbombshells.team/app.html#/ReportCenter/View/LineOverview' || location.href === "https://office2.businessbombshells.team/app.html#/ReportCenter/View/TeamBreakdownbyPosition" || location.href === "https://office2.businessbombshells.team/app.html#/ReportCenter/View/TeamOverview") && temp0 === 0){
+            setTimeout(() => {
+                startForFunctionOne(); //main function on ReportCenterCurrencyChangeAU
+            }, 2000);
             temp0 = 1;
             //console.log('Calling 1')
-        }
-        if(( location.href === 'https://office2.businessbombshells.team/app.html#/ReportCenter/View/LineOverview' || location.href === "https://office2.businessbombshells.team/app.html#/ReportCenter/View/TeamBreakdownbyPosition" || location.href === "https://office2.businessbombshells.team/app.html#/ReportCenter/View/TeamOverview") && temp1 === 0){
-            setTimeout(() => {
-                startForFunctionTwo(); //main function on ReportCenterCurrencyChangeAU
-            }, 2000);
-            temp1 = 1;
-            //console.log('Calling 2')
         }//console.log('Main Interval Is working')
     }
-    function startForFunctionTwo(){
+    function startForFunctionOne(){
         MyFunctions = {
             LOforTS: function () {
                 let mainArray = $("#col5.p-r-10.ng-scope t.ng-binding.ng-scope");
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '€' + math.multiply(mainArray[i].innerHTML, 1.2).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
                     }
                 }
             },
@@ -35,7 +29,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '€' + math.multiply(mainArray[i].innerHTML, 1.2).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
                     }
                 }
             },
@@ -44,7 +38,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '€' + math.multiply(mainArray[i].innerHTML, 1.2).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
                     }
                 }
             },
@@ -53,7 +47,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '€' + math.multiply(mainArray[i].innerHTML, 1.2).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
                     }
                 }
             },
@@ -62,7 +56,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '€' + math.multiply(mainArray[i].innerHTML, 1.2).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
                     }
                 }
             }
