@@ -20,7 +20,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(2);
                     }
                 }
             },
@@ -29,7 +29,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(2);
                     }
                 }
             },
@@ -38,7 +38,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(2);
                     }
                 }
             },
@@ -47,7 +47,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(2);
                     }
                 }
             },
@@ -56,7 +56,7 @@ if( document.readyState !== 'loading' ) {
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(1);
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(2);
                     }
                 }
             }
