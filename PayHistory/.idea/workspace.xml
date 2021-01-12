@@ -19,12 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="NEW Main Banner With PopUp">
-      <change beforePath="$PROJECT_DIR$/../Achievements/Achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Achievements/Achievements.html" afterDir="false" />
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Update Report Centers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PayHistoryEU.html" beforeDir="false" afterPath="$PROJECT_DIR$/PayHistoryEU.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PayHistoryEU.js" beforeDir="false" afterPath="$PROJECT_DIR$/PayHistoryEU.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RankInformation/RankInfoEU.js" beforeDir="false" afterPath="$PROJECT_DIR$/../RankInformation/RankInfoEU.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayHistoryAU.js" beforeDir="false" afterPath="$PROJECT_DIR$/PayHistoryAU.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,9 +31,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -120,7 +117,12 @@
       <workItem from="1609414880512" duration="7452000" />
       <workItem from="1609629467098" duration="7653000" />
       <workItem from="1609742574055" duration="3375000" />
-      <workItem from="1609821687221" duration="4568000" />
+      <workItem from="1609821687221" duration="5237000" />
+      <workItem from="1610117631594" duration="700000" />
+      <workItem from="1610176200725" duration="1454000" />
+      <workItem from="1610342032332" duration="599000" />
+      <workItem from="1610361638497" duration="1013000" />
+      <workItem from="1610426017243" duration="25873000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -206,7 +208,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609761543132</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Update EU dashboard codes">
+      <created>1609857796260</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1609857796260</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Update Report Centers">
+      <created>1610362032620</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1610362032620</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +247,9 @@
     <MESSAGE value="Discount Codes update" />
     <MESSAGE value="NEW Welcome Pack and update Achievements JS" />
     <MESSAGE value="NEW Main Banner With PopUp" />
-    <option name="LAST_COMMIT_MESSAGE" value="NEW Main Banner With PopUp" />
+    <MESSAGE value="Update EU dashboard codes" />
+    <MESSAGE value="Update Report Centers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Report Centers" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1609422886064">
@@ -306,10 +324,10 @@
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1609761547549">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1610362037497">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1609761547549" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1610362037497" />
     <state x="773" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609630734233">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -328,5 +346,17 @@
     </state>
     <state x="655" y="259" width="673" height="678" key="search.everywhere.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1609845545900" />
     <state x="656" y="259" width="672" height="678" key="search.everywhere.popup/66.27.1854.1053@66.27.1854.1053" timestamp="1605953023857" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/PaySlip.js</url>
+          <line>69</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

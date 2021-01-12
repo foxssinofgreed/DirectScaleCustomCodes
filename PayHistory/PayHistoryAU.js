@@ -745,8 +745,3 @@
     } // End of Controller
 
 })();
-
-let widthOfThePage = $(window).width();
-if (widthOfThePage <= 720) {
-    $('#churchxela').addClass('accordion-item');
-}
