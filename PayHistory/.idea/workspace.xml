@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Update PaySlip">
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Update Rank Information Widget JS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RankInformation/RankInfoEU.js" beforeDir="false" afterPath="$PROJECT_DIR$/../RankInformation/RankInfoEU.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaySlip.html" beforeDir="false" afterPath="$PROJECT_DIR$/PaySlip.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +123,7 @@
       <workItem from="1610342032332" duration="599000" />
       <workItem from="1610361638497" duration="1013000" />
       <workItem from="1610426017243" duration="26226000" />
-      <workItem from="1610511969124" duration="13697000" />
+      <workItem from="1610511969124" duration="18625000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -230,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610460887031</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Update Rank Information Widget JS">
+      <created>1610542518218</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1610542518218</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +265,8 @@
     <MESSAGE value="Update EU dashboard codes" />
     <MESSAGE value="Update Report Centers" />
     <MESSAGE value="Update PaySlip" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update PaySlip" />
+    <MESSAGE value="Update Rank Information Widget JS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Rank Information Widget JS" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1609422886064">
@@ -333,10 +341,10 @@
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1610460892214">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1610542526065">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1610460892214" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1610542526065" />
     <state x="773" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609630734233">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
