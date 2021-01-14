@@ -1,6 +1,6 @@
 <div ng-controller="PaySlipController as ctrl">
     <div id="PayHistoryPageSlip" >
-        <div ng-if="!SessionData.MobileScreen">
+        <div ng-if="!SessionData.MobileScreen || SessionData.MobileScreen">
             <headerpage id="header" class="bgm-color1"></headerpage>
             <span id="customer-country" style="display:none">@User.AssociateAddressCountryCode</span>
             <div class="empty_state common_placeholder position-static" ng-if="!ctrl.IsLoading && (ctrl.CommissionChecks.length===0 || !ctrl.IsShowView)"
@@ -49,7 +49,7 @@
                     </div>
                     <br>
                     <div id="PeriodList" class="mwidth" style="height:calc(100% - 30px) !important;" loader>
-                        <div class="listview custom_scrollbar" id="CommissionPeriodVolume" style="height:94%;overflow-y:auto;" when-scroll-element="ctrl.GetRecordsOnScroll()"
+                        <div class="listview custom_scrollbar" id="CommissionPeriodVolume" style="height:94%;overflow-y:auto;width:100%" when-scroll-element="ctrl.GetRecordsOnScroll()"
                              scroll-bottom-on="status.loaded">
                             <div class="lv-body" ng-repeat="CommissionCheck in ctrl.CommissionChecks track by $index" ng-if="!ctrl.isProjected(CommissionCheck)">
                                 <div class="lv-item b-b cursor-pointer p-l-5 p-r-5" ng-class="$first && !ctrl.ShowAccountBalanceDetails?'b-blue':''" ng-click="getCommissionCheckDetails(CommissionCheck);">
@@ -72,18 +72,91 @@
                     </div>
                 </div>
                 <!-- Check Section -->
-
+<div id="ImportThisInstead">
                 <div id="MainPageForPDFExport">
+                    <style>
+                        #MainPageForPDFExport{
+                            background-color: #ffffff;
+                            padding: 0 10px 20px;
+                            box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
+                        }
+                        .pad-fr-name{
+                            padding: 15px !important;
+                        }
+                        #check-flex-col{
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        #check-flex-row{
+                            justify-content: space-between;
+                            align-items: center;
+                            align-content: center;
+                            flex-grow: 1;
+                            display: flex;
+                            flex-direction: row;
+                            padding: 15px;
+                        }
+                        .pad-div-paycheck-info{
+                            padding: 15px 0 20px 0;
+                        }
+                        .pad-div-paycheck-info h2{
+                            font-size: 15px;
+                        }
+                        .pad-div-paycheck-info span{
+                            font-size: 20px;
+                        }
+                        .pad-div-paycheck-lable{
+                            padding-right: 5%;
+                        }
+                        .pad-div-paycheck-lable h1{
+                            font-size: 26px;
+                        }
+                        .pad-div-paycheck-logo{
+                            padding-right: 3%;
+                        }
+                        .pad-div-paycheck-logo img{
+                            width: 150px;
+                        }
+                        #TriggerHtmlToPDF{
+                            background-color: #FE91B0;
+                            border-radius: 0.8em;
+                            border: 0;
+                            color: #FFFFFF;
+                            width: 20%;
+                            height: 60px;
+                            transition: 0.4s;
+                            margin-top: 5%;
+                            margin-left: 41%;
+                            font-size: 24px;
+                        }
+                        #TriggerHtmlToPDF:hover{
+                            background-color: #FFFFFF;
+                            box-shadow: 0 0 6px #fc91b0;
+                            color: #fc91b0;
+                        }
+                    </style>
                     <div ng-show="!ctrl.ShowInvoice && !ctrl.ShowAccountBalanceDetails">
+                        <div id="check-flex-row"><!--  flex row  -->
+                            <div id="check-flex-col"><!--  flex column  -->
+                                <div class="pad-div-paycheck-info">
+                                    <h2>PAID TO</h2>
+                                    <span ng-bind="ctrl.UserService.LoggedInUser.Name"></span>
+                                </div>
+                                <div class="pad-div-paycheck-info">
+                                    <h2>PAY DATE</h2>
+                                    <span ng-bind="ctrl.SelectedCommissionCheck.DatePaid | date:SessionData.DateFormatType"></span>
+                                </div>
+                                <div class="pad-div-paycheck-info">
+                                    <h2>TOTAL AMOUNT PAID</h2>
+                                    <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                </div>
+                            </div>
+                            <div class="pad-div-paycheck-lable"><h1>Pay Slip</h1></div>
+                            <div class="pad-div-paycheck-logo"><img src="https://az708413.vo.msecnd.net/bombshells/resources/02d26d21-f32b-4e37-b5d3-8d6a9ac5a7c2/BB-Secondary-Logo.png"></div>
+                        </div>
 
-                        <h1>Pay Date Here: </h1><span ng-if="!ctrl.isProjected(ctrl.SelectedCommissionCheck)" class="f-s-12 f-700 text-uppercase" translate>date_</span>
-                        <span ng-bind="ctrl.SelectedCommissionCheck.DatePaid | date:SessionData.DateFormatType"></span>
+                        <h1 style="font-size: 24px; text-align: center; padding: 0 15px 15px 15px">BREAKDOWN OF EARNINGS</h1>
 
-                        <h1>Name Here: </h1><span class="f-700 f-s-16" ng-bind="ctrl.UserService.LoggedInUser.Name"></span>
-
-                        <h1>Total Amount Here: </h1><span class="amount m-l-0" ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
-
-                        <h1>Period Date</h1><div class="col-sm-7 col-xs-7 col-md-5 col-lg-7 p-0" ng-bind="((periodValue.PeriodInfo.BeginDate | date:SessionData.DateFormatType) +' -  ' + (periodValue.PeriodInfo.EndDate | date:SessionData.DateFormatType))"></div>
                         <div ng-repeat="(key,value) in ctrl.CommissionCheckDetailsData.Details | orderBy : '-SortOrder' | groupBy:'PeriodInfo.Type'">
 
                             <div class="card clearfix" ng-if="(key==='Adjustment')">
@@ -126,32 +199,32 @@
                                 </div>
                             </div>
                             <div ng-if="(key!=='Adjustment')">
-                                <div id="payHistoryCommissionMain{{key}}_{{periodValue.PeriodInfo.PeriodId}}" loader ng-repeat="periodValue in value" class="card clearfix">
-                                    <div class="card-header ch-alt no-pad-header" style="background-color: #efefef;">
+                                <div id="payHistoryCommissionMain{{key}}_{{periodValue.PeriodInfo.PeriodId}}" loader ng-repeat="periodValue in value" class="clearfix">
+                                    <div class="ch-alt no-pad-header" style="background-color: #efefef;">
                                         <div>
                                             <div class="lv-title ng-binding">
                                                 <div class="row">
                                                     <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 comm-header f-500 text-uppercase">
-                                                        <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0" ng-if="!ctrl.isProjected(ctrl.SelectedCommissionCheck)">
+                                                        <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0 pad-fr-name" ng-if="!ctrl.isProjected(ctrl.SelectedCommissionCheck)">
                                                             <span translate="{{key}}_payhistory_commission" translate-default="{{key=='null'?'':key}}"></span>
                                                         </div>
                                                         <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0 projected-text" ng-if="ctrl.isProjected(ctrl.SelectedCommissionCheck)">
                                                             <span translate>weekly_commissions_projection</span>
                                                         </div>
-                                                        <div class="col-sm-7 col-xs-7 col-md-5 col-lg-7 p-0" ng-bind="((periodValue.PeriodInfo.BeginDate | date:SessionData.DateFormatType) +' -  ' + (periodValue.PeriodInfo.EndDate | date:SessionData.DateFormatType))"></div>
+                                                        <div class="col-sm-7 col-xs-7 col-md-5 col-lg-7 p-0 pad-fr-name" ng-bind="((periodValue.PeriodInfo.BeginDate | date:SessionData.DateFormatType) +' -  ' + (periodValue.PeriodInfo.EndDate | date:SessionData.DateFormatType))"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="card-body p-0">
+                                    <div class="p-0">
                                         <div id="accordion" ng-show="ctrl.ShowSales" class="accordion">
                                             <div class="pos-r" ng-repeat="parent in CommissionBonusName[key+periodValue.PeriodInfo.PeriodId].Bonuses | orderBy:'BonusSortOrder'">
                                                 <div id="T_{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}" class="col-md-12 col-sm-12 col-xs-12 p-l-0 p-r-0 b-b panel m-b-0" ng-repeat="Bonuse in GetCommissionReportSettingsResponse.Node"
                                                      ng-if="parent.BonusId==Bonuse.BonusId" Bonuse="{{Bonuse}}">
                                             <span class="col-md-9 col-sm-9 col-xs-9 m-0 p-r-0 m-t-10 m-b-10">
-                                                <a class="c-color1 f-500" ng-bind="Bonuse.DisplayName | translate" translate></a>
+                                                <span class="f-500" ng-bind="Bonuse.DisplayName | translate" translate></span>
                                             </span>
                                                     <span class="col-md-3 col-sm-3 col-xs-3 text-right m-0 m-t-10 m-b-10 f-500">
                                                 <span ng-bind="parent.Amount?parent.Amount * ctrl.exchangeRate:'0' | currency:'&pound;':2"></span>
@@ -212,14 +285,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 p-t-10 p-b-10 p-l-0 p-r-0">
+                        <!--<div class="col-md-12 col-sm-12 col-xs-12 p-t-10 p-b-10 p-l-0 p-r-0">
                             <div class="pull-right p-r-15 f-s-24 f-500">
                                 <span translate>payhistory_net_total</span>
-                                <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span><!--  NetTotal Here  -->
+                                <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>&lt;!&ndash;  NetTotal Here  &ndash;&gt;
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
+</div>
+
+                <button id="TriggerHtmlToPDF" onclick="console.log('Hey you triggered me, please leave me alone'); ChangeDownloaded('#TriggerHtmlToPDF'); printDiv('MainPageForPDFExport');">Download PDF</button>
                 <!--<div ng-show="!ctrl.ShowInvoice && !ctrl.ShowAccountBalanceDetails">
                     <div ng-if="ctrl.isProjected(ctrl.SelectedCommissionCheck)" class="row check-section" style="background-color: #FFA5A5; border: none; padding: 20px;">
                         <span translate>projected_comission_alert</span>
@@ -799,3 +875,47 @@
         </div>
     </div>
 </div>
+<script>
+    /*function CreatePDFfromHTML() {
+        var HTML_Width = $("#MainPageForPDFExport").width();
+        var HTML_Height = $("#MainPageForPDFExport").height();
+        var top_left_margin = 15;
+        var PDF_Width = HTML_Width + (top_left_margin * 2);
+        var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+        var canvas_image_width = HTML_Width;
+        var canvas_image_height = HTML_Height;
+
+        var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+        html2canvas($("#MainPageForPDFExport")[0]).then(function (canvas) {
+            var imgData = canvas.toDataURL("image/png", 1.0);
+            var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+            for (var i = 1; i <= totalPDFPages; i++) {
+                pdf.addPage(PDF_Width, PDF_Height);
+                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+            }
+            pdf.save("Your_PDF_Name.pdf");
+        });
+    }*/
+    function printDiv(divID)
+    {
+        var divElements = document.getElementById(divID).innerHTML;
+        var oldPage = document.body.innerHTML;
+        document.body.innerHTML =
+            "<html><head><title></title></head><body>" +
+            divElements + "</body>";
+        window.print();
+        document.body.innerHTML = oldPage;
+    }
+    function ChangeDownloaded(element){
+        $(element)[0].innerHTML = "Downloading...";
+        setTimeout(
+            function(){$(element)[0].innerHTML = "Downloaded";
+                setTimeout(
+                    function(){$(element)[0].innerHTML = "Download PDF";}
+                    , 2000);
+            }
+            , 2000);
+    }
+</script>

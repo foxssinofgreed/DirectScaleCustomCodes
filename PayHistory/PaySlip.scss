@@ -1,4 +1,4 @@
-#PayHistoryPage {
+#PayHistoryPageSlip {
   ::-webkit-scrollbar {
     -webkit-appearance: none; /* stylelint-disable-line property-no-vendor-prefix */
   }
@@ -265,6 +265,62 @@
   }
 
   #MainPageForPDFExport{
-
+    background-color: #ffffff;
+    padding: 0 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
+  }
+  .pad-fr-name{
+    padding: 15px !important;
+  }
+  #check-flex-col{
+    display: flex;
+    flex-direction: column;
+  }
+  #check-flex-row{
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+  }
+  .pad-div-paycheck-info{
+    padding: 15px 0 20px 0;
+  }
+  .pad-div-paycheck-info h2{
+    font-size: 15px;
+  }
+  .pad-div-paycheck-info span{
+    font-size: 20px;
+  }
+  .pad-div-paycheck-lable{
+    padding-right: 5%;
+  }
+  .pad-div-paycheck-lable h1{
+    font-size: 26px;
+  }
+  .pad-div-paycheck-logo{
+    padding-right: 3%;
+  }
+  .pad-div-paycheck-logo img{
+    width: 150px;
+  }
+  #TriggerHtmlToPDF{
+    background-color: #FE91B0;
+    border-radius: 0.8em;
+    border: 0;
+    color: #FFFFFF;
+    width: 20%;
+    height: 60px;
+    transition: 0.4s;
+    margin-top: 5%;
+    margin-left: 41%;
+    font-size: 24px;
+  }
+  #TriggerHtmlToPDF:hover{
+    background-color: #FFFFFF;
+    box-shadow: 0 0 6px #fc91b0;
+    color: #fc91b0;
   }
 }
