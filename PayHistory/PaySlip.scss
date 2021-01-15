@@ -323,4 +323,31 @@
     box-shadow: 0 0 6px #fc91b0;
     color: #fc91b0;
   }
+  @media print {
+    #MainPageForPDFExport{
+      padding: 0 !important;
+      margin-left: calc(-100vw / 2 + 210mm / 2);
+    }
+    html, body{
+      size: A4 !important;
+      //padding-right: calc(-100vw / 2 + 210mm / 2);
+    }
+  }
+  #TriggerHtmlToPDFMob{
+    background-color: #FE91B0;
+    border-radius: 0.8em;
+    border: 0;
+    color: #FFFFFF;
+    width: 20%;
+    height: 60px;
+    transition: 0.4s;
+    margin-top: 5%;
+    margin-left: 41%;
+    font-size: 24px;
+  }
+  #TriggerHtmlToPDFMob:hover{
+    background-color: #FFFFFF;
+    box-shadow: 0 0 6px #fc91b0;
+    color: #fc91b0;
+  }
 }
