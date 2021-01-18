@@ -317,11 +317,13 @@
     margin-top: 5%;
     margin-left: 41%;
     font-size: 24px;
+    cursor: pointer;
   }
   #TriggerHtmlToPDF:hover{
     background-color: #FFFFFF;
     box-shadow: 0 0 6px #fc91b0;
     color: #fc91b0;
+    cursor: pointer;
   }
   @media print {
     #MainPageForPDFExport{
@@ -365,5 +367,6 @@
     background-color: #FFFFFF;
     box-shadow: 0 0 6px #fc91b0;
     color: #fc91b0;
+    cursor: pointer;
   }
 }
