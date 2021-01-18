@@ -74,7 +74,7 @@
                 <!-- Check Section -->
                 <div id="PrintPDFcoverDiv">
                 <div id="MainPageForPDFExport">
-                    <style>
+                    <style>PrintPDFcoverDiv
                         #MainPageForPDFExport{
                             background-color: #ffffff;
                             padding: 0 10px 20px;
@@ -277,7 +277,7 @@
                     </div>
                 </div>
             </div>
-                <button id="TriggerHtmlToPDF" onclick="console.log('Hey you triggered me, please leave me alone'); printDiv('PrintPDFcoverDiv'); ChangeDownloaded('#TriggerHtmlToPDF');">Download PDF</button>
+                <button id="TriggerHtmlToPDF" onclick="console.log('Hey you triggered me, please leave me alone'); generatePDF('#PrintPDFcoverDiv'); ChangeDownloaded('#TriggerHtmlToPDF');">Download PDF</button>
                 <!--<div ng-show="!ctrl.ShowInvoice && !ctrl.ShowAccountBalanceDetails">
                     <div ng-if="ctrl.isProjected(ctrl.SelectedCommissionCheck)" class="row check-section" style="background-color: #FFA5A5; border: none; padding: 20px;">
                         <span translate>projected_comission_alert</span>
@@ -803,7 +803,7 @@
                 </div>
                 </div>
                 <div  ng-if="ctrl.ShowPeriodDetailMobile" loader>
-                <button id="TriggerHtmlToPDFMob" onclick="console.log('Hey you triggered me, please leave me alone'); ChangeDownloaded('#TriggerHtmlToPDFMob'); printDiv('PrintPDFcoverDiv');" style="margin-left: 21%; width:60%;">Download PDF</button>
+                <button id="TriggerHtmlToPDFMob" onclick="console.log('Hey you triggered me, please leave me alone'); ChangeDownloaded('#TriggerHtmlToPDFMob'); generatePDF('#PrintPDFcoverDiv');" style="margin-left: 21%; width:60%;">Download PDF</button>
                 </div>
                 <!--<div ng-if="ctrl.CommissionChecks.length > 0 && !ctrl.ShowPeriodMobile" class="row check-section-mobile p-5">
                     <div class="col-sm-12 col-xs-12 p-0 m-0">
@@ -1086,6 +1086,7 @@
             pdf.save("Your_PDF_Name.pdf");
         });
     }*/
+    let touchEvent = 'onclick' in window ? 'click' : 'touchstart';
     function printDiv(divID)
     {
         var divElements = document.getElementById(divID).innerHTML;
@@ -1105,6 +1106,14 @@
                         , 2000);
                 }
                 , 2000);
+    }
+    $('.header.header--mobile.bgm-color1.ng-scope/* .header__content .header__left*/').remove();
+
+    function generatePDF(element) {
+        let elementA = $(element)[0];
+        html2pdf()
+            .from(elementA)
+            .save();
     }
 </script>
     </div>
