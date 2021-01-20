@@ -56,8 +56,8 @@
             vm.UserService = UserService;
             vm.SelectedFilters = 'All';
             vm.IsShowView = true;
-            $scope.SessionData.PageName = $translate.instant('pay_history');
-            $scope.getPageNameTranslate('pay_history');
+            $scope.SessionData.PageName = 'Pay Slip'/*$translate.instant('pay_history')*/;
+            $scope.getPageNameTranslate('Pay Slip');/*pay_history*/
             vm.ShowPeriodMobile = true;
             vm.ShowPeriodDetailMobile = false;
             vm.CurrentSelectedBonus = {};
@@ -66,6 +66,7 @@
             vm.AccountBalanceDetails = null;
             vm.AccountBalance = 0;
             vm.exchangeRate = 1;
+            vm.currency = '£';
 
             $scope.GetShippingAddress = function() {
                 var getShippingAddressRequest = 'api/CustomerShippingAddress';
@@ -74,7 +75,7 @@
                     if (parseInt(result.Status, 10) === 0) {
                         $scope.SessionData.shippingAddressResult = result.Data.Addresses;
                         if ($scope.SessionData.shippingAddressResult.length > 0) {
-                            if($scope.SessionData.shippingAddressResult[0].MainCountry === '')
+                            if($('#customer-country')[0].innerHTML === 'GB')
                             {
                                 vm.exchageRate = 1;
                             }
@@ -83,6 +84,28 @@
                     }
                 });
             };
+
+            vm.ExportToPDF = ExportToPDF;
+
+            function ExportToPDF(element){
+                var elementA = $(element)[0];
+                html2pdf().from(elementA).save('PaySlip.pdf');
+                /*html2pdf().from(elementA).toPdf().get('pdf').then(function (pdf) {
+                    /!*window.open(pdf.output('bloburl'), '_self');*!/
+                    pdf.save('PaySlip.pdf');
+                    window.location.reload();
+                });*/
+            }
+            vm.ChangeDownloaded = function(element){
+                $timeout(function (){$(element)[0].innerHTML = "Downloading...";}, 100);
+                $timeout(
+                    function(){$(element)[0].innerHTML = "Downloaded";
+                        $timeout(
+                            function(){$(element)[0].innerHTML = "Download PDF";}
+                            , 2000);
+                    }
+                    , 2000);
+            }
 
             vm.IsLoading = true;
             $scope.ShowLoader = {};

@@ -183,7 +183,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12 b-b p-t-10 p-b-10 p-l-0 p-r-0 b-t">
                                     <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
                                         <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
-                                        <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'&pound;&pound;':2"></span>
+                                        <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'&pound;':2"></span>
                                     </h5>
                                 </div>
                             </div>
@@ -283,7 +283,7 @@
                     </div>
                 </div>
             </div>
-                <button id="TriggerHtmlToPDF" onclick="console.log('Hey you triggered me, please leave me alone'); generatePDF('#PrintPDFcoverDiv'); ChangeDownloaded('#TriggerHtmlToPDF');">Download PDF</button>
+                <button id="TriggerHtmlToPDF" ng-click="ctrl.ExportToPDF('#PrintPDFcoverDiv'); ctrl.ChangeDownloaded('#TriggerHtmlToPDF');">Download PDF</button><!--  ng-click="ctrl.ExportToPDF('#PrintPDFcoverDiv'); ctrl.ChangeDownloaded('#TriggerHtmlToPDF');"  --> <!--  onclick="console.log('Hey you triggered me, please leave me alone'); generatePDF('#PrintPDFcoverDiv'); ChangeDownloaded('#TriggerHtmlToPDF');"  -->
                 <!--<div ng-show="!ctrl.ShowInvoice && !ctrl.ShowAccountBalanceDetails">
                     <div ng-if="ctrl.isProjected(ctrl.SelectedCommissionCheck)" class="row check-section" style="background-color: #FFA5A5; border: none; padding: 20px;">
                         <span translate>projected_comission_alert</span>
@@ -603,7 +603,7 @@
             </div>-->
             <!-- Check Section for Mobile -->
             <div ng-show="!ctrl.ShowInvoice && !SessionData.AccountBalanceHeader">
-                <div id="PrintPDFcoverDiv" ng-if="ctrl.ShowPeriodDetailMobile" loader>
+                <div id="PrintPDFcoverDivMob" ng-if="ctrl.ShowPeriodDetailMobile" loader>
                 <div id="MainPageForPDFExport">
                     <style>
                         #MainPageForPDFExport{
@@ -714,7 +714,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12 b-b p-t-10 p-b-10 p-l-0 p-r-0 b-t">
                                     <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
                                         <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
-                                        <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'&pound;&pound;':2"></span>
+                                        <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'&pound;':2"></span>
                                     </h5>
                                 </div>
                             </div>
@@ -814,8 +814,8 @@
                     </div>
                 </div>
                 </div>
-                <div  ng-if="ctrl.ShowPeriodDetailMobile" loader>
-                <button id="TriggerHtmlToPDFMob" onclick="console.log('Hey you triggered me, please leave me alone'); ChangeDownloaded('#TriggerHtmlToPDFMob'); generatePDF('#PrintPDFcoverDiv');" style="margin-left: 21%; width:60%;">Download PDF</button>
+                <div style="cursor: pointer" ng-if="ctrl.ShowPeriodDetailMobile" loader>
+                <button id="TriggerHtmlToPDFMob" ng-click="ctrl.ExportToPDF('#PrintPDFcoverDivMob'); ctrl.ChangeDownloaded('#TriggerHtmlToPDFMob');" style="margin-left: 21%; width:60%;">Download PDF</button> <!--  onclick="generatePDF('#PrintPDFcoverDiv'); ChangeDownloaded('#TriggerHtmlToPDFMob');"  -->
                 </div>
                 <!--<div ng-if="ctrl.CommissionChecks.length > 0 && !ctrl.ShowPeriodMobile" class="row check-section-mobile p-5">
                     <div class="col-sm-12 col-xs-12 p-0 m-0">
@@ -1098,7 +1098,7 @@
             pdf.save("Your_PDF_Name.pdf");
         });
     }*/
-    function printDiv(divID)
+    /*function printDiv(divID)
     {
         var divElements = document.getElementById(divID).innerHTML;
         var oldPage = document.body.innerHTML;
@@ -1107,25 +1107,29 @@
             divElements + "</body></html>";
         window.print(newelementtoprint);
 
+    }*/
+    /*window.onload = function(){
+        init();
+    };
+
+    function init(){
+        let TMe = $('#TriggerHtmlToPDFMob')[0];
+        TMe.ontouchstart = generatePDF('#TriggerHtmlToPDFMob');
     }
-    function ChangeDownloaded(element){
-        setTimeout(function (){$(element)[0].innerHTML = "Downloading...";}, 100);
-            setTimeout(
-                function(){$(element)[0].innerHTML = "Downloaded";
-                    setTimeout(
-                        function(){$(element)[0].innerHTML = "Download PDF";}
-                        , 2000);
-                }
-                , 2000);
-    }
-    $('.header.header--mobile.bgm-color1.ng-scope/* .header__content .header__left*/').remove();
 
     function generatePDF(element) {
         let elementA = $(element)[0];
-        html2pdf()
+        /!*html2pdf()
             .from(elementA)
-            .save('PaySlip.pdf');
-    }
+            .save('PaySlip.pdf');*!/
+        html2pdf().from(elementA).toPdf().get('pdf').then(function (pdf) {
+            /!*window.open(pdf.output('bloburl'), '_blank');*!/
+            pdf.save('PaySlip.pdf');
+        });
+        return false;
+    }*/
+
+    $('.header.header--mobile.bgm-color1.ng-scope/* .header__content .header__left*/').remove();
 </script>
     </div>
 </div>
