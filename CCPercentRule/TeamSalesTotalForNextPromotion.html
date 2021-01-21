@@ -11,18 +11,25 @@
         </div>
     </div>
 </div>
+<div style="display: none;" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</div>
 <script>
-    let CountryCodeR = $('#AssociateAssociateCountryKPI')[0].innerHTML;
-    let Volume35Percent = $('#NextPromotionVolumeVol')[0].innerHTML;
-    if (CountryCodeR === 'AU'){
-        $("#NextPromotionVolumeVol")[0].innerHTML = 'A$' + (Math.floor(Volume35Percent * 200) / 100);
+    function CountryChangeForNextPromotion(){
+        let CountryCodeR = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+        let Volume35Percent = $('#NextPromotionVolumeVol')[0].innerHTML;
+        if (CountryCodeR === 'AU'){
+            $("#NextPromotionVolumeVol")[0].innerHTML = 'A$' + (Math.floor(Volume35Percent * 200) / 100);
+        }
+        else if (CountryCodeR === 'GB'){
+            $("#NextPromotionVolumeVol")[0].innerHTML = '£' + (Math.floor(Volume35Percent * 100) / 100);
+        }
+        else {
+            $("#NextPromotionVolumeVol")[0].innerHTML = '€' + (Math.floor(Volume35Percent * 120) / 100);
+        }
     }
-    else if (CountryCodeR === 'ES' || CountryCodeR === 'BE' || CountryCodeR === 'NL' || CountryCodeR === 'IE'){
-        $("#NextPromotionVolumeVol")[0].innerHTML = '€' + (Math.floor(Volume35Percent * 120) / 100);
-    }
-    else {
-        $("#NextPromotionVolumeVol")[0].innerHTML = '£' + (Math.floor(Volume35Percent * 100) / 100);
-    }
+    window.onload = function (){
+            CountryChangeForNextPromotion();
+    };
+
 </script>
 
 <style>

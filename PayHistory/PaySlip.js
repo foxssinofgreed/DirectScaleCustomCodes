@@ -66,7 +66,6 @@
             vm.AccountBalanceDetails = null;
             vm.AccountBalance = 0;
             vm.exchangeRate = 1;
-            vm.currency = '£';
 
             $scope.GetShippingAddress = function() {
                 var getShippingAddressRequest = 'api/CustomerShippingAddress';
