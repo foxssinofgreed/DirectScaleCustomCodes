@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Update Pay Slip">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaySlip.html" beforeDir="false" afterPath="$PROJECT_DIR$/PaySlip.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaySlip.js" beforeDir="false" afterPath="$PROJECT_DIR$/PaySlip.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +132,7 @@
       <workItem from="1610946045457" duration="15637000" />
       <workItem from="1610973369891" duration="3635000" />
       <workItem from="1611047932879" duration="26482000" />
-      <workItem from="1611145717985" duration="5071000" />
+      <workItem from="1611145717985" duration="9565000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -283,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610998357288</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Update Pay Slip">
+      <created>1611151727897</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1611151727897</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,10 +394,10 @@
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1610998363428">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1611151731216">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1610998363428" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1611151731216" />
     <state x="773" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609630734233">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -405,10 +410,10 @@
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
     <state x="713" y="364" width="550" height="384" key="jetbrains.nodejs.interpreters-dialog/66.27.1854.1053@66.27.1854.1053" timestamp="1605246448714" />
-    <state x="656" y="252" key="run.anything.popup" timestamp="1611144179735">
+    <state x="656" y="252" key="run.anything.popup" timestamp="1611153504194">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="656" y="252" key="run.anything.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1611144179735" />
+    <state x="656" y="252" key="run.anything.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1611153504194" />
     <state x="657" y="252" key="run.anything.popup/66.27.1854.1053@66.27.1854.1053" timestamp="1605959968065" />
     <state x="655" y="259" width="673" height="678" key="search.everywhere.popup" timestamp="1609845545900">
       <screen x="64" y="27" width="1856" height="1053" />
