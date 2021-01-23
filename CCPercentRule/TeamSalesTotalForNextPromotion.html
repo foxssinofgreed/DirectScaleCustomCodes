@@ -21,7 +21,7 @@
                     </div>
                     <div class="MainDivOfTSTNP_Flip_Back">
                         <div id="MainDivOfTSTNP_Back_Flip_Info">
-                            <p>This widget shows your Team Sales with the 35% Percent Rule applied for your upcoming position. Detailed Requirements for each Position and your progress can be found in the Position Information widget</p>
+                            <p>The maximum per line for <span id="TSTNP_nextRankName"></span> with the 35% Rule is <span id="TSTNP_requirement"></span></p>
                             <div class="MainDivOfTSTNP_Button" style="margin-bottom: -20px; margin-top: -5px">
                                 <button onclick="CountryChangeForNextPromotion_toggleCheckbox('#MainDivOfTSTNPCheck')" style="width: 100%; height: 80%">Return</button>
                             </div>
@@ -32,6 +32,7 @@
         </label>
     </div>
     <div style="display: none;" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</div>
+    <div style="display: none;" id="AssociateAssociateRankKPI">@User.CommissionsRank</div>
     <script>
         function CountryChangeForNextPromotion(){
             let CountryCodeR = $('#AssociateAssociateCountryKPI')[0].innerHTML;
@@ -54,5 +55,68 @@
             let elementA = $(element)[0];
             elementA.checked = !elementA.checked;
         }
+        function rankRequirements(){
+            let CurrentRank = $('#AssociateAssociateRankKPI')[0].innerHTML;
+            let CountryCode = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+            let result = 0;
+            let nextrankname;
+
+            switch (CurrentRank){
+                case '40':
+                    result = 1400;
+                    nextrankname = '4 Star';
+                    break;
+                case '50':
+                    result = 2625;
+                    nextrankname = '5 Star';
+                    break;
+                case '60':
+                    result = 5250;
+                    nextrankname = '6 Star';
+                    break;
+                case '70':
+                    result = 8750;
+                    nextrankname = '7 Star';
+                    break;
+                case '80':
+                    result = 14000;
+                    nextrankname = '8 Star';
+                    break;
+                case '90':
+                    result = 21000;
+                    nextrankname = '9 Star';
+                    break;
+                case '100':
+                    result = 31500;
+                    nextrankname = '10 Star';
+                    break;
+                case '110':
+                    result = 43750;
+                    nextrankname = '11 Star';
+                    break;
+                case '120':
+                    result = 61250;
+                    nextrankname = '12 Star';
+                    break;
+                default:
+                    result = 0;
+                    nextrankname = '';
+            }
+            console.log(result);
+            switch (CountryCode){
+                case 'AU':
+                    result = Math.floor(result * 200) / 100;
+                    break;
+                case 'GB':
+                    result = Math.floor(result * 100) / 100;
+                    break;
+                default:
+                    result = Math.floor(result * 120) / 100;
+            }
+            console.log(result);
+            $('#TSTNP_requirement')[0].innerHTML = result;
+            $('#TSTNP_nextRankName')[0].innerHTML = nextrankname;
+        }
+        rankRequirements();
 
     </script>

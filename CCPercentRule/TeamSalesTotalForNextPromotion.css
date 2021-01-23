@@ -64,7 +64,8 @@
     align-items: center;
     width: 316px !important;
     height: 185px !important;
-    background-image: url('https://az708413.vo.msecnd.net/bombshells/resources/8dd0e0c1-f035-4e09-8564-ba668f4cfa2e/35%20Applied%20Widget%20BGImage.png');
+    background-image: url('https://az708413.vo.msecnd.net/bombshells/resources/d1a32e05-d482-4c61-9bc2-294350915f4f/Image%20from%20iOS%20(5).png');
+    /*background-image: url('https://az708413.vo.msecnd.net/bombshells/resources/6d387f23-1924-472b-8235-afe6aa04986d/Image%20from%20iOS%20(6).png');*/
     background-size: cover;
     border-radius: 1.5em;
     box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
@@ -110,6 +111,7 @@
     transition: 0.4s;
     margin-bottom: 6px;
     font-size: 16px;
+    box-shadow: 0 0 6px #ffffff;
 }
 .MainDivOfTSTNP_Button button:hover{
     background-color: #FFFFFF;
@@ -119,5 +121,9 @@
 #MainDivOfTSTNP_Back_Flip_Info p{
     font-size: 15px;
     text-align: center;
-    color: #FFFFFF;
+    color: #fe91b0;
+    padding: 25px;
+}
+#MainDivOfTSTNP_Back_Flip_Info p span{
+    color: #fe91b0;
 }
