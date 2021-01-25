@@ -40,7 +40,7 @@
             if (CountryCodeR === 'AU'){
                 $("#NextPromotionVolumeVol")[0].innerHTML = 'A$' + (Math.floor(Volume35Percent * 200) / 100);
             }
-            if (CountryCodeR === 'GB'){
+            else if(CountryCodeR === 'GB'){
                 $("#NextPromotionVolumeVol")[0].innerHTML = '£' + (Math.floor(Volume35Percent * 100) / 100);
             }
             else {
