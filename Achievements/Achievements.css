@@ -18,17 +18,16 @@
 }
 #businessSNHeader-2v{
     text-align: center;
-    background-color: #F5C6C3 !important;
+    background-image: url('https://az708413.vo.msecnd.net/bombshells/resources/212d62a9-5acc-4751-a453-8d012bdb04e3/Widget%20Header%20BGImage.png') !important;
     opacity: 1;
     transition: 0.3s;
 }
 #businessSNHeader-2v:hover{
     opacity: 1;
-    background-color: #F2B3AE !important;
 }
 .BSHeaderT{
     text-align: center;
-    background-color: #F7D1D3;
+    background-color: #fbc4c7;
     color: #fff;
     height: 100%;
     opacity: 1;
@@ -37,22 +36,22 @@
 }
 .BSHeaderT:hover{
     opacity: 1;
-    background-color: #F5C6C3;
+    background-color: #fbc4c7;
 }
 #firsttlt{
     background-color: #F7D1D3;
 }
 #firsttlt:hover{
-    background-color: #F5C6C3;
+    background-color: #fbc4c7 !important;
 }
 #secondtlt{
     background-color: #F7D1D3;
 }
 #secondtlt:hover{
-    background-color: #F5C6C3;
+    background-color: #fbc4c7 !important;
 }
 #BSHeaderTAfterChange{
-    background-color: #F5C6C3;
+    background-color: #fbc4c7 !important;
 }
 .BSTitle{
     padding: 8px;
@@ -70,7 +69,7 @@
         "Top-left Top-right"
         "Bot-left Bot-right";
     justify-items: stretch;
-    padding: 0 !important;
+    padding: 10px !important;
 }
 #All-metric-multy-1tlt{white-space:pre-wrap;}
 #All-metric-multy-2tlt{white-space:pre-wrap;}
@@ -114,4 +113,22 @@
     font-weight: 450;
     font-size: 18px;
     color: #fff;
+}
+.prev-next-control{
+    height: 50px;
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.prev-next-control a{
+    font-size: 30px;
+    opacity: 0.5;
+    color: #fff;
+    transition: 0.5s;
+}
+.prev-next-control a:hover{
+    opacity: 1;
+    transition: 0.5s;
 }

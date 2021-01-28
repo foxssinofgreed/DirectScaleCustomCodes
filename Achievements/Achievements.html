@@ -1,12 +1,21 @@
 <div class="card">
-    <span class="kpiDisplay All-currency-change" id="prevMP">@User.CommissionsCV.MonthsAgo(1)</span>
-    <span class="kpiDisplay All-currency-change" id="prevMT">@User.CommissionsStatsTGVKPI.MonthsAgo(1)</span>
-    <span class="kpiDisplay" id="prevRank">@User.CommissionsRankName.MonthsAgo(1)</span>
-    <span class="kpiDisplay" id="Rank">@User.CommissionsRankName</span>
-    <span class="kpiDisplay All-currency-change" id="MP">@User.CommissionsCV</span>
-    <span class="kpiDisplay All-currency-change" id="MT">@User.CommissionsStatsTGVKPI</span>
-    <span class="kpiDisplay" id="HRank">@User.CommissionsHighestRankName</span>
-    <span class="kpiDisplay" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</span>
+    <span class="kpiDisplay All-currency-change" id="prevMP">@User.CommissionsCV.MonthsAgo(1)</span> <!--  Previous Month Personal Sales  -->
+    <span class="kpiDisplay All-currency-change" id="prevMT">@User.CommissionsStatsTGVKPI.MonthsAgo(1)</span> <!--  Previous Month Team Sales  -->
+    <span class="kpiDisplay" id="prevRank">@User.CommissionsRankName.MonthsAgo(1)</span> <!--  Previous Month Rank  -->
+    <span class="kpiDisplay" id="Rank">@User.CommissionsRankName</span> <!--  Current Month Rank  -->
+    <span class="kpiDisplay All-currency-change" id="MP">@User.CommissionsCV</span> <!--  Current Month Personal Sales  -->
+    <span class="kpiDisplay All-currency-change" id="MT">@User.CommissionsStatsTGVKPI</span> <!--  Current Month Team Sales  -->
+    <span class="kpiDisplay" id="HRank">@User.CommissionsHighestRankName</span> <!--  Lifetime Highest Rank  -->
+    <span class="kpiDisplay" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</span> <!--  Country Code  -->
+    <span class="kpiDisplay All-currency-change" id="NextCappedVolumeKPI">@User.CommissionsStatsNCRV</span> <!--  35% Rule  -->
+    <span class="kpiDisplay All-currency-change" id="PrevNextCappedVolumeKPI">@User.CommissionsStatsNCRV.MonthsAgo(1)</span> <!--  Previous 35% Rule  -->
+    <span class="kpiDisplay" id="RankVal">@User.CommissionsRank</span> <!--  Rank Value  -->
+    <span class="kpiDisplay" id="CMEnrolledPPl">@User.CommissionsStatsLEC</span> <!--  Team Enrolled this month  -->
+    <span class="kpiDisplay" id="PrevCMEnrolledPPl">@User.CommissionsStatsLEC.MonthsAgo(1)</span> <!--  Team Enrolled previous month  -->
+    <span class="kpiDisplay" id="ATEnrolledPPl">@User.CommissionsStatsGTeam</span> <!--  Total current month Team  -->
+    <span class="kpiDisplay" id="PrevATEnrolledPPl">@User.CommissionsStatsGTeam.MonthsAgo(1)</span> <!--  Total previous month Team  -->
+    <span class="kpiDisplay All-currency-change" id="InactivePersonalVol">@User.CommissionsStatsISVKPI</span> <!--  Inactive personal volume  -->
+    <span class="kpiDisplay All-currency-change" id="PrevInactivePersonalVol">@User.CommissionsStatsISVKPI.MonthsAgo(1)</span> <!--  Previous Inactive personal volume  -->
     <a href="app.html#/TeamDashboard"><div class="card-header" id="businessSNHeader-2v"><h1>Business Snapshot</h1></div></a>
     <div id="titleButtonChng">
         <div class="BSHeaderT item-alpha" id="BSHeaderTAfterChange"><h1 class="BSTitle">Current</h1></div>
@@ -46,11 +55,25 @@
             </div>
         </div>
     </div>
+    <!--  Last additions  -->
+    <div class="ach-metric-main-div-2v" id="ach-metric-footer-stat" style="">
+        <div class="ach-metric-div-2v">
+            <h1 id="All-metric-multy-5"></h1>
+        </div>
+        <div class="ach-metric-div-2v">
+            <h2 id="All-metric-multy-5tlt"></h2>
+        </div>
+    </div>
+    <div class="prev-next-control">
+        <a class="AchievementControlerClass" onclick="CurrentAchievementsPageTwo()">❮</a>
+        <a class="AchievementControlerClassDos" onclick="CurrentAchievementsPageTwo()">❯</a>
+    </div>
 </div>
 <script>
     $(document).ready(function () {
 
         let CountryCodeA = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+        let RankValue = $('#RankVal')[0].innerHTML;
 
         if (CountryCodeA === 'AU'){
             for(let i = 0; i < $(".All-currency-change").length; i++){
@@ -80,6 +103,14 @@
         document.getElementById("MP").innerHTML = Math.floor(a);
         a = document.getElementById("prevMP").innerHTML;
         document.getElementById("prevMP").innerHTML = Math.floor(a);
+        a = document.getElementById("NextCappedVolumeKPI").innerHTML;
+        document.getElementById("NextCappedVolumeKPI").innerHTML = Math.floor(a);
+        a = document.getElementById("InactivePersonalVol").innerHTML;
+        document.getElementById("InactivePersonalVol").innerHTML = Math.floor(a);
+        a = document.getElementById("PrevInactivePersonalVol").innerHTML;
+        document.getElementById("PrevInactivePersonalVol").innerHTML = Math.floor(a);
+        a = document.getElementById("PrevNextCappedVolumeKPI").innerHTML;
+        document.getElementById("PrevNextCappedVolumeKPI").innerHTML = Math.floor(a);
         if (CountryCodeA === 'AU'){
             for(let i = 0; i < $(".All-currency-change").length; i++){
                 $(".All-currency-change")[i].innerHTML = 'A$' + $(".All-currency-change")[i].innerHTML;
@@ -105,8 +136,31 @@
         $("#All-metric-multy-4").text($("#HRank").text());
         $("#BSTitle").text('Current');
 
+        let countMapCurrentLoc = 2;
+
         // On Click
         $("#titleButtonChng").click(function () {
+            countMapCurrentLoc += 1;
+            if(countMapCurrentLoc % 2 === 1){
+                $("#All-metric-multy-1tlt").text('Current\nTeam Sales');
+                $("#All-metric-multy-2tlt").text('Current\nPersonal Sales');
+                $("#All-metric-multy-3tlt").text('Current\nPosition');
+                $("#All-metric-multy-4tlt").text('Lifetime Highest\nPosition');
+                $("#All-metric-multy-1").text($("#MT").text());
+                $("#All-metric-multy-2").text($("#MP").text());
+                $("#All-metric-multy-3").text($("#Rank").text());
+                $("#All-metric-multy-4").text($("#HRank").text());
+            }
+            else{
+                $("#All-metric-multy-1tlt").text('Previous\nTeam Sales');
+                $("#All-metric-multy-2tlt").text('Previous\nPersonal Sales');
+                $("#All-metric-multy-3tlt").text('Previous\nPosition');
+                $("#All-metric-multy-4tlt").text('Lifetime Highest\nPosition');
+                $("#All-metric-multy-1").text($("#prevMT").text());
+                $("#All-metric-multy-2").text($("#prevMP").text());
+                $("#All-metric-multy-3").text($("#prevRank").text());
+                $("#All-metric-multy-4").text($("#HRank").text());
+            }
 
             // Team Sales
             $("#All-metric-multy-1").fadeOut(10, function () {
@@ -132,6 +186,7 @@
                 $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Previous\nPosition' : 'Current\nPosition').fadeIn();
             })
 
+
             // Main Title
             $("#BSTitle").fadeOut(10, function () {
                 $("#BSTitle").text(($("#BSTitle").text() === 'Current') ? 'Previous' : 'Current').fadeIn();
@@ -144,7 +199,108 @@
             $('.item-beta').attr('id', function(index, attr){
                 return attr === 'secondtlt' ? 'BSHeaderTAfterChange' : 'secondtlt';
             });
-        })
+
+            // Controller function changer
+            $('.AchievementControlerClass').attr('onclick', function (index, attr){
+                return attr === 'CurrentAchievementsPageTwo()' ? 'PreviousAchievementsPageTwo()' : 'CurrentAchievementsPageTwo()';
+            });
+            $('.AchievementControlerClassDos').attr('onclick', function (index, attr){
+                return attr === 'CurrentAchievementsPageTwo()' ? 'PreviousAchievementsPageTwo()' : 'CurrentAchievementsPageTwo()';
+            });
+        });
+
         console.log("Easter egg: you found me girl, you're the chosen one");
     });
+
+    // This function if for page two of current stats
+    function CurrentAchievementsPageTwo(){
+        let RankValue = $('#RankVal')[0].innerHTML;
+        $("#All-metric-multy-1").fadeOut(10, function () {
+            $("#All-metric-multy-1").text(($("#All-metric-multy-1").text() === $("#MT").text()) ? $("#CMEnrolledPPl").text() : $("#MT").text()).fadeIn();
+        })
+        $("#All-metric-multy-1tlt").fadeOut(10, function () {
+            $("#All-metric-multy-1tlt").text(($("#All-metric-multy-1tlt").text() === 'Current\nTeam Sales') ? 'New Team\nThis Month' : 'Current\nTeam Sales').fadeIn();
+        })
+
+        $("#All-metric-multy-2").fadeOut(10, function () {
+            $("#All-metric-multy-2").text(($("#All-metric-multy-2").text() === $("#MP").text()) ? $("#ATEnrolledPPl").text() : $("#MP").text()).fadeIn();
+        })
+        $("#All-metric-multy-2tlt").fadeOut(10, function () {
+            $("#All-metric-multy-2tlt").text(($("#All-metric-multy-2tlt").text() === 'Current\nPersonal Sales') ? 'Total Team\nThis Month' : 'Current\nPersonal Sales').fadeIn();
+        })
+        if(RankValue > 30){
+            $("#All-metric-multy-3").fadeOut(10, function () {
+                $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#Rank").text()) ? $("#InactivePersonalVol").text() : $("#Rank").text()).fadeIn();
+            })
+            $("#All-metric-multy-3tlt").fadeOut(10, function () {
+                $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Current Inactive\nSales Volume' : 'Current\nPosition').fadeIn();
+            })
+            $("#All-metric-multy-4").fadeOut(10, function () {
+                $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? '' : $("#HRank").text()).fadeIn();
+            })
+            $("#All-metric-multy-4tlt").fadeOut(10, function () {
+                $("#All-metric-multy-4tlt").text(($("#All-metric-multy-4tlt").text() === 'Lifetime Highest\nPosition') ? '' : 'Lifetime Highest\nPosition').fadeIn();
+            })
+        }
+        else{
+            $("#All-metric-multy-3").fadeOut(10, function () {
+                $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#Rank").text()) ? '' : $("#Rank").text()).fadeIn();
+            })
+            $("#All-metric-multy-3tlt").fadeOut(10, function () {
+                $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? '' : 'Current\nPosition').fadeIn();
+            })
+            $("#All-metric-multy-4").fadeOut(10, function () {
+                $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? '' : $("#HRank").text()).fadeIn();
+            })
+            $("#All-metric-multy-4tlt").fadeOut(10, function () {
+                $("#All-metric-multy-4tlt").text(($("#All-metric-multy-4tlt").text() === 'Lifetime Highest\nPosition') ? '' : 'Lifetime Highest\nPosition').fadeIn();
+            })
+        }
+    }
+
+    // This function if for page two of previous stats
+    function PreviousAchievementsPageTwo(){
+        let RankValue = $('#RankVal')[0].innerHTML;
+        $("#All-metric-multy-1").fadeOut(10, function () {
+            $("#All-metric-multy-1").text(($("#All-metric-multy-1").text() === $("#prevMT").text()) ? $("#PrevCMEnrolledPPl").text() : $("#prevMT").text()).fadeIn();
+        })
+        $("#All-metric-multy-1tlt").fadeOut(10, function () {
+            $("#All-metric-multy-1tlt").text(($("#All-metric-multy-1tlt").text() === 'Previous\nTeam Sales') ? 'Previous\nNew Team' : 'Previous\nTeam Sales').fadeIn();
+        })
+
+        $("#All-metric-multy-2").fadeOut(10, function () {
+            $("#All-metric-multy-2").text(($("#All-metric-multy-2").text() === $("#prevMP").text()) ? $("#PrevATEnrolledPPl").text() : $("#prevMP").text()).fadeIn();
+        })
+        $("#All-metric-multy-2tlt").fadeOut(10, function () {
+            $("#All-metric-multy-2tlt").text(($("#All-metric-multy-2tlt").text() === 'Previous\nPersonal Sales') ? 'Previous\nTotal Team' : 'Previous\nPersonal Sales').fadeIn();
+        })
+        if(RankValue > 30){
+            $("#All-metric-multy-3").fadeOut(10, function () {
+                $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#prevRank").text()) ? $("#PrevInactivePersonalVol").text() : $("#prevRank").text()).fadeIn();
+            })
+            $("#All-metric-multy-3tlt").fadeOut(10, function () {
+                $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Previous\nPosition') ? 'Previous Inactive\nSales Volume' : 'Previous\nPosition').fadeIn();
+            })
+            $("#All-metric-multy-4").fadeOut(10, function () {
+                $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? '' : $("#HRank").text()).fadeIn();
+            })
+            $("#All-metric-multy-4tlt").fadeOut(10, function () {
+                $("#All-metric-multy-4tlt").text(($("#All-metric-multy-4tlt").text() === 'Lifetime Highest\nPosition') ? '' : 'Lifetime Highest\nPosition').fadeIn();
+            })
+        }
+        else{
+            $("#All-metric-multy-3").fadeOut(10, function () {
+                $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#prevRank").text()) ? '' : $("#prevRank").text()).fadeIn();
+            })
+            $("#All-metric-multy-3tlt").fadeOut(10, function () {
+                $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Previous\nPosition') ? '' : 'Previous\nPosition').fadeIn();
+            })
+            $("#All-metric-multy-4").fadeOut(10, function () {
+                $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? '' : $("#HRank").text()).fadeIn();
+            })
+            $("#All-metric-multy-4tlt").fadeOut(10, function () {
+                $("#All-metric-multy-4tlt").text(($("#All-metric-multy-4tlt").text() === 'Lifetime Highest\nPosition') ? '' : 'Lifetime Highest\nPosition').fadeIn();
+            })
+        }
+    }
 </script>

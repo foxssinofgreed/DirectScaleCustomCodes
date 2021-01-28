@@ -1,10 +1,10 @@
 <div class="card">
-    <span class="kpiDisplay au-currency-change" id="prevMP">@User.CommissionsCV.MonthsAgo(1)</span>
-    <span class="kpiDisplay au-currency-change" id="prevMT">@User.CommissionsStatsTGVKPI.MonthsAgo(1)</span>
+    <span class="kpiDisplay All-currency-change" id="prevMP">@User.CommissionsCV.MonthsAgo(1)</span>
+    <span class="kpiDisplay All-currency-change" id="prevMT">@User.CommissionsStatsTGVKPI.MonthsAgo(1)</span>
     <span class="kpiDisplay" id="prevRank">@User.CommissionsRankName.MonthsAgo(1)</span>
     <span class="kpiDisplay" id="Rank">@User.CommissionsRankName</span>
-    <span class="kpiDisplay au-currency-change" id="MP">@User.CommissionsCV</span>
-    <span class="kpiDisplay au-currency-change" id="MT">@User.CommissionsStatsTGVKPI</span>
+    <span class="kpiDisplay All-currency-change" id="MP">@User.CommissionsCV</span>
+    <span class="kpiDisplay All-currency-change" id="MT">@User.CommissionsStatsTGVKPI</span>
     <span class="kpiDisplay" id="HRank">@User.CommissionsHighestRankName</span>
     <span class="kpiDisplay" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</span>
     <a href="app.html#/TeamDashboard"><div class="card-header" id="businessSNHeader-2v"><h1>Business Snapshot</h1></div></a>
@@ -15,34 +15,34 @@
     <div class="card-body" id="achievements-wg-grid-2v">
         <div class="ach-item-a-2v ach-metric-main-div-2v">
             <div class="ach-metric-div-2v">
-                <h1 id="au-metric-multy-1"></h1>
+                <h1 id="All-metric-multy-1"></h1>
             </div>
             <div class="ach-metric-div-2v">
-                <h2 id="au-metric-multy-1tlt"></h2>
+                <h2 id="All-metric-multy-1tlt"></h2>
             </div>
         </div>
         <div class="ach-item-b-2v ach-metric-main-div-2v">
             <div class="ach-metric-div-2v">
-                <h1 id="au-metric-multy-2"></h1>
+                <h1 id="All-metric-multy-2"></h1>
             </div>
             <div class="ach-metric-div-2v">
-                <h2 id="au-metric-multy-2tlt"></h2>
+                <h2 id="All-metric-multy-2tlt"></h2>
             </div>
         </div>
         <div class="ach-item-c-2v ach-metric-main-div-2v">
             <div class="ach-metric-div-2v">
-                <h1 id="au-metric-multy-3"></h1>
+                <h1 id="All-metric-multy-3"></h1>
             </div>
             <div class="ach-metric-div-2v">
-                <h2 id="au-metric-multy-3tlt"></h2>
+                <h2 id="All-metric-multy-3tlt"></h2>
             </div>
         </div>
         <div class="ach-item-d-2v ach-metric-main-div-2v">
             <div class="ach-metric-div-2v">
-                <h1 id="au-metric-multy-4"></h1>
+                <h1 id="All-metric-multy-4"></h1>
             </div>
             <div class="ach-metric-div-2v">
-                <h2 id="au-metric-multy-4tlt"></h2>
+                <h2 id="All-metric-multy-4tlt"></h2>
             </div>
         </div>
     </div>
@@ -53,15 +53,25 @@
         let CountryCodeA = $('#AssociateAssociateCountryKPI')[0].innerHTML;
 
         if (CountryCodeA === 'AU'){
-            for(let i = 0; i < $(".au-currency-change").length; i++){
-                $(".au-currency-change")[i].innerHTML = $(".au-currency-change")[i].innerHTML * 2;
+            for(let i = 0; i < $(".All-currency-change").length; i++){
+                $(".All-currency-change")[i].innerHTML = $(".All-currency-change")[i].innerHTML * 2;
+            }
+        }
+        else if (CountryCodeA === 'GB'){
+            for(let i = 0; i < $(".All-currency-change").length; i++){
+                $(".All-currency-change")[i].innerHTML = $(".All-currency-change")[i].innerHTML * 1;
+            }
+        }
+        else{
+            for(let i = 0; i < $(".All-currency-change").length; i++){
+                $(".All-currency-change")[i].innerHTML = $(".All-currency-change")[i].innerHTML * 1.2;
             }
         }
 
-        let a = document.getElementById("au-metric-multy-1").innerHTML;
-        document.getElementById("au-metric-multy-1").innerHTML = Math.floor(a);
-        a = document.getElementById("au-metric-multy-2").innerHTML;
-        document.getElementById("au-metric-multy-2").innerHTML = Math.floor(a);
+        let a = document.getElementById("All-metric-multy-1").innerHTML;
+        document.getElementById("All-metric-multy-1").innerHTML = Math.floor(a);
+        a = document.getElementById("All-metric-multy-2").innerHTML;
+        document.getElementById("All-metric-multy-2").innerHTML = Math.floor(a);
         a = document.getElementById("MT").innerHTML;
         document.getElementById("MT").innerHTML = Math.floor(a);
         a = document.getElementById("prevMT").innerHTML;
@@ -71,50 +81,55 @@
         a = document.getElementById("prevMP").innerHTML;
         document.getElementById("prevMP").innerHTML = Math.floor(a);
         if (CountryCodeA === 'AU'){
-            for(let i = 0; i < $(".au-currency-change").length; i++){
-                $(".au-currency-change")[i].innerHTML = 'A$' + $(".au-currency-change")[i].innerHTML;
+            for(let i = 0; i < $(".All-currency-change").length; i++){
+                $(".All-currency-change")[i].innerHTML = 'A$' + $(".All-currency-change")[i].innerHTML;
+            }
+        }
+        else if (CountryCodeA === 'GB'){
+            for(let i = 0; i < $(".All-currency-change").length; i++){
+                $(".All-currency-change")[i].innerHTML = '£' + $(".All-currency-change")[i].innerHTML;
             }
         }
         else {
-            for(let i = 0; i < $(".au-currency-change").length; i++){
-                $(".au-currency-change")[i].innerHTML = '£' + $(".au-currency-change")[i].innerHTML;
+            for(let i = 0; i < $(".All-currency-change").length; i++){
+                $(".All-currency-change")[i].innerHTML = '€' + $(".All-currency-change")[i].innerHTML;
             }
         }
-        $("#au-metric-multy-1tlt").text('Current\nTeam Sales');
-        $("#au-metric-multy-2tlt").text('Current\nPersonal Sales');
-        $("#au-metric-multy-3tlt").text('Current\nPosition');
-        $("#au-metric-multy-4tlt").text('Lifetime Highest\nPosition');
-        $("#au-metric-multy-1").text($("#MT").text());
-        $("#au-metric-multy-2").text($("#MP").text());
-        $("#au-metric-multy-3").text($("#Rank").text());
-        $("#au-metric-multy-4").text($("#HRank").text());
+        $("#All-metric-multy-1tlt").text('Current\nTeam Sales');
+        $("#All-metric-multy-2tlt").text('Current\nPersonal Sales');
+        $("#All-metric-multy-3tlt").text('Current\nPosition');
+        $("#All-metric-multy-4tlt").text('Lifetime Highest\nPosition');
+        $("#All-metric-multy-1").text($("#MT").text());
+        $("#All-metric-multy-2").text($("#MP").text());
+        $("#All-metric-multy-3").text($("#Rank").text());
+        $("#All-metric-multy-4").text($("#HRank").text());
         $("#BSTitle").text('Current');
 
         // On Click
         $("#titleButtonChng").click(function () {
 
             // Team Sales
-            $("#au-metric-multy-1").fadeOut(10, function () {
-                $("#au-metric-multy-1").text(($("#au-metric-multy-1").text() === $("#MT").text()) ? $("#prevMT").text() : $("#MT").text()).fadeIn();
+            $("#All-metric-multy-1").fadeOut(10, function () {
+                $("#All-metric-multy-1").text(($("#All-metric-multy-1").text() === $("#MT").text()) ? $("#prevMT").text() : $("#MT").text()).fadeIn();
             })
-            $("#au-metric-multy-1tlt").fadeOut(10, function () {
-                $("#au-metric-multy-1tlt").text(($("#au-metric-multy-1tlt").text() === 'Current\nTeam Sales') ? 'Previous\nTeam Sales' : 'Current\nTeam Sales').fadeIn();
+            $("#All-metric-multy-1tlt").fadeOut(10, function () {
+                $("#All-metric-multy-1tlt").text(($("#All-metric-multy-1tlt").text() === 'Current\nTeam Sales') ? 'Previous\nTeam Sales' : 'Current\nTeam Sales').fadeIn();
             })
 
             // Personal Sales
-            $("#au-metric-multy-2").fadeOut(10, function () {
-                $("#au-metric-multy-2").text(($("#au-metric-multy-2").text() === $("#MP").text()) ? $("#prevMP").text() : $("#MP").text()).fadeIn();
+            $("#All-metric-multy-2").fadeOut(10, function () {
+                $("#All-metric-multy-2").text(($("#All-metric-multy-2").text() === $("#MP").text()) ? $("#prevMP").text() : $("#MP").text()).fadeIn();
             })
-            $("#au-metric-multy-2tlt").fadeOut(10, function () {
-                $("#au-metric-multy-2tlt").text(($("#au-metric-multy-2tlt").text() === 'Current\nPersonal Sales') ? 'Previous\nPersonal Sales' : 'Current\nPersonal Sales').fadeIn();
+            $("#All-metric-multy-2tlt").fadeOut(10, function () {
+                $("#All-metric-multy-2tlt").text(($("#All-metric-multy-2tlt").text() === 'Current\nPersonal Sales') ? 'Previous\nPersonal Sales' : 'Current\nPersonal Sales').fadeIn();
             })
 
             // Rank
-            $("#au-metric-multy-3").fadeOut(10, function () {
-                $("#au-metric-multy-3").text(($("#au-metric-multy-3").text() === $("#Rank").text()) ? $("#prevRank").text() : $("#Rank").text()).fadeIn();
+            $("#All-metric-multy-3").fadeOut(10, function () {
+                $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#Rank").text()) ? $("#prevRank").text() : $("#Rank").text()).fadeIn();
             })
-            $("#au-metric-multy-3tlt").fadeOut(10, function () {
-                $("#au-metric-multy-3tlt").text(($("#au-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Previous\nPosition' : 'Current\nPosition').fadeIn();
+            $("#All-metric-multy-3tlt").fadeOut(10, function () {
+                $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Previous\nPosition' : 'Current\nPosition').fadeIn();
             })
 
             // Main Title
@@ -133,7 +148,6 @@
         console.log("Easter egg: you found me girl, you're the chosen one");
     });
 </script>
-
 <style>
     .kpiDisplay{
         display: none;
@@ -209,10 +223,10 @@
         justify-items: stretch;
         padding: 0 !important;
     }
-    #au-metric-multy-1tlt{white-space:pre-wrap;}
-    #au-metric-multy-2tlt{white-space:pre-wrap;}
-    #au-metric-multy-3tlt{white-space:pre-wrap;}
-    #au-metric-multy-4tlt{white-space:pre-wrap;}
+    #All-metric-multy-1tlt{white-space:pre-wrap;}
+    #All-metric-multy-2tlt{white-space:pre-wrap;}
+    #All-metric-multy-3tlt{white-space:pre-wrap;}
+    #All-metric-multy-4tlt{white-space:pre-wrap;}
     .ach-item-a-2v{
         grid-area: Top-left;
     }
