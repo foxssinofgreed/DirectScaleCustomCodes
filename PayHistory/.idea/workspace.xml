@@ -27,12 +27,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Update Team Sales Widget">
-      <change beforePath="$PROJECT_DIR$/../Achievements/Achievements.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Achievements/Achievements.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Achievements/Achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Achievements/Achievements.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Achievements/AchievementsAU.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Achievements/AchievementsAU_Dashboard.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Achievements/AchievementsUK.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Achievements/Achievements_old.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Achievements/AchievementsUK_Dashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Banners/FlipBanner.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Banners/FlipBanner.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +150,10 @@
       <workItem from="1611670140028" duration="26000" />
       <workItem from="1611683929376" duration="105000" />
       <workItem from="1611761201783" duration="7026000" />
-      <workItem from="1611815057999" duration="19495000" />
+      <workItem from="1611815057999" duration="19534000" />
+      <workItem from="1611899394828" duration="3902000" />
+      <workItem from="1611947590660" duration="560000" />
+      <workItem from="1612158655061" duration="4791000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -352,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611550062545</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Update Team Sales Widget">
+      <created>1611847297526</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1611847297526</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,10 +483,10 @@
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1611550081076">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1611847308025">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1611550081076" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1611847308025" />
     <state x="773" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609630734233">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
