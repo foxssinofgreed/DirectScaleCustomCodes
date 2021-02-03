@@ -26,10 +26,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="New Training Courses">
-      <change beforePath="$PROJECT_DIR$/../JSInsertions/TrainingCourse.js" beforeDir="false" afterPath="$PROJECT_DIR$/../JSInsertions/TrainingCourse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PayHistory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PayHistory.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="New Countdown Widget Demo">
+      <change beforePath="$PROJECT_DIR$/../Countdown/Countdown.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Countdown/Countdown.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Countdown/Countdown.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Countdown/Countdown.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,7 +156,7 @@
       <workItem from="1612158655061" duration="6199000" />
       <workItem from="1612190160747" duration="18000" />
       <workItem from="1612242848200" duration="10532000" />
-      <workItem from="1612337880358" duration="3538000" />
+      <workItem from="1612337880358" duration="10084000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -376,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612269606565</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="New Countdown Widget Demo">
+      <created>1612352930887</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1612352930887</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +432,8 @@
     <MESSAGE value="Update Team Sales Widget" />
     <MESSAGE value="Update Small Changes" />
     <MESSAGE value="New Training Courses" />
-    <option name="LAST_COMMIT_MESSAGE" value="New Training Courses" />
+    <MESSAGE value="New Countdown Widget Demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Countdown Widget Demo" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1611379293163">
@@ -503,10 +510,10 @@
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1612269618291">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1612352940058">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1612269618291" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1612352940057" />
     <state x="773" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609630734233">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
