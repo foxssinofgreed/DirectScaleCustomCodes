@@ -16,3 +16,19 @@ $(document).ready(function(){
         ChangeFormatTrainingCourse();
     }*/
 });
+
+if( document.readyState !== 'loading' ) {
+    setInterval(function (){
+        let LinkCurrentPKPKPK = window.location.href;
+        if(LinkCurrentPKPKPK === 'https://office2.businessbombshells.team/app.html#/CirclesDetails'){
+            let TestVar = $(window).width();
+            if(TestVar >= 700){
+                $('.content__circlesdetails .m-secondary-sidebar').css('max-width', '75vw');
+                console.log("-- Run Count --");
+            }
+            else{
+                $('.content__circlesdetails .m-secondary-sidebar').css('max-width', '100vw');
+            }
+        }
+    }, 2000);
+}
