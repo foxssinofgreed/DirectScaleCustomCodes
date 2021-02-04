@@ -1,12 +1,17 @@
-<div class="card" id="Main-Banner-Body">
-    <label for="Main-Banner-Checkbox">
-        <input type="checkbox" id="Main-Banner-Checkbox"/>
-        <div class="Main-Banner-Flip" >
-            <div class="Main-Banner-Flip-Main">
-                <div class="Main-Banner-Flip-Front">
-                    <div id="wrappingCD"><span id="CountdownUntilSurprise"></span></div>
+<div class="card" id="Main-Banner-Body-CD">
+    <label for="Main-Banner-Checkbox-CD">
+        <input type="checkbox" id="Main-Banner-Checkbox-CD"/>
+        <div class="Main-Banner-Flip-CD" >
+            <div class="Main-Banner-Flip-Main-CD">
+                <div class="Main-Banner-Flip-Front-CD">
+                    <div class="wrappingCD">
+                        <div class="CD-Time-Block"><span class="CD-Time" id="CD-Day"></span><span class="CD-Title">Days</span></div>
+                        <div class="CD-Time-Block"><span class="CD-Time" id="CD-Hours"></span><span class="CD-Title">Hours</span></div>
+                        <div class="CD-Time-Block"><span class="CD-Time" id="CD-Minutes"></span><span class="CD-Title">Minutes</span></div>
+                        <div class="CD-Time-Block"><span class="CD-Time" id="CD-Seconds"></span><span class="CD-Title">Seconds</span></div>
+                    </div>
                 </div>
-                <div class="Main-Banner-Flip-Back">
+                <div class="Main-Banner-Flip-Back-CD">
                     <span></span>
                 </div>
             </div>
@@ -16,32 +21,37 @@
 
 <script>
     // Set the date we're counting down to
-    let countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
+    let countDownDate = new Date("Apr 1, 2021 00:00:00").getTime();
 
     // Update the count down every 1 second
     let CountDownBanner = setInterval(function() {
 
         // Get today's date and time
-        var now = new Date().getTime();
+        let now = new Date().getTime();
 
         // Find the distance between now and the count down date
-        var distance = countDownDate - now;
+        let distance = countDownDate - now;
 
         // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Display the result in the element with id="demo"
-        $('#CountdownUntilSurprise')[0].innerHTML = days + "Days " + hours + "Hrs "
-            + minutes + "Min " + seconds + "Secs ";
+        // Display the result in the element with id="demo"=
+
+        $('#CD-Day')[0].innerHTML = days;
+        $('#CD-Hours')[0].innerHTML = hours;
+        $('#CD-Minutes')[0].innerHTML = minutes;
+        $('#CD-Seconds')[0].innerHTML = seconds;
 
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(CountDownBanner);
-            $('#CountdownUntilSurprise')[0].innerHTML = '0' + "Days " + '0' + "Hrs "
-                + '0' + "Min " + '0' + "Secs ";
+            $('#CD-Day')[0].innerHTML = '0';
+            $('#CD-Hours')[0].innerHTML = '0';
+            $('#CD-Minutes')[0].innerHTML = '0';
+            $('#CD-Seconds')[0].innerHTML = '0';
         }
     }, 1000);
 </script>

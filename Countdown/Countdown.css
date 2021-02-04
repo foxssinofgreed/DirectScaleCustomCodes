@@ -1,16 +1,16 @@
 @media (max-width: 671px){
-    #Main-Banner-Body{
+    #Main-Banner-Body-CD{
         height: 177.75px !important;
     }
 }
-.Main-Banner-Flip {
+.Main-Banner-Flip-CD {
     background-color: transparent;
     width: 100%; /*652px;*/
     height: 100%;
     /* perspective: 1000px; */
     border-radius: 1.5em;
 }
-.Main-Banner-Flip-Main {
+.Main-Banner-Flip-Main-CD {
     position: relative;
     width: 100%;
     height: 100%;
@@ -21,44 +21,69 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 1.5em;
 }
-.Main-Banner-Flip-Front, .Main-Banner-Flip-Back {
+.Main-Banner-Flip-Front-CD, .Main-Banner-Flip-Back-CD {
     position: absolute;
     width: 100%;
-    height: 367px;
+    height: 177.75px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 1.5em;
 }
-.Main-Banner-Flip-Front {
+.Main-Banner-Flip-Front-CD {
     border-radius: 1.5em;
-    height: 367px;
+    height: 177.75px;
     background: url("https://az708413.vo.msecnd.net/bombshells/resources/69eff0e0-a08c-45ab-89e1-db14d21eafac/widget-%20bg.png");
+    box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
+    cursor: pointer;
 }
-.Main-Banner-Flip-Back {
+.Main-Banner-Flip-Back-CD {
     background-color: #FFD2CF;
-    color: white;
+    color: #ed91b5;
     border-radius: 1.5em;
     transform: rotateY(180deg);
-    height: 367px;
+    height: 177.75px;
     background: url("https://az708413.vo.msecnd.net/bombshells/resources/69eff0e0-a08c-45ab-89e1-db14d21eafac/widget-%20bg.png");
+    box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
+    cursor: pointer;
 }
-#Main-Banner-Checkbox:checked + .Main-Banner-Flip .Main-Banner-Flip-Main {
+#Main-Banner-Checkbox-CD:checked + .Main-Banner-Flip-CD .Main-Banner-Flip-Main-CD {
     transform: rotateY(180deg);
 }
-#Main-Banner-Checkbox {
+#Main-Banner-Checkbox-CD {
     display: none;
 }
-#Main-Banner-Body{
+#Main-Banner-Body-CD{
     background-color: transparent;
     box-shadow: none;
     z-index: 17;
-    height: 366.8px;
+    height: 177.75px;
 }
-#CountdownUntilSurprise{
-    font-size: 32px;
-    color: #ed91b5;
-    text-align: center;
-}
-#wrappingCD{
+.wrappingCD{
     width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 }
+.CD-Time{
+    font-size: 45px;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #ed91b5;
+}
+.CD-Title{
+    font-size: 25px;
+    color: #ed91b5;
+    text-shadow: 1px 1px #FFFFFF;
+}
+.CD-Time-Block{
+    width: 20%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*  title on phone 15px  */
+/*  Numbers 40px  */
