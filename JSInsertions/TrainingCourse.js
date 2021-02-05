@@ -24,7 +24,6 @@ if( document.readyState !== 'loading' ) {
             let TestVar = $(window).width();
             if(TestVar >= 700){
                 $('.content__circlesdetails .m-secondary-sidebar').css('max-width', '75vw');
-                console.log("-- Run Count --");
             }
             else{
                 $('.content__circlesdetails .m-secondary-sidebar').css('max-width', '100vw');
@@ -35,7 +34,7 @@ if( document.readyState !== 'loading' ) {
         let LinkCurrentPKPKPK = window.location.href;
         if(LinkCurrentPKPKPK === 'https://office2.businessbombshells.team/app.html#/TrainingCourses'){
             $('.actions').css('display', 'none');
-            $('.c-black .p-r-15 .ng-binding').css('color', '#FFFFFF');
+            $('.c-black .p-r-15 .ng-binding').css('color', '#FFFFFF !important');
             $('.c-black .p-r-15 .ng-binding').attr('style', '#ffffff !important');
         }
     }, 2000);
