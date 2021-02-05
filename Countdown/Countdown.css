@@ -17,7 +17,7 @@
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    transition-duration: 1s;
+    transition-duration: 1.5s;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 1.5em;
 }
@@ -32,17 +32,16 @@
 .Main-Banner-Flip-Front-CD {
     border-radius: 1.5em;
     height: 177.75px;
-    background: url("https://az708413.vo.msecnd.net/bombshells/resources/69eff0e0-a08c-45ab-89e1-db14d21eafac/widget-%20bg.png");
+    background: url("https://az708413.vo.msecnd.net/bombshells/resources/1b55b422-5025-4bf0-8f4c-61a45277d680/countdown.png");
     box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
     cursor: pointer;
 }
 .Main-Banner-Flip-Back-CD {
-    background-color: #FFD2CF;
     color: #ed91b5;
     border-radius: 1.5em;
     transform: rotateY(180deg);
     height: 177.75px;
-    background: url("https://az708413.vo.msecnd.net/bombshells/resources/69eff0e0-a08c-45ab-89e1-db14d21eafac/widget-%20bg.png");
+    background: url("https://az708413.vo.msecnd.net/bombshells/resources/bc7ce1ed-069c-4c63-8ea0-4317166eb131/countdown2.png");
     box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
     cursor: pointer;
 }
@@ -67,14 +66,14 @@
     flex-direction: row;
 }
 .CD-Time{
-    font-size: 45px;
+    font-size: 55px;
     color: #FFFFFF;
-    text-shadow: 2px 2px #ed91b5;
+    text-shadow: -0.0075em 0.0075em 0 #df84a8, 0.005em 0.005em 0 #df84a8, 0.01em 0.01em 0 #df84a8, 0.015em 0.015em #df84a8, 0.02em 0.02em 0 #df84a8, 0.025em 0.025em 0 #df84a8, 0.03em 0.03em 0 #df84a8, 0.035em 0.035em 0 #df84a8;
 }
 .CD-Title{
-    font-size: 25px;
-    color: #ed91b5;
-    text-shadow: 1px 1px #FFFFFF;
+    font-size: 35px;
+    color: #df84a8; /* #ed91b5 */
+    text-shadow: -0.0075em 0.0075em 0 #fff, 0.005em 0.005em 0 #fff, 0.01em 0.01em 0 #fff, 0.015em 0.015em #fff, 0.02em 0.02em 0 #fff, 0.025em 0.025em 0 #fff, 0.03em 0.03em 0 #fff, 0.035em 0.035em 0 #fff;
 }
 .CD-Time-Block{
     width: 20%;
@@ -84,6 +83,40 @@
     align-items: center;
     justify-content: center;
 }
+#CD-Back-Title{
+    font-size: 70px;
+    letter-spacing: 15px;
+    color: #FFFFFF;
+    text-shadow: -0.0075em 0.0075em 0 #df84a8, 0.005em 0.005em 0 #df84a8, 0.01em 0.01em 0 #df84a8, 0.015em 0.015em #df84a8, 0.02em 0.02em 0 #df84a8, 0.025em 0.025em 0 #df84a8, 0.03em 0.03em 0 #df84a8, 0.035em 0.035em 0 #df84a8;
+}
+.Main-Banner-Flip-Back-CD .wrappingCD{
+    justify-content:center;
+}
 
-/*  title on phone 15px  */
-/*  Numbers 40px  */
+@media (max-width: 650px) {
+    .CD-Title{
+        font-size: 15px;
+    }
+    .CD-Time{
+        font-size: 40px;
+    }
+    #CD-Back-Title{
+        font-size: 33px;
+        letter-spacing: 5px;
+    }
+}
+@media (min-width: 650px) and (max-width: 1099px){
+    .CD-Title{
+        font-size: 25px;
+    }
+    .CD-Time{
+        font-size: 45px;
+    }
+    #CD-Back-Title{
+        font-size: 60px;
+        letter-spacing: 14px;
+    }
+}
+@media (min-width: 1100px) {
+
+}

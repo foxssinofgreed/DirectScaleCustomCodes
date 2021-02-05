@@ -12,7 +12,9 @@
                     </div>
                 </div>
                 <div class="Main-Banner-Flip-Back-CD">
-                    <span></span>
+                    <div class="wrappingCD">
+                        <span id="CD-Back-Title">Coming Soon...</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -20,32 +22,26 @@
 </div>
 
 <script>
-    // Set the date we're counting down to
     let countDownDate = new Date("Apr 1, 2021 00:00:00").getTime();
+    let functionisUp = 2;
 
-    // Update the count down every 1 second
     let CountDownBanner = setInterval(function() {
-
-        // Get today's date and time
+        functionisUp--;
         let now = new Date().getTime();
 
-        // Find the distance between now and the count down date
         let distance = countDownDate - now;
 
-        // Time calculations for days, hours, minutes and seconds
         let days = Math.floor(distance / (1000 * 60 * 60 * 24));
         let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Display the result in the element with id="demo"=
 
         $('#CD-Day')[0].innerHTML = days;
         $('#CD-Hours')[0].innerHTML = hours;
         $('#CD-Minutes')[0].innerHTML = minutes;
         $('#CD-Seconds')[0].innerHTML = seconds;
 
-        // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(CountDownBanner);
             $('#CD-Day')[0].innerHTML = '0';
@@ -54,4 +50,38 @@
             $('#CD-Seconds')[0].innerHTML = '0';
         }
     }, 1000);
+    function CDopenUp(){
+        CDanimationCountUp('#CD-Day');
+        CDanimationCountUp('#CD-Hours');
+        CDanimationCountUp('#CD-Minutes');
+        CDanimationCountUp('#CD-Seconds');
+    }
+
+    const CDanimationDuration = 2000;
+    const CDframeDuration = 1000/60;
+    const CDtotalFrames = Math.round( CDanimationDuration / CDframeDuration);
+    const CDfadeOutFrames = CDfadeOutFramesT => CDfadeOutFramesT * (2 - CDfadeOutFramesT);
+
+    function CDanimationCountUp(element){
+        let frame = 0;
+        let el = $(element)[0].innerHTML; /*  '#.element'  */
+        const countTo = parseInt( el, 10 );
+        const counter = setInterval( () => {
+            frame++;
+            const progress = CDfadeOutFrames( frame / CDtotalFrames );
+
+            const currentCount = Math.round( countTo * progress );
+
+            if ( parseInt( el, 10 ) !== currentCount ) {
+                $(element)[0].innerHTML = currentCount;
+            }
+
+            if ( frame === CDtotalFrames ) {
+                clearInterval( counter );
+            }
+        }, CDframeDuration );
+    }
+    setTimeout(function (){
+        CDopenUp();
+    }, 1001);
 </script>
