@@ -171,7 +171,7 @@
 
                             <div ng-repeat="(key,value) in ctrl.CommissionCheckDetailsData.Details | orderBy : '-SortOrder' | groupBy:'PeriodInfo.Type'">
 
-                                <div class="card clearfix" ng-if="(key==='Adjustment')">
+                                <!--<div class="card clearfix" ng-if="(key==='Adjustment')">
                                     <div class="card-header ch-alt no-pad-header" style="background-color: #efefef;">
                                         <div>
                                             <div class="lv-title ng-binding">
@@ -209,7 +209,7 @@
                                             <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'A&dollar;':2"></span>
                                         </h5>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div ng-if="(key!=='Adjustment')">
                                     <div id="payHistoryCommissionMain{{key}}_{{periodValue.PeriodInfo.PeriodId}}" loader ng-repeat="periodValue in value" class="clearfix">
                                         <div class="ch-alt no-pad-header" style="background-color: #efefef;">
@@ -424,7 +424,7 @@
 
                             <div ng-repeat="(key,value) in ctrl.CommissionCheckDetailsData.Details | orderBy : '-SortOrder' | groupBy:'PeriodInfo.Type'">
 
-                                <div class="card clearfix" ng-if="(key==='Adjustment')">
+                                <!--<div class="card clearfix" ng-if="(key==='Adjustment')">
                                     <div class="card-header ch-alt no-pad-header" style="background-color: #efefef;">
                                         <div>
                                             <div class="lv-title ng-binding">
@@ -462,7 +462,7 @@
                                             <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'A&dollar;':2"></span>
                                         </h5>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div ng-if="(key!=='Adjustment')">
                                     <div id="payHistoryCommissionMain{{key}}_{{periodValue.PeriodInfo.PeriodId}}" loader ng-repeat="periodValue in value" class="clearfix">
                                         <div class="ch-alt no-pad-header" style="background-color: #efefef;">

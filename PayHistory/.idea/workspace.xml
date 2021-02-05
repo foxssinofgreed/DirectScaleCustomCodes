@@ -27,7 +27,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Update Countdown Widget">
-      <change beforePath="$PROJECT_DIR$/../JSInsertions/TrainingCourse.js" beforeDir="false" afterPath="$PROJECT_DIR$/../JSInsertions/TrainingCourse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaySlip.html" beforeDir="false" afterPath="$PROJECT_DIR$/PaySlip.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaySlipAU.html" beforeDir="false" afterPath="$PROJECT_DIR$/PaySlipAU.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaySlipEU.html" beforeDir="false" afterPath="$PROJECT_DIR$/PaySlipEU.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +159,8 @@
       <workItem from="1612242848200" duration="10532000" />
       <workItem from="1612337880358" duration="10110000" />
       <workItem from="1612415289959" duration="15723000" />
-      <workItem from="1612503378707" duration="22060000" />
+      <workItem from="1612503378707" duration="22106000" />
+      <workItem from="1612543251461" duration="2780000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -403,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612535985947</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Update Countdown Widget">
+      <created>1612536845907</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1612536845907</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -533,10 +544,10 @@
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1612535994068">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1612536849573">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1612535994068" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1612536849573" />
     <state x="773" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609630734233">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
