@@ -74,15 +74,18 @@
                 if (parseInt(result.Status, 10) === 0) {
                     $scope.SessionData.shippingAddressResult = result.Data.Addresses;
                     if ($scope.SessionData.shippingAddressResult.length > 0) {
-                        if($scope.SessionData.shippingAddressResult[0].MainCountry == 'AUS')
+                        if($scope.SessionData.shippingAddressResult[0].MainCountry === 'GB')
                         {
                             vm.exchageRate = 1;
                         }
 
                     }
                 }
+                console.log($scope.SessionData.shippingAddressResult[0].MainCountry);
             });
+            console.log('Hey I\'m here');
         };
+        /*$scope.GetShippingAddress();*/
 
         vm.IsLoading = true;
         $scope.ShowLoader = {};
