@@ -1,15 +1,15 @@
+<span id="customer-countryPayHistory" style="display:none">@User.AssociateAddressCountryCode</span>
 <div ng-controller="CustomPayHistoryController as ctrl">
     <div id="PayHistoryPage" >
         <div ng-if="!SessionData.MobileScreen">
             <headerpage id="header" class="bgm-color1"></headerpage>
-            <span id="customer-country" style="display:none">@User.AssociateAddressCountryCode</span>
             <div class="empty_state common_placeholder position-static" ng-if="!ctrl.IsLoading && (ctrl.CommissionChecks.length===0 || !ctrl.IsShowView)"
                  translate>payhistory_yet</div>
             <div class="empty_state common_placeholder position-static" ng-if="ctrl.IsLoading" translate>loading_commissions</div>
             <div class="p-page p-page--large m-secondary-sidebar clearfix" id="CommissionsPayHistory" ng-if="ctrl.CommissionChecks.length!=0">
                 <div class="sidebar-secondary overflow-hidden" ng-if="(!SessionData.MobileScreen && ctrl.CommissionChecks.length>0) || ctrl.IsShowView ">
                     <div class="commission-balance" ng-class="{'b-blue': ctrl.ShowAccountBalanceDetails === true}" ng-if="ctrl.ShowAccountBalance" ng-click="ctrl.getAccountBalanceDetails()">
-                        <span translate>account_balance</span>: <span>{{ctrl.AccountBalance * ctrl.exchangeRate | currency:"&pound;":2}}</span>
+                        <span translate>account_balance</span>: <span>{{ctrl.AccountBalance * ctrl.exchangeRate | currency: ctrl.CountryCode :2}}</span>
                     </div>
                     <div class="custom-dp">
                         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 p-0 custom-dp-header"
@@ -61,7 +61,7 @@
                                                 <a id="1" class="CommunityfontStyle c-black" ng-bind="CommissionCheck.DatePaid | date:SessionData.DateFormatType" ng-class="{'projected-text': ctrl.isProjected(CommissionCheck)}"></a>
                                             </div>
                                             <div class="Dateswitch m-t-5" ng-class="{'projected-text': ctrl.isProjected(CommissionCheck)}">
-                                                <span ng-bind="CommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                                <span ng-bind="CommissionCheck.AmountPaid * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                                             </div>
                                             <span ng-repeat="paymentType in CommissionCheck.PaymentTypes track by $index" class="badge pull-left m-t-5 m-r-5" ng-class="{'projected-badge': paymentType === 'Projected'}" translate="">{{paymentType | translate}}</span>
                                         </div>
@@ -117,7 +117,7 @@
                             </div>
                             <div class="col-sm-4 col-xs-4 p-t-5">
                                 <div class="pull-right f-700">
-                                    <span class="amount m-l-0" ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                    <span class="amount m-l-0" ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                                     <tr class="bgm-white" ng-repeat="(key,value) in value | orderBy:SortColumnName">
                                         <td ng-repeat="adjustmentFilterBonus in (GetCommissionReportSettingsResponse.Node | filter: {BonusName: 'Adjustment',CommissionType:'1'})[0].Columns" translate>
                                             <div ng-if="(adjustmentFilterBonus.Name==='AmountPaid' || adjustmentFilterBonus.Name==='AmountEarned' || adjustmentFilterBonus.Name==='Fees' || adjustmentFilterBonus.Name ==='Holding')">
-                                                <span ng-bind="value[adjustmentFilterBonus.Name] * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                                <span ng-bind="value[adjustmentFilterBonus.Name] * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                                             </div>
                                             <span ng-bind="(value[adjustmentFilterBonus.Name] | translate)" translate ng-if="(adjustmentFilterBonus.Name!=='AmountPaid' && adjustmentFilterBonus.Name!=='AmountEarned' && adjustmentFilterBonus.Name!=='Fees' && adjustmentFilterBonus.Name !=='Holding')">
                                             </span>
@@ -180,7 +180,7 @@
                             <div class="col-md-12 col-sm-12 col-xs-12 b-b p-t-10 p-b-10 p-l-0 p-r-0 b-t">
                                 <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
                                     <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
-                                    <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                    <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                                 </h5>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                                                       data-parent="#accordion" data-target="#A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}"
                                                       ng-click="Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=!Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId];(Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]?clearpreviousData(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId):Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=false)"
                                                       ng-model="Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId]">
-                                                <span ng-bind="parent.Amount?parent.Amount * ctrl.exchangeRate:'0' | currency:'&pound;':2"></span>
+                                                <span ng-bind="parent.Amount?parent.Amount * ctrl.exchangeRate:'0' | currency: ctrl.CountryCode :2"></span>
                                             </span>
                                                 <div class="col-md-12 col-sm-12 col-xs-12 b-b p-l-0 p-r-0 b-t  table-responsive collapse" id="A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}" ng-class="Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId]?'':'collapse'"
                                                      style="overflow-y:scroll;max-height:300px;" when-scroll-element="ctrl.FnCommissionBonuseDetails(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId);"
@@ -271,7 +271,7 @@
                                     <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
                                         <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
                                         <span class="p-r-0 text-right p-l-30">
-                                        <span ng-bind="periodValue.AmountEarned * ctrl.exchangeRate  | currency:'&pound;':2"></span>
+                                        <span ng-bind="periodValue.AmountEarned * ctrl.exchangeRate  | currency: ctrl.CountryCode :2"></span>
                                     </span>
                                     </h5>
                                 </div>
@@ -282,7 +282,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12 p-t-10 p-b-10 p-l-0 p-r-0">
                         <div class="pull-right p-r-15 f-s-24 f-500">
                             <span translate>payhistory_net_total</span>
-                            <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                            <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                         </div>
                     </div>
                 </div>
@@ -326,7 +326,7 @@
                             <span translate>account_balance</span>
                         </div>
                         <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0">
-                            <span translate>{{ctrl.AccountBalance * ctrl.exchangeRate | currency:'&pound;':2}}</span>
+                            <span translate>{{ctrl.AccountBalance * ctrl.exchangeRate | currency: ctrl.CountryCode :2}}</span>
                         </div>
                     </div>
                     <div>
@@ -342,7 +342,7 @@
                             <tr class="bgm-white" ng-repeat="item in ctrl.AccountBalanceDetails.Data.BalanceDetails">
                                 <td>{{item.Description}}</td>
                                 <td>{{item.Status}}</td>
-                                <td>{{item.Total * ctrl.exchangeRate | currency:'&pound;':2}}</td>
+                                <td>{{item.Total * ctrl.exchangeRate | currency: ctrl.CountryCode :2}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -422,7 +422,7 @@
                     <div class="col-sm-12 col-xs-12 p-0 m-0 p-t-10">
                         <div class="col-sm-6 col-xs-6 p-t-5 p-r-0 pull-right">
                             <div class="pull-right f-700">
-                                <span class="amount m-l-0" ng-bind="ctrl.SelectedCommissionCheck.AmountPaid | currency:'&pound;':2"></span>
+                                <span class="amount m-l-0" ng-bind="ctrl.SelectedCommissionCheck.AmountPaid | currency: ctrl.CountryCode :2"></span>
                             </div>
                         </div>
                     </div>
@@ -442,7 +442,7 @@
                 <div class="col-sm-12 col-xs-12  p-l-0 p-r-0" id="CommissionsPageMobile">
                     <div class="col-sm-12 col-xs-12 p-l-0 p-r-0" ng-if="ctrl.ShowPeriodMobile">
                         <div class="account-balance" ng-class="{'b-blue': ctrl.ShowAccountBalanceDetails === true}" ng-if="ctrl.ShowAccountBalance" ng-click="ctrl.GetAccountBalanceMobile()">
-                            <span translate>account_balance</span>: <span>{{ctrl.AccountBalance * ctrl.exchangeRate | currency:'&pound;':2}}</span>
+                            <span translate>account_balance</span>: <span>{{ctrl.AccountBalance * ctrl.exchangeRate | currency: ctrl.CountryCode :2}}</span>
                         </div>
                         <div class="custom-dp custom-filter" ng-if="ctrl.CommissionChecks.length > 0">
                             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 p-0 custom-dp-header" ng-class="ctrl.IsShowOptions?'':'bgm-color3'" ng-click="ctrl.IsShowOptions = !ctrl.IsShowOptions">
@@ -494,7 +494,7 @@
                                                         <a id="1" class="CommunityfontStyle" ng-bind="commissioncheck.DatePaid | date:SessionData.DateFormatType" translate></a>
                                                     </div>
                                                     <div class="Dateswitch col-sm-4 col-xs-4">
-                                                        <span ng-bind="commissioncheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                                        <span ng-bind="commissioncheck.AmountPaid * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                                                     </div>
                                                     <br>
 
@@ -538,7 +538,7 @@
                                         <tr class="bgm-white" ng-repeat="(key,value) in value | orderBy:SortColumnName">
                                             <td ng-repeat="adjustmentFilterBonus in (GetCommissionReportSettingsResponse.Node | filter: {BonusName: 'Adjustment',CommissionType:'1'})[0].Columns">
                                                 <span ng-if="(adjustmentFilterBonus.Name==='AmountPaid' || adjustmentFilterBonus.Name==='AmountEarned' ||   adjustmentFilterBonus.Name==='Fees' || adjustmentFilterBonus.Name ==='Holding')">
-                                                    <span ng-bind="value[adjustmentFilterBonus.Name] * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                                    <span ng-bind="value[adjustmentFilterBonus.Name] * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                                                 </span>
                                                 <span ng-bind="(value[adjustmentFilterBonus.Name] | translate)" translate ng-if="(adjustmentFilterBonus.Name!=='AmountPaid' && adjustmentFilterBonus.Name!=='AmountEarned' && adjustmentFilterBonus.Name!=='Fees' && adjustmentFilterBonus.Name !=='Holding')">
                                                 </span>
@@ -551,7 +551,7 @@
                                     <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
                                         <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
                                         <span class="p-r-0 text-right p-l-30">
-                                        <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                        <span ng-bind="AdjustmentAmountEarned * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                                     </span>
                                     </h5>
                                 </div>
@@ -589,7 +589,7 @@
                                                           data-parent="#accordion" data-target="#A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}"
                                                           ng-click="Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=!Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId];(Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]?clearpreviousData(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId):Active[key+periodValue.PeriodInfo.PeriodId+Bonuse.BonusId]=false)"
                                                           ng-model="Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId]">
-                                                    <span ng-bind="parent.Amount * ctrl.exchangeRate?parent.Amount * ctrl.exchangeRate :'0'  | currency:'&pound;':2"></span>
+                                                    <span ng-bind="parent.Amount * ctrl.exchangeRate?parent.Amount * ctrl.exchangeRate :'0'  | currency: ctrl.CountryCode :2"></span>
                                                 </span>
                                                     <div class="col-md-12 col-sm-12 col-xs-12 b-b p-l-0 p-r-0 b-t  table-responsive collapse" id="A{{Bonuse.BonusId}}{{periodValue.PeriodInfo.PeriodId}}" ng-class="Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId]?'':'collapse'"
                                                          style="overflow-y:scroll;max-height:300px;" when-scroll-element="ctrl.FnCommissionBonuseDetails(Bonuse.BonusId,Accord[Bonuse.BonusId+periodValue.PeriodInfo.PeriodId],parent.DetailCount,parent.BonusDescription,key,parent.PeriodId);"
@@ -638,7 +638,7 @@
                                         <h5 class="col-md-12 col-sm-12 col-xs-12 col-lg-12  f-s-16 f-500 total-color text-right ">
                                             <span translate="{{key}}_payhistory_subtotal" translate-default="{{key=='null'?'':key}} Subtotal:"></span>
                                             <span class="p-r-0 text-right p-l-30">
-                                            <span ng-bind="periodValue.AmountEarned * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                            <span ng-bind="periodValue.AmountEarned * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                                         </span>
 
                                         </h5>
@@ -649,7 +649,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 p-t-10 p-b-10 p-l-0 p-r-0">
                             <div class="pull-right p-r-15 f-s-20 f-500">
                                 <span translate>payhistory_net_total</span>
-                                <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency:'&pound;':2"></span>
+                                <span ng-bind="ctrl.SelectedCommissionCheck.AmountPaid * ctrl.exchangeRate | currency: ctrl.CountryCode :2"></span>
                             </div>
                         </div>
                     </div>

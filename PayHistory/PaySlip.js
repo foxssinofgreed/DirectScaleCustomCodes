@@ -66,8 +66,16 @@
             vm.AccountBalanceDetails = null;
             vm.AccountBalance = 0;
             vm.exchangeRate = 1;
+            vm.CountryCode = '£';
+            $scope.RegistrationNumberTitle = ' ';
+            $scope.RegistrationNumber = ' ';
+            $scope.CompanyNumberTitle = ' ';
+            $scope.CompanyNumber = ' ';
+            $scope.AddressStreet = ' ';
+            $scope.AddressRegion = ' ';
+            $scope.AddressPostal = ' ';
 
-            $scope.GetShippingAddress = function() {
+            /*$scope.GetShippingAddress = function() {
                 var getShippingAddressRequest = 'api/CustomerShippingAddress';
                 $RestService.CustomerShippingAddress(getShippingAddressRequest).then(function(result) {
                     result = result.data;
@@ -82,7 +90,45 @@
                         }
                     }
                 });
-            };
+            };*/
+            $scope.CountryCurrency = function (){
+                var CountryCode = $('#customer-countryPaySlip')[0].innerHTML;
+
+                if (CountryCode === 'GB'){
+                    vm.exchangeRate = 1;
+                    vm.CountryCode = '£';
+                    $scope.RegistrationNumberTitle = 'COMPANY REGISTRATION NUMBER';
+                    $scope.RegistrationNumber = '12596237';
+                    $scope.CompanyNumberTitle = 'COMPANY VAT NUMBER';
+                    $scope.CompanyNumber = '364930089';
+                    $scope.AddressStreet = '85 Great Portland Street,';
+                    $scope.AddressRegion = 'London, England';
+                    $scope.AddressPostal = 'W1W 7LT';
+                }
+                else if (CountryCode === 'AU'){
+                    vm.exchangeRate = 2;
+                    vm.CountryCode = 'A$';
+                    $scope.RegistrationNumberTitle = 'AUSTRALIAN BUSINESS NUMBER';
+                    $scope.RegistrationNumber = '89 643 274 695';
+                    $scope.CompanyNumberTitle = '';
+                    $scope.CompanyNumber = '';
+                    $scope.AddressStreet = '18a Walter Street,';
+                    $scope.AddressRegion = 'Sans Souci, NSW,';
+                    $scope.AddressPostal = 'Australia, 2219';
+                }
+                else{
+                    vm.exchangeRate = 1.2;
+                    vm.CountryCode = '€';
+                    $scope.RegistrationNumberTitle = 'COMPANY REGISTRATION NUMBER';
+                    $scope.RegistrationNumber = '12596237';
+                    $scope.CompanyNumberTitle = 'COMPANY VAT NUMBER';
+                    $scope.CompanyNumber = '364930089';
+                    $scope.AddressStreet = '85 Great Portland Street,';
+                    $scope.AddressRegion = 'London, England';
+                    $scope.AddressPostal = 'W1W 7LT';
+                }
+            }
+            $scope.CountryCurrency();
 
             vm.ExportToPDF = ExportToPDF;
 
@@ -683,12 +729,12 @@
                 if (id === 4) {
                     setvalue = value + '%';
                 } else if (id === 15) {
-                    setvalue = $filter('currency')(value * vm.exchangeRate, '£', 2);
+                    setvalue = $filter('currency')(value * vm.exchangeRate, vm.CountryCode, 2);
                 } else if (id === 2) {
                     setvalue = value;
                 } else {
                     //setvalue = value;
-                    setvalue = $filter('currency')(value * vm.exchangeRate, '£', 2);
+                    setvalue = $filter('currency')(value * vm.exchangeRate, vm.CountryCode, 2);
                 }
                 return setvalue;
             };

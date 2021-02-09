@@ -66,8 +66,9 @@
         vm.AccountBalanceDetails = null;
         vm.AccountBalance = 0;
         vm.exchangeRate = 1;
+        vm.CountryCode = '£';
 
-        $scope.GetShippingAddress = function() {
+        /*$scope.GetShippingAddress = function() {
             var getShippingAddressRequest = 'api/CustomerShippingAddress';
             $RestService.CustomerShippingAddress(getShippingAddressRequest).then(function(result) {
                 result = result.data;
@@ -83,9 +84,26 @@
                 }
                 console.log($scope.SessionData.shippingAddressResult[0].MainCountry);
             });
-            console.log('Hey I\'m here');
-        };
+        };*/
         /*$scope.GetShippingAddress();*/
+
+        $scope.CountryCurrency = function (){
+            var CountryCode = $('#customer-countryPayHistory')[0].innerHTML;
+
+            if (CountryCode === 'GB'){
+                vm.exchangeRate = 1;
+                vm.CountryCode = '£';
+            }
+            else if (CountryCode === 'AU'){
+                vm.exchangeRate = 2;
+                vm.CountryCode = 'A$';
+            }
+            else{
+                vm.exchangeRate = 1.2;
+                vm.CountryCode = '€';
+            }
+        }
+        $scope.CountryCurrency();
 
         vm.IsLoading = true;
         $scope.ShowLoader = {};
@@ -661,12 +679,12 @@
             if (id === 4) {
                 setvalue = value + '%';
             } else if (id === 15) {
-                setvalue = $filter('currency')(value * vm.exchangeRate, '£', 2);
+                setvalue = $filter('currency')(value * vm.exchangeRate, vm.CountryCode, 2);
             } else if (id === 2) {
                 setvalue = value;
             } else {
                 //setvalue = value;
-                setvalue = $filter('currency')(value * vm.exchangeRate, '£', 2);
+                setvalue = $filter('currency')(value * vm.exchangeRate, vm.CountryCode, 2);
             }
             return setvalue;
         };
