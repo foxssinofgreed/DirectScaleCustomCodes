@@ -1,0 +1,27 @@
+<div class="card minheight">
+    <div id="ValentinesDayBanner" class="card-body">
+        <button onclick="GoToLink('#ValentinesDayLink');">Shop Now</button>
+    </div>
+</div>
+<div style="display: none;">
+    <p id="ValentinesDayLink"></p>
+    <span id="ValentinesDayUsername">@User.AssociateUserName</span>
+    <span id="AssociateAssociateCountryValentinesDay">@User.AssociateAddressCountryCode</span>
+</div>
+<script>
+    $(document).ready(function () {
+        let VDusername = $('#ValentinesDayUsername')[0].innerHTML;
+        let CountryVD = $('#AssociateAssociateCountryValentinesDay')[0].innerHTML;
+        if (CountryVD === 'AU'){
+            $('#ValentinesDayLink')[0].innerHTML = 'https://au.businessbombshells.shop/products/2-bundle-offer?ref=' + VDusername;
+        }
+        else {
+            $('#ValentinesDayLink')[0].innerHTML = 'https://businessbombshells.shop/products/2-bundle-offer?ref=' + VDusername;
+        }
+    });
+    function GoToLink(element){
+        let LinkHere = $(element)[0].innerHTML;
+        let NewWindow = window.open(LinkHere, '_blank');
+        NewWindow.focus();
+    }
+</script>
