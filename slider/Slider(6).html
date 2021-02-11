@@ -1,4 +1,5 @@
 <div class="card" id="cardu">
+    <span class="kpiDisplay" id="UsernameSlider">@User.AssociateUserName</span>
     <div class="card-header" id="hederu"><p>Product Links</p></div>
     <div class="wrapper">
         <input checked type=radio name="slider" id="slide1" />
@@ -11,48 +12,48 @@
         <div class="slider-wrapper">
             <div class="inneruo">
                 <article>
-                    <div class="infoou" data-toggle="tooltip" data-placement="top" onclick="copyLink1()" title="Copy">
-                        <textarea id="copyLink1" spellcheck="false" readonly>https://businessbombshells.shop/products/beauty-bundle?ref=@User.AssociateUserName</textarea>
-                        <button>Copy</button>
+                    <div class="infoou" onclick="DefaultcopyLink('copyLink1'); ChangeCopySlider('#DefaultSliderButton1');" title="Copy">
+                        <textarea id="copyLink1" spellcheck="false" readonly></textarea>
+                        <button id="DefaultSliderButton1">Copy</button>
                     </div>
                     <img src="https://az708413.vo.msecnd.net/bombshells/resources/37a8db92-de3a-488c-870e-83fd222f02ba/beauty-bundle.jpg" />
                 </article>
                 <article>
-                    <div class="infoou" data-toggle="tooltip" data-placement="top" onclick="copyLink2()" title="Copy">
-                        <textarea id="copyLink2" spellcheck="false" readonly>https://businessbombshells.shop/products/am-serum?ref=@User.AssociateUserName</textarea>
-                        <button>Copy</button>
+                    <div class="infoou" onclick="DefaultcopyLink('copyLink2'); ChangeCopySlider('#DefaultSliderButton2');" title="Copy">
+                        <textarea id="copyLink2" spellcheck="false" readonly></textarea>
+                        <button id="DefaultSliderButton2">Copy</button>
                     </div>
                     <img src="https://az708413.vo.msecnd.net/bombshells/resources/535ac28b-eaf9-42df-9596-dcc4de4ac7cd/Am-Serum.jpg" />
                 </article>
 
                 <article>
-                    <div class="infoou" data-toggle="tooltip" data-placement="top" onclick="copyLink3()" title="Copy">
-                        <textarea id="copyLink3" spellcheck="false" readonly>https://businessbombshells.shop/products/micellar-water?ref=@User.AssociateUserName</textarea>
-                        <button>Copy</button>
+                    <div class="infoou" onclick="DefaultcopyLink('copyLink3'); ChangeCopySlider('#DefaultSliderButton3');" title="Copy">
+                        <textarea id="copyLink3" spellcheck="false" readonly></textarea>
+                        <button id="DefaultSliderButton3">Copy</button>
                     </div>
                     <img src="https://az708413.vo.msecnd.net/bombshells/resources/9630b601-4589-4ca8-b010-45cbf7f67f2c/micellar.jpg" />
                 </article>
 
                 <article>
-                    <div class="infoou" data-toggle="tooltip" data-placement="top" onclick="copyLink4()" title="Copy">
-                        <textarea id="copyLink4" spellcheck="false" readonly>https://businessbombshells.shop/products/hydrating-mist?ref=@User.AssociateUserName</textarea>
-                        <button>Copy</button>
+                    <div class="infoou" onclick="DefaultcopyLink('copyLink4'); ChangeCopySlider('#DefaultSliderButton4');" title="Copy">
+                        <textarea id="copyLink4" spellcheck="false" readonly></textarea>
+                        <button id="DefaultSliderButton4">Copy</button>
                     </div>
                     <img src="https://az708413.vo.msecnd.net/bombshells/resources/bd48c541-d051-40fc-830a-9f6bd248eca5/mist.jpg" />
                 </article>
 
                 <article>
-                    <div class="infoou" data-toggle="tooltip" data-placement="top" onclick="copyLink5()" title="Copy">
-                        <textarea id="copyLink5" spellcheck="false" readonly>https://businessbombshells.shop/products/pink-facemask?ref=@User.AssociateUserName</textarea>
-                        <button>Copy</button>
+                    <div class="infoou" onclick="DefaultcopyLink('copyLink5'); ChangeCopySlider('#DefaultSliderButton5');" title="Copy">
+                        <textarea id="copyLink5" spellcheck="false" readonly></textarea>
+                        <button id="DefaultSliderButton5">Copy</button>
                     </div>
                     <img src="https://az708413.vo.msecnd.net/bombshells/resources/d9674077-af68-4a41-818d-072c2b6bdf41/Facemask.jpg" />
                 </article>
 
                 <article>
-                    <div class="infoou" data-toggle="tooltip" data-placement="top" onclick="copyLink6()" title="Copy">
-                        <textarea id="copyLink6" spellcheck="false" readonly>https://businessbombshells.shop/products/pm-oil?ref=@User.AssociateUserName</textarea>
-                        <button>Copy</button>
+                    <div class="infoou" onclick="DefaultcopyLink('copyLink6'); ChangeCopySlider('#DefaultSliderButton6');" title="Copy">
+                        <textarea id="copyLink6" spellcheck="false" readonly></textarea>
+                        <button id="DefaultSliderButton6">Copy</button>
                     </div>
                     <img src="https://az708413.vo.msecnd.net/bombshells/resources/092d67d5-c75e-47ae-9bdc-7a5a875d4384/PM-oil.jpg" />
                 </article>
@@ -72,125 +73,47 @@
     </div>
 </div>
 <script>
-    $('#copyLink1').attr('title', 'Copy').tooltip('fixTitle');
-    $('#copyLink2').attr('title', 'Copy').tooltip('fixTitle');
-    $('#copyLink3').attr('title', 'Copy').tooltip('fixTitle');
-    $('#copyLink4').attr('title', 'Copy').tooltip('fixTitle');
-    $('#copyLink5').attr('title', 'Copy').tooltip('fixTitle');
-    $('#copyLink6').attr('title', 'Copy').tooltip('fixTitle');
-
-    function copyLink1() {
-
-        var copyText = document.getElementById("copyLink1");
-
+    RegionalLink();
+    function DefaultcopyLink(element) {
+        var copyText = document.getElementById(element);
         copyText.select();
-
         document.execCommand("copy");
-
-        $('#copyLink1').attr('title', 'Copied')
-            .tooltip('fixTitle')
-            .tooltip('show');
-        $('#copyLink1').tooltip();
-        $('#copyLink2').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink3').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink4').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink5').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink6').attr('title', 'Copy').tooltip('fixTitle');
         document.getSelection().removeAllRanges();
     }
-    function copyLink2() {
+    function RegionalLink(){
+        let CountryCode = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+        let Username = $('#UsernameSlider')[0].innerHTML;
+        let AULink = 'https://au.businessbombshells.shop/products/';
+        let UKLink = 'https://businessbombshells.shop/products/';
+        let ProductTwoBundle = '2-bundle-offer?ref=';
+        let ProductBundle = 'beauty-bundle?ref=';
+        let ProductAM = 'am-serum?ref=';
+        let ProductMicellar = 'micellar-water?ref=';
+        let ProductMist = 'hydrating-mist?ref=';
+        let ProductFacemask = 'pink-facemask?ref=';
+        let ProductPM = 'pm-oil?ref=';
 
-        var copyText = document.getElementById("copyLink2");
-
-        copyText.select();
-
-        document.execCommand("copy");
-
-        $('#copyLink2').attr('title', 'Copied')
-            .tooltip('fixTitle')
-            .tooltip('show');
-        $('#copyLink2').tooltip();
-        $('#copyLink1').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink3').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink4').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink5').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink6').attr('title', 'Copy').tooltip('fixTitle');
-        document.getSelection().removeAllRanges();
+        if (CountryCode === 'AU'){
+            $('#copyLink1')[0].innerHTML = AULink + ProductBundle + Username;
+            $('#copyLink2')[0].innerHTML = AULink + ProductAM + Username;
+            $('#copyLink3')[0].innerHTML = AULink + ProductMicellar + Username;
+            $('#copyLink4')[0].innerHTML = AULink + ProductMist + Username;
+            $('#copyLink5')[0].innerHTML = AULink + ProductFacemask + Username;
+            $('#copyLink6')[0].innerHTML = AULink + ProductPM + Username;
+        }
+        else{
+            $('#copyLink1')[0].innerHTML = UKLink + ProductBundle + Username;
+            $('#copyLink2')[0].innerHTML = UKLink + ProductAM + Username;
+            $('#copyLink3')[0].innerHTML = UKLink + ProductMicellar + Username;
+            $('#copyLink4')[0].innerHTML = UKLink + ProductMist + Username;
+            $('#copyLink5')[0].innerHTML = UKLink + ProductFacemask + Username;
+            $('#copyLink6')[0].innerHTML = UKLink + ProductPM + Username;
+        }
     }
-    function copyLink3() {
-
-        var copyText = document.getElementById("copyLink3");
-
-        copyText.select();
-
-        document.execCommand("copy");
-
-        $('#copyLink3').attr('title', 'Copied')
-            .tooltip('fixTitle')
-            .tooltip('show');
-        $('#copyLink3').tooltip();
-        $('#copyLink2').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink1').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink4').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink5').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink6').attr('title', 'Copy').tooltip('fixTitle');
-        document.getSelection().removeAllRanges();
-    }
-    function copyLink4() {
-
-        var copyText = document.getElementById("copyLink4");
-
-        copyText.select();
-
-        document.execCommand("copy");
-
-        $('#copyLink4').attr('title', 'Copied')
-            .tooltip('fixTitle')
-            .tooltip('show');
-        $('#copyLink4').tooltip();
-        $('#copyLink2').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink3').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink1').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink5').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink6').attr('title', 'Copy').tooltip('fixTitle');
-        document.getSelection().removeAllRanges();
-    }
-    function copyLink5() {
-
-        var copyText = document.getElementById("copyLink5");
-
-        copyText.select();
-
-        document.execCommand("copy");
-
-        $('#copyLink5').attr('title', 'Copied')
-            .tooltip('fixTitle')
-            .tooltip('show');
-        $('#copyLink5').tooltip();
-        $('#copyLink2').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink3').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink4').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink1').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink6').attr('title', 'Copy').tooltip('fixTitle');
-        document.getSelection().removeAllRanges();
-    }
-    function copyLink6() {
-
-        var copyText = document.getElementById("copyLink6");
-
-        copyText.select();
-
-        document.execCommand("copy");
-
-        $('#copyLink6').attr('title', 'Copied')
-            .tooltip('fixTitle')
-            .tooltip('show');
-        $('#copyLink6').tooltip();
-        $('#copyLink2').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink3').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink4').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink5').attr('title', 'Copy').tooltip('fixTitle');
-        $('#copyLink1').attr('title', 'Copy').tooltip('fixTitle');
-        document.getSelection().removeAllRanges();
+    function ChangeCopySlider(element){
+        $(element)[0].innerHTML = 'Copied';
+        setTimeout(function (){
+            $(element)[0].innerHTML = 'Copy';
+        }, 2000)
     }
 </script>
