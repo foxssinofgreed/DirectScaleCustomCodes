@@ -1,3 +1,21 @@
+<!-- Facebook Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3561403023924769');
+    fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=3561403023924769&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
 
 <!--
  **********************IMPORTANT*******************************
@@ -209,9 +227,19 @@ Please replace ng-controller value with your new controller name
                                             >
                                                 <option value="" >Select Country</option>
                                                 <option value="AU" >Australia</option>
+                                                <option value="AT">Austria</option>
                                                 <option value="BE">Belgium</option>
+                                                <option value="FR">France</option>
+                                                <option value="DE">Germany</option>
+                                                <option value="IE">Ireland</option>
+                                                <option value="IT">Italy</option>
+                                                <option value="LU" >Luxembourg</option>
                                                 <option value="NL">Netherlands</option>
-                                                <option value="GB" >United Kingdom</option>
+                                                <option value="PT">Portugal</option>
+                                                <option value="SK">Slovakia</option>
+                                                <option value="SI">Slovenia</option>
+                                                <option value="ES">Spain</option>
+                                                <option value="GB">United Kingdom</option>
                                             </select>
                                         </div>
                                     </div>
@@ -241,12 +269,19 @@ Please replace ng-controller value with your new controller name
                                         </div>
                                     </div>
                                     <div class="control-group ds-row__item">
-                                        <div class="ds-validate" ds-field="userService.mailingAddress.ZipCode">
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.ZipCode" ng-if="userService.mailingAddress.Country != 'GB'">
                                             <input type="text" ng-model="userService.mailingAddress.ZipCode"
                                                    ng-change="differentShippingAddress(true);UpdateSteps(1)"
                                                    regexcountry="{{userService.mailingAddress.Country}}"
-                                                   regxvalidzip="true" noempty="true" validate Step2="true"
+                                                   regxvalidzip="false" noempty="true" validate Step2="true"
 
+                                                   focusout="getShippingTypes(false, true, userService.mailingAddress.ZipCode);">
+                                            <label translate="zip_postcode"></label>
+                                        </div>
+                                        <div class="ds-validate" ds-field="userService.mailingAddress.ZipCode" ng-if="userService.mailingAddress.Country == 'GB'">
+                                            <input type="text" ng-model="userService.mailingAddress.ZipCode"
+                                                   ng-change="differentShippingAddress(true);UpdateSteps(1)"
+                                                   noempty="true"  Step2="true"
                                                    focusout="getShippingTypes(false, true, userService.mailingAddress.ZipCode);">
                                             <label translate="zip_postcode"></label>
                                         </div>
@@ -612,8 +647,11 @@ Please replace ng-controller value with your new controller name
                                         <input type="checkbox" id="application1" ng-modal="isTermsChecked" value="option2" Step5="true"
                                                checkbox-validate="true" validate
                                                ng-click="ClearApplication($event);checkTerms();">
-                                        <span
-                                                translate="by_checkmark_this_box_iam_giving_the_company_permission_type_{{userService.customerTypeID}}"></span>
+                                        <!--<span
+                                            translate="by_checkmark_this_box_iam_giving_the_company_permission_type_{{userService.customerTypeID}}"></span>-->
+                                        <span>I acknowledge that I have read and agree to be bound to the terms included in the agreement.</span>
+                                        <!--<span translate="I acknowledge that I have read and agree to be bound to the terms included in the agreement."></span>-->
+
                                         <i class="ds-checkbox__button zmdi zmdi-check"></i>
                                     </label>
                                 </div>
@@ -624,7 +662,7 @@ Please replace ng-controller value with your new controller name
 
                         <button class="md-primary md-raised md-button md-ink-ripple pull-left bgm-color2"
                                 type="button" validate trigger-checksection="true" sectiontype="Step5"
-                                ng-click="submitCustomApplication()" translate="continue"></button>
+                                ng-click="submitCustomApplication()" >Sign Up</button><!--translate="continue"-->
                     </div>
                 </ul>
 
@@ -724,8 +762,8 @@ Please replace ng-controller value with your new controller name
                                                                                     ng-class="{ 'disabled': cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') ||
                                                                  cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])}"
                                                                                     ng-attr-uib-tooltip="{{(cartsService.isAddToCartDisabled(item,itemType === 'autoship')
-                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship')) 
-                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true) 
+                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship'))
+                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true)
                                                                  && cartsService.addToCartDisabledQTYTooltip(item,itemType === 'autoship')) || undefined}}"
                                                                                     ng-click="increaseQuantiy(item,false,true); $event.stopPropagation();">
                                                                                 <span class="zmdi zmdi-plus"></span>
@@ -784,8 +822,8 @@ Please replace ng-controller value with your new controller name
                                                                                     ng-class="{ 'disabled': cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') ||
                                                                  cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])}"
                                                                                     ng-attr-uib-tooltip="{{(cartsService.isAddToCartDisabled(item,itemType === 'autoship')
-                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship')) 
-                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true) 
+                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship'))
+                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true)
                                                                  && cartsService.addToCartDisabledQTYTooltip(item,itemType === 'autoship')) || undefined}}"
                                                                                     ng-click="increaseQuantiy(item,false,false); $event.stopPropagation();">
                                                                                 <span class="zmdi zmdi-plus"></span>
@@ -917,8 +955,8 @@ Please replace ng-controller value with your new controller name
                                                                                     ng-class="{ 'disabled': cartsService.isIncreaseQuantityDisabled(item,itemType === 'autoship') ||
                                                                  cartsService.isIncreaseQuantityDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode])}"
                                                                                     ng-attr-uib-tooltip="{{(cartsService.isAddToCartDisabled(item,itemType === 'autoship')
-                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship')) 
-                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true) 
+                                                                 && cartsService.addToCartDisabledTooltip(item,itemType === 'autoship'))
+                                                                 || (cartsService.isAddToCartDisabledQTY(item,itemType === 'autoship',getQuantityModel()[item.ItemCode], true)
                                                                  && cartsService.addToCartDisabledQTYTooltip(item,itemType === 'autoship')) || undefined}}"
                                                                                     ng-click="increaseQuantiy(item,true,false);$event.stopPropagation();">
                                                                                 <span class="zmdi zmdi-plus"></span>

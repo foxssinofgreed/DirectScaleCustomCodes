@@ -26,13 +26,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Valentine's Day Update">
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Slider (6) and (7) Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TotalEnrolledPPL/TotalEnrollment.css" beforeDir="false" afterPath="$PROJECT_DIR$/../TotalEnrolledPPL/TotalEnrollment.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../slider/Slider(6).css" beforeDir="false" afterPath="$PROJECT_DIR$/../slider/Slider(6).css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../slider/Slider(6).html" beforeDir="false" afterPath="$PROJECT_DIR$/../slider/Slider(6).html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../slider/Slider(7).css" beforeDir="false" afterPath="$PROJECT_DIR$/../slider/Slider(7).css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../slider/Slider(7).html" beforeDir="false" afterPath="$PROJECT_DIR$/../slider/Slider(7).html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SignUp/Current.html" beforeDir="false" afterPath="$PROJECT_DIR$/../SignUp/Current.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +163,8 @@
       <workItem from="1612845489930" duration="19763000" />
       <workItem from="1612932197423" duration="47000" />
       <workItem from="1612937639170" duration="17154000" />
-      <workItem from="1613019663497" duration="16826000" />
+      <workItem from="1613019663497" duration="16981000" />
+      <workItem from="1613108884841" duration="3108000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -456,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612957440803</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Slider (6) and (7) Update">
+      <created>1613052384220</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1613052384220</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +517,8 @@
     <MESSAGE value="Update Pay History (Hopefully final)" />
     <MESSAGE value="Raining hearts for Valentine's" />
     <MESSAGE value="Valentine's Day Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Valentine's Day Update" />
+    <MESSAGE value="Slider (6) and (7) Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Slider (6) and (7) Update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1611379293163">
@@ -528,10 +533,10 @@
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
     <state x="451" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/66.27.1854.1053@66.27.1854.1053" timestamp="1605246733081" />
-    <state x="164" y="127" width="1656" height="853" key="DiffContextDialog" timestamp="1613022317728">
+    <state x="164" y="127" width="1656" height="853" key="DiffContextDialog" timestamp="1613121505193">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="164" y="127" width="1656" height="853" key="DiffContextDialog/64.27.1856.1053@64.27.1856.1053" timestamp="1613022317728" />
+    <state x="164" y="127" width="1656" height="853" key="DiffContextDialog/64.27.1856.1053@64.27.1856.1053" timestamp="1613121505193" />
     <state x="628" y="331" width="719" height="452" key="EditFileWatcherDialog" timestamp="1605254277148">
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
@@ -594,10 +599,10 @@
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1612957451149">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1613052394412">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1612957451149" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1613052394412" />
     <state x="164" y="127" width="1656" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1612790130221">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
