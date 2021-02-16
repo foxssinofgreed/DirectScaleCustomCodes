@@ -26,5 +26,6 @@
     <orderEntry type="module" module-name="JSInsertions" />
     <orderEntry type="module" module-name="Countdown" />
     <orderEntry type="module" module-name="ValentinesDay" />
+    <orderEntry type="module" module-name="APIRequests" />
   </component>
 </module>

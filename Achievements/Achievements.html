@@ -16,6 +16,8 @@
     <span class="kpiDisplay" id="PrevATEnrolledPPl">@User.CommissionsStatsGTeam.MonthsAgo(1)</span> <!--  Total previous month Team  -->
     <span class="kpiDisplay All-currency-change" id="InactivePersonalVol">@User.CommissionsStatsNISVKPI</span> <!--  Inactive personal volume  -->
     <span class="kpiDisplay All-currency-change" id="PrevInactivePersonalVol">@User.CommissionsStatsNISVKPI.MonthsAgo(1)</span> <!--  Previous Inactive personal volume  -->
+    <span class="kpiDisplay" id="AssociateIDA">@User.AssociateAssociateID</span>
+
     <a href="app.html#/TeamDashboard"><div class="card-header" id="businessSNHeader-2v"><h1>Business Snapshot</h1></div></a>
     <div id="titleButtonChng">
         <div class="BSHeaderT item-alpha" id="BSHeaderTAfterChange"><h1 class="BSTitle">Current</h1></div>
@@ -70,6 +72,32 @@
     </div>
 </div>
 <script>
+    let ActiveLinesAchievement;
+    let AssociateIDA = $('#AssociateIDA')[0].innerHTML;
+    var playOnlyOnce = function(){
+        var executed = false;
+        if(!executed){
+            executed = true;
+            const ActiveLinesAPI = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://api2.directscale.com/api/Customers/RankQualifications",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Referer": "https://office2.businessbombshells.team/app.html",
+                    "Authorization": "Bearer 3C0eT7chEdM9XRK5-h3F0RDMmAMcBatCav3mSmNjwXzUkKDjt3XYrkXPr9gZOY3YXbDAWWRIkZxLHXoo9NubKSKVw_KIb8UoXEpm0FOibrK0xT31GPTSd8iGNFEKn1RKsCPlkAqDBi-Od9h89NbyxkovkdmFA4kW3P0MzeKk4qvIkxxkJABo5X5f9JYyyPA6ayPzzKscw9PUlZRbSpp8bpt-ixJ6LjuqTyXMPSG44S-BnD_h0FhTOK5W7Z2I1gwzd1kBq4HmqlPuOmsX5TXr4inwPzENF-oSPuoWTVaq7Kgit-0GEqj2idYI7lXEDqg3KQMaDDPUGRNSwRmYNp-pQXjF5S-czTE_f-U6jM5EAR8"
+                },
+                "processData": false,
+                "data": "{\"RankID\":\"130\",\"CustomerID\":" + AssociateIDA + "}"
+            };
+
+            $.ajax(ActiveLinesAPI).done(function (response) {
+                ActiveLinesAchievement = response.Data.PayeeQualificationLegs[0][3].Actual;
+            });
+        }
+    }; /*  This one is uploaded in JS insertions  */
+    playOnlyOnce();
     $(document).ready(function () {
 
         let CountryCodeA = $('#AssociateAssociateCountryKPI')[0].innerHTML;
@@ -228,18 +256,18 @@
         $("#All-metric-multy-2tlt").fadeOut(10, function () {
             $("#All-metric-multy-2tlt").text(($("#All-metric-multy-2tlt").text() === 'Current\nPersonal Sales') ? 'Total Team\nThis Month' : 'Current\nPersonal Sales').fadeIn();
         })
+        $("#All-metric-multy-3").fadeOut(10, function () {
+            $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#Rank").text()) ? ActiveLinesAchievement : $("#Rank").text()).fadeIn();
+        })
+        $("#All-metric-multy-3tlt").fadeOut(10, function () {
+            $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Active Lines' : 'Current\nPosition').fadeIn();
+        })
         if(RankValue > 30){
-            $("#All-metric-multy-3").fadeOut(10, function () {
-                $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#Rank").text()) ? $("#InactivePersonalVol").text() : $("#Rank").text()).fadeIn();
-            })
-            $("#All-metric-multy-3tlt").fadeOut(10, function () {
-                $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Current Inactive\nSales Volume' : 'Current\nPosition').fadeIn();
-            })
             $("#All-metric-multy-4").fadeOut(10, function () {
-                $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? '' : $("#HRank").text()).fadeIn();
+                $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? $("#InactivePersonalVol").text() : $("#HRank").text()).fadeIn();
             })
             $("#All-metric-multy-4tlt").fadeOut(10, function () {
-                $("#All-metric-multy-4tlt").text(($("#All-metric-multy-4tlt").text() === 'Lifetime Highest\nPosition') ? '' : 'Lifetime Highest\nPosition').fadeIn();
+                $("#All-metric-multy-4tlt").text(($("#All-metric-multy-4tlt").text() === 'Lifetime Highest\nPosition') ? 'Current Inactive\nSales Volume' : 'Lifetime Highest\nPosition').fadeIn();
             })
         }
         else{

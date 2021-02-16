@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../APIRequests/.idea/APIRequests.iml" filepath="$PROJECT_DIR$/../APIRequests/.idea/APIRequests.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Achievements/.idea/Achievements.iml" filepath="$PROJECT_DIR$/../Achievements/.idea/Achievements.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Banners/.idea/Banners.iml" filepath="$PROJECT_DIR$/../Banners/.idea/Banners.iml" />
       <module fileurl="file://$PROJECT_DIR$/../CCPercentRule/.idea/CCPercentRule.iml" filepath="$PROJECT_DIR$/../CCPercentRule/.idea/CCPercentRule.iml" />
