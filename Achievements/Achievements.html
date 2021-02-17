@@ -14,8 +14,10 @@
     <span class="kpiDisplay" id="PrevCMEnrolledPPl">@User.CommissionsStatsLEC.MonthsAgo(1)</span> <!--  Team Enrolled previous month  -->
     <span class="kpiDisplay" id="ATEnrolledPPl">@User.CommissionsStatsGTeam</span> <!--  Total current month Team  -->
     <span class="kpiDisplay" id="PrevATEnrolledPPl">@User.CommissionsStatsGTeam.MonthsAgo(1)</span> <!--  Total previous month Team  -->
-    <span class="kpiDisplay All-currency-change" id="InactivePersonalVol">@User.CommissionsStatsISVKPI</span> <!--  Inactive personal volume  -->
-    <span class="kpiDisplay All-currency-change" id="PrevInactivePersonalVol">@User.CommissionsStatsISVKPI.MonthsAgo(1)</span> <!--  Previous Inactive personal volume  -->
+    <span class="kpiDisplay All-currency-change" id="InactivePersonalVol">@User.CommissionsStatsNISVKPI</span> <!--  Inactive personal volume  -->
+    <span class="kpiDisplay All-currency-change" id="PrevInactivePersonalVol">@User.CommissionsStatsNISVKPI.MonthsAgo(1)</span> <!--  Previous Inactive personal volume  -->
+    <span class="kpiDisplay" id="AssociateIDA">@User.AssociateAssociateID</span>
+
     <a href="app.html#/TeamDashboard"><div class="card-header" id="businessSNHeader-2v"><h1>Business Snapshot</h1></div></a>
     <div id="titleButtonChng">
         <div class="BSHeaderT item-alpha" id="BSHeaderTAfterChange"><h1 class="BSTitle">Current</h1></div>
@@ -70,8 +72,28 @@
     </div>
 </div>
 <script>
-    $(document).ready(function () {
+    var AssociateIDA = $('#AssociateIDA')[0].innerHTML;
+    var ActiveLinesAchievement = 0;
+    var APIrequestA = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://vast-hamlet-17171.herokuapp.com/https://dsapi.directscale.com/v1/customers/"+ AssociateIDA +"/stats",
+        "method": "GET",
+        "headers": {
+            "Content-Type": "application/json",
+            "Referer": "https://office2.businessbombshells.team/app.html",
+            "Ocp-Apim-Subscription-Key": "98b198fed48d4aceb8d362c2c931572d",
+            "Origin": "https://office2.businessbombshells.team",
+            "Authorization": "Bearer undefined"
+        },
+        "processData": false,
+        "data": ""
+    };
 
+    $.ajax(APIrequestA).done(function (response) {
+        ActiveLinesAchievement = response.RankOptions[13].Groups[0].Options[3].Value;
+    });
+    $(document).ready(function () {
         let CountryCodeA = $('#AssociateAssociateCountryKPI')[0].innerHTML;
         let RankValue = $('#RankVal')[0].innerHTML;
 
@@ -228,27 +250,21 @@
         $("#All-metric-multy-2tlt").fadeOut(10, function () {
             $("#All-metric-multy-2tlt").text(($("#All-metric-multy-2tlt").text() === 'Current\nPersonal Sales') ? 'Total Team\nThis Month' : 'Current\nPersonal Sales').fadeIn();
         })
+        $("#All-metric-multy-3").fadeOut(10, function () {
+            $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#Rank").text()) ? ActiveLinesAchievement : $("#Rank").text()).fadeIn();
+        })
+        $("#All-metric-multy-3tlt").fadeOut(10, function () {
+            $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Active Lines' : 'Current\nPosition').fadeIn();
+        })
         if(RankValue > 30){
-            $("#All-metric-multy-3").fadeOut(10, function () {
-                $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#Rank").text()) ? $("#InactivePersonalVol").text() : $("#Rank").text()).fadeIn();
-            })
-            $("#All-metric-multy-3tlt").fadeOut(10, function () {
-                $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? 'Current Inactive\nSales Volume' : 'Current\nPosition').fadeIn();
-            })
             $("#All-metric-multy-4").fadeOut(10, function () {
-                $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? '' : $("#HRank").text()).fadeIn();
+                $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? $("#InactivePersonalVol").text() : $("#HRank").text()).fadeIn();
             })
             $("#All-metric-multy-4tlt").fadeOut(10, function () {
-                $("#All-metric-multy-4tlt").text(($("#All-metric-multy-4tlt").text() === 'Lifetime Highest\nPosition') ? '' : 'Lifetime Highest\nPosition').fadeIn();
+                $("#All-metric-multy-4tlt").text(($("#All-metric-multy-4tlt").text() === 'Lifetime Highest\nPosition') ? 'Current Inactive\nSales Volume' : 'Lifetime Highest\nPosition').fadeIn();
             })
         }
         else{
-            $("#All-metric-multy-3").fadeOut(10, function () {
-                $("#All-metric-multy-3").text(($("#All-metric-multy-3").text() === $("#Rank").text()) ? '' : $("#Rank").text()).fadeIn();
-            })
-            $("#All-metric-multy-3tlt").fadeOut(10, function () {
-                $("#All-metric-multy-3tlt").text(($("#All-metric-multy-3tlt").text() === 'Current\nPosition') ? '' : 'Current\nPosition').fadeIn();
-            })
             $("#All-metric-multy-4").fadeOut(10, function () {
                 $("#All-metric-multy-4").text(($("#All-metric-multy-4").text() === $("#HRank").text()) ? '' : $("#HRank").text()).fadeIn();
             })
