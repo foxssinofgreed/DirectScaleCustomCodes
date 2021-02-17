@@ -1,0 +1,26 @@
+<div class="card minheight" id="ZoomCallMainDivOfTSTNP">
+    <label for="ZoomCallMainDivOfTSTNPCheck">
+        <input type="checkbox" id="ZoomCallMainDivOfTSTNPCheck"/>
+        <div class="ZoomCallMainDivOfTSTNP_Flip">
+            <div class="ZoomCallMainDivOfTSTNP_Flip_Main">
+                <div class="ZoomCallMainDivOfTSTNP_Flip_Front">
+                    <div id="ZoomCallNextPromotionVolume">
+                    </div>
+                </div>
+                <div class="ZoomCallMainDivOfTSTNP_Flip_Back">
+                    <div id="ZoomCallMainDivOfTSTNP_Back_Flip_Info">
+                        <button onclick="ZoomCallGoToLink('#ZoomCallLink');">JOIN NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </label>
+    <span style="display: none" id="ZoomCallLink">https://us02web.zoom.us/j/89318825939?pwd=dDE2SmxKajFMcmRpSXFnM3Y2RlZrQT09</span>
+</div>
+<script>
+    function ZoomCallGoToLink(element){
+        let LinkHere = $(element)[0].innerHTML;
+        let NewWindow = window.open(LinkHere, '_blank');
+        NewWindow.focus();
+    }
+</script>

@@ -1,122 +1,122 @@
-    <div class="card minheight" id="MainDivOfTSTNP">
-        <label for="MainDivOfTSTNPCheck">
-            <input type="checkbox" id="MainDivOfTSTNPCheck"/>
-            <div class="MainDivOfTSTNP_Flip">
-                <div class="MainDivOfTSTNP_Flip_Main">
-                    <div class="MainDivOfTSTNP_Flip_Front">
-                        <div id="NextPromotionVolume">
-                            <div class="card-body NextPromotionVolumeBod">
-                                <div class="NextPromotionVolumeDiv">
-                                    <h1 id="NextPromotionVolumeVol">@User.CommissionsStatsNCRV</h1>
-                                </div>
-                                <div class="NextPromotionVolumeTitles">
-                                    <h1>Team Sales Total</h1>
-                                    <h1>(35% Applied)</h1>
-                                </div>
-                                <div class="MainDivOfTSTNP_Button">
-                                    <button id="MoreInfoButton" onclick="CountryChangeForNextPromotion_toggleCheckbox('#MainDivOfTSTNPCheck')">View More Information</button>
-                                </div>
+<div class="card minheight" id="MainDivOfTSTNP">
+    <label for="MainDivOfTSTNPCheck">
+        <input type="checkbox" id="MainDivOfTSTNPCheck"/>
+        <div class="MainDivOfTSTNP_Flip">
+            <div class="MainDivOfTSTNP_Flip_Main">
+                <div class="MainDivOfTSTNP_Flip_Front">
+                    <div id="NextPromotionVolume">
+                        <div class="card-body NextPromotionVolumeBod">
+                            <div class="NextPromotionVolumeDiv">
+                                <h1 id="NextPromotionVolumeVol">@User.CommissionsStatsNCRV</h1>
                             </div>
-                        </div>
-                    </div>
-                    <div class="MainDivOfTSTNP_Flip_Back">
-                        <div id="MainDivOfTSTNP_Back_Flip_Info">
-                            <p>The maximum per line for <span id="TSTNP_nextRankName"></span> with the 35% Rule is <span id="TSTNP_requirement"></span></p>
-                            <div class="MainDivOfTSTNP_Button" style="margin-bottom: -20px; margin-top: -5px">
-                                <button onclick="CountryChangeForNextPromotion_toggleCheckbox('#MainDivOfTSTNPCheck')" style="width: 100%; height: 80%">Return</button>
+                            <div class="NextPromotionVolumeTitles">
+                                <h1>Team Sales Total</h1>
+                                <h1>(35% Applied)</h1>
+                            </div>
+                            <div class="MainDivOfTSTNP_Button">
+                                <button id="MoreInfoButton" onclick="CountryChangeForNextPromotion_toggleCheckbox('#MainDivOfTSTNPCheck')">View More Information</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="MainDivOfTSTNP_Flip_Back">
+                    <div id="MainDivOfTSTNP_Back_Flip_Info">
+                        <p>The maximum per line for <span id="TSTNP_nextRankName"></span> with the 35% Rule is <span id="TSTNP_requirement"></span></p>
+                        <div class="MainDivOfTSTNP_Button" style="margin-bottom: -20px; margin-top: -5px">
+                            <button onclick="CountryChangeForNextPromotion_toggleCheckbox('#MainDivOfTSTNPCheck')" style="width: 100%; height: 80%">Return</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </label>
-    </div>
-    <div style="display: none;" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</div>
-    <div style="display: none;" id="AssociateAssociateRankKPI">@User.CommissionsRank</div>
-    <script>
-        function CountryChangeForNextPromotion(){
-            let CountryCodeR = $('#AssociateAssociateCountryKPI')[0].innerHTML;
-            let Volume35Percent = $('#NextPromotionVolumeVol')[0].innerHTML;
-            if (CountryCodeR === 'AU'){
-                $("#NextPromotionVolumeVol")[0].innerHTML = 'A$' + (Math.floor(Volume35Percent * 200) / 100);
-            }
-            else if(CountryCodeR === 'GB'){
-                $("#NextPromotionVolumeVol")[0].innerHTML = '£' + (Math.floor(Volume35Percent * 100) / 100);
-            }
-            else {
-                $("#NextPromotionVolumeVol")[0].innerHTML = '€' + (Math.floor(Volume35Percent * 120) / 100);
-            }
+        </div>
+    </label>
+</div>
+<div style="display: none;" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</div>
+<div style="display: none;" id="AssociateAssociateRankKPI">@User.CommissionsRank</div>
+<script>
+    function CountryChangeForNextPromotion(){
+        let CountryCodeR = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+        let Volume35Percent = $('#NextPromotionVolumeVol')[0].innerHTML;
+        if (CountryCodeR === 'AU'){
+            $("#NextPromotionVolumeVol")[0].innerHTML = 'A$' + (Math.floor(Volume35Percent * 200) / 100);
         }
-
-        CountryChangeForNextPromotion();
-
-        function CountryChangeForNextPromotion_toggleCheckbox(element)
-        {
-            let elementA = $(element)[0];
-            elementA.checked = !elementA.checked;
+        else if(CountryCodeR === 'GB'){
+            $("#NextPromotionVolumeVol")[0].innerHTML = '£' + (Math.floor(Volume35Percent * 100) / 100);
         }
-        function rankRequirements(){
-            let CurrentRank = $('#AssociateAssociateRankKPI')[0].innerHTML;
-            let CountryCode = $('#AssociateAssociateCountryKPI')[0].innerHTML;
-            let result = 0;
-            let nextrankname;
-
-            switch (CurrentRank){
-                case '40':
-                    result = 1400;
-                    nextrankname = '4 Star';
-                    break;
-                case '50':
-                    result = 2625;
-                    nextrankname = '5 Star';
-                    break;
-                case '60':
-                    result = 5250;
-                    nextrankname = '6 Star';
-                    break;
-                case '70':
-                    result = 8750;
-                    nextrankname = '7 Star';
-                    break;
-                case '80':
-                    result = 14000;
-                    nextrankname = '8 Star';
-                    break;
-                case '90':
-                    result = 21000;
-                    nextrankname = '9 Star';
-                    break;
-                case '100':
-                    result = 31500;
-                    nextrankname = '10 Star';
-                    break;
-                case '110':
-                    result = 43750;
-                    nextrankname = '11 Star';
-                    break;
-                case '120':
-                    result = 61250;
-                    nextrankname = '12 Star';
-                    break;
-                default:
-                    result = 0;
-                    nextrankname = '';
-            }
-            console.log(result);
-            switch (CountryCode){
-                case 'AU':
-                    result = Math.floor(result * 200) / 100;
-                    break;
-                case 'GB':
-                    result = Math.floor(result * 100) / 100;
-                    break;
-                default:
-                    result = Math.floor(result * 120) / 100;
-            }
-            console.log(result);
-            $('#TSTNP_requirement')[0].innerHTML = result;
-            $('#TSTNP_nextRankName')[0].innerHTML = nextrankname;
+        else {
+            $("#NextPromotionVolumeVol")[0].innerHTML = '€' + (Math.floor(Volume35Percent * 120) / 100);
         }
-        rankRequirements();
+    }
 
-    </script>
+    CountryChangeForNextPromotion();
+
+    function CountryChangeForNextPromotion_toggleCheckbox(element)
+    {
+        let elementA = $(element)[0];
+        elementA.checked = !elementA.checked;
+    }
+    function rankRequirements(){
+        let CurrentRank = $('#AssociateAssociateRankKPI')[0].innerHTML;
+        let CountryCode = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+        let result = 0;
+        let nextrankname;
+
+        switch (CurrentRank){
+            case '40':
+                result = 1400;
+                nextrankname = '4 Star';
+                break;
+            case '50':
+                result = 2625;
+                nextrankname = '5 Star';
+                break;
+            case '60':
+                result = 5250;
+                nextrankname = '6 Star';
+                break;
+            case '70':
+                result = 8750;
+                nextrankname = '7 Star';
+                break;
+            case '80':
+                result = 14000;
+                nextrankname = '8 Star';
+                break;
+            case '90':
+                result = 21000;
+                nextrankname = '9 Star';
+                break;
+            case '100':
+                result = 31500;
+                nextrankname = '10 Star';
+                break;
+            case '110':
+                result = 43750;
+                nextrankname = '11 Star';
+                break;
+            case '120':
+                result = 61250;
+                nextrankname = '12 Star';
+                break;
+            default:
+                result = 0;
+                nextrankname = '';
+        }
+        console.log(result);
+        switch (CountryCode){
+            case 'AU':
+                result = Math.floor(result * 200) / 100;
+                break;
+            case 'GB':
+                result = Math.floor(result * 100) / 100;
+                break;
+            default:
+                result = Math.floor(result * 120) / 100;
+        }
+        console.log(result);
+        $('#TSTNP_requirement')[0].innerHTML = result;
+        $('#TSTNP_nextRankName')[0].innerHTML = nextrankname;
+    }
+    rankRequirements();
+
+</script>
