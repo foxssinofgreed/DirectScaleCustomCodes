@@ -1,0 +1,124 @@
+<div class="card" id="LoadingBarCard">
+    <div class="kpiDisplay" id="ProgressBarAssociateAssociateRankKPI">@User.CommissionsRank</div>
+    <div class="card-header" id="LoadingBarHeader">
+        <span id="ProgressBarRankFrom"></span>
+        <span style="padding-bottom: 10px;">Your Progress</span>
+        <span id="ProgressBarRankTo"></span>
+    </div>
+    <div class="card-body" id="LoadingBarBody">
+        <div class="LoadingBarprogress">
+            <div class="LoadingBarbar loadingBarShadow loadingBarBackground"></div>
+            <span id="LoadingBarPercentage"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    var LoadingBarRankIndex;
+    var LoadingBarPersentage = 0;
+    var LoadinBarResult = 0;
+    var LoadingBarRankF = '';
+    var LoadingBarRankT = '';
+    var LoadingBarArrayIndex;
+    function RankForLoadingBar(){
+        let LoadingBarCurrentRank = $('#ProgressBarAssociateAssociateRankKPI')[0].innerHTML;
+        switch (LoadingBarCurrentRank){
+            case '10':
+                LoadingBarRankIndex = 1; /* Bombshell */
+                LoadingBarRankF = 'Bombshell';
+                LoadingBarRankT = 'Star Bombshell';
+                break;
+            case '15':
+                LoadingBarRankIndex = 2; /* Star Bombshell */
+                LoadingBarRankF = 'Star Bombshell';
+                LoadingBarRankT = '1 Star';
+                break;
+            case '20':
+                LoadingBarRankIndex = 3; /* 1 Star */
+                LoadingBarRankF = '1 Star';
+                LoadingBarRankT = '2 Star';
+                break;
+            case '30':
+                LoadingBarRankIndex = 4; /* 2 Star*/
+                LoadingBarRankF = '2 Star';
+                LoadingBarRankT = '3 Star';
+                break;
+            case '40':
+                LoadingBarRankIndex = 5; /* 3 Star */
+                LoadingBarRankF = '3 Star';
+                LoadingBarRankT = '4 Star';
+                break;
+            case '50':
+                LoadingBarRankIndex = 6; /* 4 Star */
+                LoadingBarRankF = '4 Star';
+                LoadingBarRankT = '5 Star';
+                break;
+            case '60':
+                LoadingBarRankIndex = 7; /* 5 Star */
+                LoadingBarRankF = '5 Star';
+                LoadingBarRankT = '6 Star';
+                break;
+            case '70':
+                LoadingBarRankIndex = 8; /* 6 Star */
+                LoadingBarRankF = '6 Star';
+                LoadingBarRankT = '7 Star';
+                break;
+            case '80':
+                LoadingBarRankIndex = 9; /* 7 Star */
+                LoadingBarRankF = '7 Star';
+                LoadingBarRankT = '8 Star';
+                break;
+            case '90':
+                LoadingBarRankIndex = 10; /* 8 Star */
+                LoadingBarRankF = '8 Star';
+                LoadingBarRankT = '9 Star';
+                break;
+            case '100':
+                LoadingBarRankIndex = 11; /* 9 Star */
+                LoadingBarRankF = '9 Star';
+                LoadingBarRankT = '10 Star';
+                break;
+            case '110':
+                LoadingBarRankIndex = 12; /* 10 Star */
+                LoadingBarRankF = '10 Star';
+                LoadingBarRankT = '11 Star';
+                break;
+            case '120':
+                LoadingBarRankIndex = 13; /* 11 Star */
+                LoadingBarRankF = '11 Star';
+                LoadingBarRankT = '12 Star';
+                break;
+            case '130':
+                LoadingBarRankIndex = 13; /* 12 Star */
+                LoadingBarRankF = '';
+                LoadingBarRankT = '';
+                break;
+            default:
+                LoadingBarRankIndex = 0;
+                LoadingBarRankF = '0';
+                LoadingBarRankT = 'Bombshell';
+        }
+    }
+    RankForLoadingBar();
+    $('#ProgressBarRankFrom')[0].innerHTML = LoadingBarRankF;
+    $('#ProgressBarRankTo')[0].innerHTML = LoadingBarRankT;
+    setTimeout(function (){
+        $.ajax(APIrequestA).done(function (response) {
+            LoadingBarArrayIndex = (response.RankOptions[LoadingBarRankIndex].Groups[0].Options).length
+            for (var i = 0; i < LoadingBarArrayIndex; i++){
+                LoadingBarPersentage = response.RankOptions[LoadingBarRankIndex].Groups[0].Options[i].PercentComplete;
+                LoadinBarResult += LoadingBarPersentage;
+            }
+            LoadingBarProgress();
+        });
+    }, 2000);
+    function LoadingBarProgress(){
+        LoadinBarResult = (LoadinBarResult / LoadingBarArrayIndex) * 100;
+        var bars = document.querySelectorAll('.LoadingBarbar');
+        bars.forEach((bar) => {
+            bar.style.width = `${LoadinBarResult}%`;
+        })
+        console.log(LoadinBarResult.toFixed(1));
+        $('#LoadingBarPercentage')[0].innerHTML = LoadinBarResult.toFixed(0) + '%';
+    }
+</script>

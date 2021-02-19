@@ -27,5 +27,6 @@
     <orderEntry type="module" module-name="Countdown" />
     <orderEntry type="module" module-name="ValentinesDay" />
     <orderEntry type="module" module-name="APIRequests" />
+    <orderEntry type="module" module-name="ProgressBar" />
   </component>
 </module>

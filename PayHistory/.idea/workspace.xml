@@ -26,8 +26,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Achievements Update (RollBack)">
-      <change beforePath="$PROJECT_DIR$/../Achievements/Achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Achievements/Achievements.html" afterDir="false" />
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Achievements Active Lines Update">
+      <change beforePath="$PROJECT_DIR$/.idea/PayHistory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PayHistory.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +167,9 @@
       <workItem from="1613019663497" duration="16981000" />
       <workItem from="1613108884841" duration="3151000" />
       <workItem from="1613451408657" duration="11241000" />
-      <workItem from="1613536919441" duration="17612000" />
+      <workItem from="1613536919441" duration="18243000" />
+      <workItem from="1613645694759" duration="957000" />
+      <workItem from="1613712756217" duration="22991000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -497,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613561375045</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Achievements Active Lines Update">
+      <created>1613571323359</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1613571323359</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +553,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update Sliders and RefLink (W)" />
     <MESSAGE value="Update RefLink" />
     <MESSAGE value="Discount Codes update" />
     <MESSAGE value="NEW Welcome Pack and update Achievements JS" />
@@ -568,7 +577,8 @@
     <MESSAGE value="Achievements Update" />
     <MESSAGE value="ZoomCallBanner Update" />
     <MESSAGE value="Achievements Update (RollBack)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Achievements Update (RollBack)" />
+    <MESSAGE value="Achievements Active Lines Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Achievements Active Lines Update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1611379293163">
@@ -583,10 +593,10 @@
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
     <state x="451" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/66.27.1854.1053@66.27.1854.1053" timestamp="1605246733081" />
-    <state x="164" y="127" width="1656" height="853" key="DiffContextDialog" timestamp="1613541909771">
+    <state x="164" y="127" width="1656" height="853" key="DiffContextDialog" timestamp="1613722068740">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="164" y="127" width="1656" height="853" key="DiffContextDialog/64.27.1856.1053@64.27.1856.1053" timestamp="1613541909771" />
+    <state x="164" y="127" width="1656" height="853" key="DiffContextDialog/64.27.1856.1053@64.27.1856.1053" timestamp="1613722068740" />
     <state x="628" y="331" width="719" height="452" key="EditFileWatcherDialog" timestamp="1605254277148">
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
@@ -653,10 +663,10 @@
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1613561408641">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1613571328306">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1613561408641" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1613571328306" />
     <state x="164" y="127" width="1656" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613562263316">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -673,10 +683,10 @@
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
     <state x="713" y="364" width="550" height="384" key="jetbrains.nodejs.interpreters-dialog/66.27.1854.1053@66.27.1854.1053" timestamp="1605246448714" />
-    <state x="656" y="252" key="run.anything.popup" timestamp="1613561525567">
+    <state x="656" y="252" key="run.anything.popup" timestamp="1613720191253">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="656" y="252" key="run.anything.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1613561525567" />
+    <state x="656" y="252" key="run.anything.popup/64.27.1856.1053@64.27.1856.1053" timestamp="1613720191253" />
     <state x="657" y="252" key="run.anything.popup/66.27.1854.1053@66.27.1854.1053" timestamp="1605959968065" />
     <state x="655" y="259" width="673" height="678" key="search.everywhere.popup" timestamp="1609845545900">
       <screen x="64" y="27" width="1856" height="1053" />
