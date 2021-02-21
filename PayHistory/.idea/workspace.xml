@@ -26,10 +26,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Achievements Active Lines Update">
-      <change beforePath="$PROJECT_DIR$/.idea/PayHistory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PayHistory.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Progress Bar New">
+      <change beforePath="$PROJECT_DIR$/../Countdown/Countdown.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Countdown/Countdown.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgressBar/ProgressBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgressBar/ProgressBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgressBar/ProgressBar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgressBar/ProgressBar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +40,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -169,7 +170,10 @@
       <workItem from="1613451408657" duration="11241000" />
       <workItem from="1613536919441" duration="18243000" />
       <workItem from="1613645694759" duration="957000" />
-      <workItem from="1613712756217" duration="22991000" />
+      <workItem from="1613712756217" duration="23226000" />
+      <workItem from="1613883392073" duration="737000" />
+      <workItem from="1613884186882" duration="8000" />
+      <workItem from="1613884217550" duration="6717000" />
     </task>
     <task id="LOCAL-00001" summary="Update RefLinks and Sliders">
       <created>1609136575580</created>
@@ -507,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613571323359</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Progress Bar New">
+      <created>1613744688797</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1613744688797</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +564,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update RefLink" />
     <MESSAGE value="Discount Codes update" />
     <MESSAGE value="NEW Welcome Pack and update Achievements JS" />
     <MESSAGE value="NEW Main Banner With PopUp" />
@@ -578,13 +588,14 @@
     <MESSAGE value="ZoomCallBanner Update" />
     <MESSAGE value="Achievements Update (RollBack)" />
     <MESSAGE value="Achievements Active Lines Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Achievements Active Lines Update" />
+    <MESSAGE value="Progress Bar New" />
+    <option name="LAST_COMMIT_MESSAGE" value="Progress Bar New" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1611379293163">
+    <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1613884116318">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="704" y="420" width="555" height="279" key="#Updates/64.27.1856.1053@64.27.1856.1053" timestamp="1611379293163" />
+    <state x="704" y="420" width="555" height="279" key="#Updates/64.27.1856.1053@64.27.1856.1053" timestamp="1613884116318" />
     <state x="754" y="337" width="467" height="439" key="#Web_Browsers" timestamp="1605246271605">
       <screen x="66" y="27" width="1854" height="1053" />
     </state>
@@ -663,10 +674,10 @@
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
     <state x="482" y="188" width="1022" height="737" key="SettingsEditor/66.27.1854.1053@66.27.1854.1053" timestamp="1605254266129" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1613571328306">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1613744693374">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1613571328306" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1613744693374" />
     <state x="164" y="127" width="1656" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613562263316">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>

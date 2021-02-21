@@ -2,7 +2,7 @@
     <div class="kpiDisplay" id="ProgressBarAssociateAssociateRankKPI">@User.CommissionsRank</div>
     <div class="card-header" id="LoadingBarHeader">
         <span id="ProgressBarRankFrom"></span>
-        <span style="padding-bottom: 10px;">Your Progress</span>
+        <span style="padding-bottom: 10px;" id="LoadingBarTitleProgress">Your Progress</span>
         <span id="ProgressBarRankTo"></span>
     </div>
     <div class="card-body" id="LoadingBarBody">
@@ -92,6 +92,7 @@
                 LoadingBarRankIndex = 13; /* 12 Star */
                 LoadingBarRankF = '';
                 LoadingBarRankT = '';
+                $('#LoadingBarTitleProgress')[0].innerHTML = '12 Star';
                 break;
             default:
                 LoadingBarRankIndex = 0;
