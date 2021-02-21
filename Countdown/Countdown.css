@@ -68,12 +68,12 @@
 .CD-Time{
     font-size: 55px;
     color: #FFFFFF;
-    text-shadow: -0.0075em 0.0075em 0 #df84a8, 0.005em 0.005em 0 #df84a8, 0.01em 0.01em 0 #df84a8, 0.015em 0.015em #df84a8, 0.02em 0.02em 0 #df84a8, 0.025em 0.025em 0 #df84a8, 0.03em 0.03em 0 #df84a8, 0.035em 0.035em 0 #df84a8;
+    text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 7px #fff;
 }
 .CD-Title{
     font-size: 35px;
-    color: #df84a8; /* #ed91b5 */
-    text-shadow: -0.0075em 0.0075em 0 #fff, 0.005em 0.005em 0 #fff, 0.01em 0.01em 0 #fff, 0.015em 0.015em #fff, 0.02em 0.02em 0 #fff, 0.025em 0.025em 0 #fff, 0.03em 0.03em 0 #fff, 0.035em 0.035em 0 #fff;
+    color: #fe91b0; /* #ed91b5 */
+    text-shadow: 0 0 2px #fff, 0 0 9px #fff, 0 0 9px #fff;
 }
 .CD-Time-Block{
     width: 20%;
@@ -87,7 +87,7 @@
     font-size: 70px;
     letter-spacing: 15px;
     color: #FFFFFF;
-    text-shadow: -0.0075em 0.0075em 0 #df84a8, 0.005em 0.005em 0 #df84a8, 0.01em 0.01em 0 #df84a8, 0.015em 0.015em #df84a8, 0.02em 0.02em 0 #df84a8, 0.025em 0.025em 0 #df84a8, 0.03em 0.03em 0 #df84a8, 0.035em 0.035em 0 #df84a8;
+    text-shadow: 0 0 2px #fff, 0 0 9px #fff, 0 0 9px #fff;
 }
 .Main-Banner-Flip-Back-CD .wrappingCD{
     justify-content:center;
