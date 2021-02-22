@@ -16,7 +16,7 @@ if( document.readyState !== 'loading' ) {
     function startForFunctionOne(){
         MyFunctions = {
             LOforTS: function () {
-                let mainArray = $("#col5.p-r-10.ng-scope t.ng-binding.ng-scope");
+                let mainArray = $("#col4.p-r-10.ng-scope t.ng-binding.ng-scope");
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
@@ -25,15 +25,6 @@ if( document.readyState !== 'loading' ) {
                 }
             },
             LOforPS: function () {
-                let mainArray = $("#col3.p-r-10.ng-scope t.ng-binding.ng-scope");
-                let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
-                for (let i = 0; i < results; i++) {
-                    if (mainArray[i] != null) {
-                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(2);
-                    }
-                }
-            },
-            TBBPforTS: function () {
                 let mainArray = $("#col6.p-r-10.ng-scope t.ng-binding.ng-scope");
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
@@ -42,8 +33,26 @@ if( document.readyState !== 'loading' ) {
                     }
                 }
             },
+            LOforNCRV: function () {
+                let mainArray = $("#col7.p-r-10.ng-scope t.ng-binding.ng-scope");
+                let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
+                for (let i = 0; i < results; i++) {
+                    if (mainArray[i] != null) {
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(2);
+                    }
+                }
+            },
+            TBBPforTS: function () {
+                let mainArray = $("#col5.p-r-10.ng-scope t.ng-binding.ng-scope");
+                let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
+                for (let i = 0; i < results; i++) {
+                    if (mainArray[i] != null) {
+                        mainArray[i].innerHTML = '£' + math.multiply(mainArray[i].innerHTML, 1).toFixed(2);
+                    }
+                }
+            },
             TBBPforPS: function () {
-                let mainArray = $("#col4.p-r-10.ng-scope t.ng-binding.ng-scope");
+                let mainArray = $("#col7.p-r-10.ng-scope t.ng-binding.ng-scope");
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
@@ -52,7 +61,7 @@ if( document.readyState !== 'loading' ) {
                 }
             },
             TOforPS: function () {
-                let mainArray = $("#col4.p-r-10.ng-scope t.ng-binding.ng-scope");
+                let mainArray = $("#col5.p-r-10.ng-scope t.ng-binding.ng-scope");
                 let results = $("div.col-lg-3.col-md-3.col-sm-8.ng-binding.p-t-15")[0].textContent.replace(/\D+/g, "");
                 for (let i = 0; i < results; i++) {
                     if (mainArray[i] != null) {
@@ -83,6 +92,9 @@ if( document.readyState !== 'loading' ) {
                         CounturlLO -= 1;
                     }
                 }, 100);
+                setTimeout(() => {
+                    MyFunctions.LOforNCRV();
+                }, 150);
             }
             if (window.location.href === urlTBBP && tableng !== $("#col4.p-r-10.ng-scope t.ng-binding.ng-scope").length) {
                 setTimeout(() => {
