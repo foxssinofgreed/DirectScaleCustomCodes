@@ -1,9 +1,5 @@
 'use strict';
 
-// If set to true, the user must press
-// UP UP DOWN ODWN LEFT RIGHT LEFT RIGHT A B
-// to trigger the confetti with a random color theme.
-// Otherwise the confetti constantly falls.
 var onlyOnKonami = false;
 
 $(function() {
