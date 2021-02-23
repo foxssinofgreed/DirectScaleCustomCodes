@@ -26,13 +26,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Confetti JS New">
-      <change beforePath="$PROJECT_DIR$/../Banners/FlipBannerWithButton.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Banners/FlipBannerWithButton.css" afterDir="false" />
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Main Banner and Confetti Update">
+      <change beforePath="$PROJECT_DIR$/../Achievements/Achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Achievements/Achievements.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PayHistory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PayHistory.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgressBar/ProgressBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgressBar/ProgressBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgressBar/ProgressBar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgressBar/ProgressBar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReportCenter/ReportCenterAU.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ReportCenter/ReportCenterAU.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReportCenter/ReportCenterEU.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ReportCenter/ReportCenterEU.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ReportCenter/ReportCenterUK.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ReportCenter/ReportCenterUK.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../snowForDashboard/Canfetti.js" beforeDir="false" afterPath="$PROJECT_DIR$/../snowForDashboard/Canfetti.js" afterDir="false" />
     </list>
@@ -190,28 +188,8 @@
       <workItem from="1613883392073" duration="737000" />
       <workItem from="1613884186882" duration="8000" />
       <workItem from="1613884217550" duration="7353000" />
-      <workItem from="1613968690735" duration="7811000" />
-    </task>
-    <task id="LOCAL-00004" summary="Update Sliders and RefLink (W)">
-      <created>1609154406150</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1609154406150</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Update RefLink">
-      <created>1609164462798</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1609164462798</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Update RefLink">
-      <created>1609251172377</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1609251172377</updated>
+      <workItem from="1613968690735" duration="8345000" />
+      <workItem from="1614055984926" duration="15366000" />
     </task>
     <task id="LOCAL-00007" summary="Discount Codes update">
       <created>1609422837097</created>
@@ -535,7 +513,28 @@
       <option name="project" value="LOCAL" />
       <updated>1613913944044</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Report Center Update">
+      <created>1614003418780</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1614003418781</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Progress Bar Update">
+      <created>1614003444466</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1614003444466</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Main Banner and Confetti Update">
+      <created>1614003473253</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1614003473253</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,8 +580,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update EU dashboard codes" />
-    <MESSAGE value="Update Report Centers" />
     <MESSAGE value="Update PaySlip" />
     <MESSAGE value="Update Rank Information Widget JS" />
     <MESSAGE value="Update Team Sales Widget" />
@@ -604,9 +601,11 @@
     <MESSAGE value="Achievements Active Lines Update" />
     <MESSAGE value="Progress Bar New" />
     <MESSAGE value="Count Down Banner Update" />
-    <MESSAGE value="Progress Bar Update" />
     <MESSAGE value="Confetti JS New" />
-    <option name="LAST_COMMIT_MESSAGE" value="Confetti JS New" />
+    <MESSAGE value="Report Center Update" />
+    <MESSAGE value="Progress Bar Update" />
+    <MESSAGE value="Main Banner and Confetti Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main Banner and Confetti Update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1613884116318">
@@ -682,10 +681,10 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1613913952593">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1614003477747">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1613913952593" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1614003477747" />
     <state x="164" y="127" width="1656" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613562263316">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>

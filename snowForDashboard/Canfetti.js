@@ -1,8 +1,5 @@
-'use strict';
-
-var onlyOnKonami = false;
-
-$(function() {
+function Confetti(Discret){
+    var onlyOnKonami = Discret;
     // Globals
     var $window = $(window)
         , random = Math.random
@@ -40,25 +37,15 @@ $(function() {
 
     var colorThemes = [
         function() {
-            return color(200 * random()|0, 200 * random()|0, 200 * random()|0);
+            return colorThemes[random() < 5 ? Math.floor(Math.random() * 3) + 1 : 1]();
+        },function() {
+            return color(212, 175, 55);
+        },function() {
+            return color(252, 168, 189);
         }, function() {
-            var black = 200 * random()|0; return color(200, black, black);
+            return color(255, 235, 232);
         }, function() {
-            var black = 200 * random()|0; return color(black, 200, black);
-        }, function() {
-            var black = 200 * random()|0; return color(black, black, 200);
-        }, function() {
-            return color(200, 100, 200 * random()|0);
-        }, function() {
-            return color(200 * random()|0, 200, 200);
-        }, function() {
-            var black = 256 * random()|0; return color(black, black, black);
-        }, function() {
-            return colorThemes[random() < .5 ? 1 : 2]();
-        }, function() {
-            return colorThemes[random() < .5 ? 3 : 5]();
-        }, function() {
-            return colorThemes[random() < .5 ? 2 : 4]();
+            return color(242, 179, 174);
         }
     ];
     function color(r, g, b) {
@@ -246,4 +233,5 @@ $(function() {
     });
 
     if (!onlyOnKonami) poof();
-});
+    console.log('function = ' + Discret);
+}
