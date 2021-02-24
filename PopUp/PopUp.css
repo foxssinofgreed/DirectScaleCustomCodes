@@ -12,9 +12,9 @@
     align-items: center;
 }
 #popupContainerLA{
-    width: 600px;
-    height: 450px;
-    background-color: black;
+    width: 652px;
+    height: 367px;
+    background-color: transparent;
 }
 
 /*  ------------------------------------------------------------  */
@@ -22,8 +22,7 @@
 /* Parent wrapper to carousel. Width can be changed as needed. */
 .carousel-wrapper {
     overflow: hidden;
-    width: 90%;
-    margin: auto;
+    width: 100%;
 }
 
 /* Apply 'border-box' to 'box-sizing' so border and padding is included in the width and height. */
@@ -42,10 +41,7 @@
 .carousel__photo {
     opacity: 0;
     position: absolute;
-    top:0;
     width: 100%;
-    margin: auto;
-    padding: 1rem 4rem;
     z-index: 100;
     transition: transform .5s, opacity .5s, z-index .5s;
 }
