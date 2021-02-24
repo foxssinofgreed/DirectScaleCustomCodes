@@ -26,13 +26,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Main Banner and Confetti Update">
-      <change beforePath="$PROJECT_DIR$/../Achievements/Achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Achievements/Achievements.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PayHistory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PayHistory.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="PopUp NEW">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReportCenter/ReportCenterUK.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ReportCenter/ReportCenterUK.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../snowForDashboard/Canfetti.js" beforeDir="false" afterPath="$PROJECT_DIR$/../snowForDashboard/Canfetti.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PopUp/PopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PopUp/PopUp.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +38,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -189,21 +185,8 @@
       <workItem from="1613884186882" duration="8000" />
       <workItem from="1613884217550" duration="7353000" />
       <workItem from="1613968690735" duration="8345000" />
-      <workItem from="1614055984926" duration="15366000" />
-    </task>
-    <task id="LOCAL-00007" summary="Discount Codes update">
-      <created>1609422837097</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1609422837097</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Discount Codes update">
-      <created>1609630741613</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1609630741613</updated>
+      <workItem from="1614055984926" duration="15478000" />
+      <workItem from="1614142709247" duration="3932000" />
     </task>
     <task id="LOCAL-00009" summary="NEW Welcome Pack and update Achievements JS">
       <created>1609636157489</created>
@@ -534,7 +517,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614003473253</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Confetti Update">
+      <created>1614080656105</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1614080656105</updated>
+    </task>
+    <task id="LOCAL-00057" summary="PopUp NEW">
+      <created>1614080678474</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1614080678474</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,8 +577,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update PaySlip" />
-    <MESSAGE value="Update Rank Information Widget JS" />
     <MESSAGE value="Update Team Sales Widget" />
     <MESSAGE value="Update Small Changes" />
     <MESSAGE value="New Training Courses" />
@@ -605,7 +600,9 @@
     <MESSAGE value="Report Center Update" />
     <MESSAGE value="Progress Bar Update" />
     <MESSAGE value="Main Banner and Confetti Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Main Banner and Confetti Update" />
+    <MESSAGE value="Confetti Update" />
+    <MESSAGE value="PopUp NEW" />
+    <option name="LAST_COMMIT_MESSAGE" value="PopUp NEW" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1613884116318">
@@ -625,54 +622,54 @@
     </state>
     <state x="775" y="311" key="FileChooserDialogImpl/64.27.1856.1053@64.27.1856.1053" timestamp="1610834195771" />
     <state x="776" y="311" width="424" height="491" key="FileChooserDialogImpl/66.27.1854.1053@66.27.1854.1053" timestamp="1606400521556" />
-    <state width="1833" height="340" key="GridCell.Tab.0.bottom" timestamp="1613972447889">
+    <state width="1833" height="340" key="GridCell.Tab.0.bottom" timestamp="1614142935170">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.0.bottom/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447889" />
-    <state width="1833" height="340" key="GridCell.Tab.0.center" timestamp="1613972447888">
+    <state width="1833" height="340" key="GridCell.Tab.0.bottom/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935170" />
+    <state width="1833" height="340" key="GridCell.Tab.0.center" timestamp="1614142935169">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.0.center/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447888" />
-    <state width="1833" height="340" key="GridCell.Tab.0.left" timestamp="1613972447888">
+    <state width="1833" height="340" key="GridCell.Tab.0.center/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935169" />
+    <state width="1833" height="340" key="GridCell.Tab.0.left" timestamp="1614142935168">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.0.left/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447888" />
-    <state width="1833" height="340" key="GridCell.Tab.0.right" timestamp="1613972447888">
+    <state width="1833" height="340" key="GridCell.Tab.0.left/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935168" />
+    <state width="1833" height="340" key="GridCell.Tab.0.right" timestamp="1614142935169">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.0.right/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447888" />
-    <state width="1833" height="340" key="GridCell.Tab.1.bottom" timestamp="1613972447890">
+    <state width="1833" height="340" key="GridCell.Tab.0.right/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935169" />
+    <state width="1833" height="340" key="GridCell.Tab.1.bottom" timestamp="1614142935171">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.1.bottom/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447890" />
-    <state width="1833" height="340" key="GridCell.Tab.1.center" timestamp="1613972447889">
+    <state width="1833" height="340" key="GridCell.Tab.1.bottom/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935171" />
+    <state width="1833" height="340" key="GridCell.Tab.1.center" timestamp="1614142935170">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.1.center/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447889" />
-    <state width="1833" height="340" key="GridCell.Tab.1.left" timestamp="1613972447889">
+    <state width="1833" height="340" key="GridCell.Tab.1.center/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935170" />
+    <state width="1833" height="340" key="GridCell.Tab.1.left" timestamp="1614142935170">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.1.left/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447889" />
-    <state width="1833" height="340" key="GridCell.Tab.1.right" timestamp="1613972447890">
+    <state width="1833" height="340" key="GridCell.Tab.1.left/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935170" />
+    <state width="1833" height="340" key="GridCell.Tab.1.right" timestamp="1614142935170">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.1.right/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447890" />
-    <state width="1833" height="340" key="GridCell.Tab.2.bottom" timestamp="1613972447891">
+    <state width="1833" height="340" key="GridCell.Tab.1.right/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935170" />
+    <state width="1833" height="340" key="GridCell.Tab.2.bottom" timestamp="1614142935172">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.2.bottom/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447891" />
-    <state width="1833" height="340" key="GridCell.Tab.2.center" timestamp="1613972447890">
+    <state width="1833" height="340" key="GridCell.Tab.2.bottom/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935172" />
+    <state width="1833" height="340" key="GridCell.Tab.2.center" timestamp="1614142935171">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.2.center/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447890" />
-    <state width="1833" height="340" key="GridCell.Tab.2.left" timestamp="1613972447890">
+    <state width="1833" height="340" key="GridCell.Tab.2.center/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935171" />
+    <state width="1833" height="340" key="GridCell.Tab.2.left" timestamp="1614142935171">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.2.left/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447890" />
-    <state width="1833" height="340" key="GridCell.Tab.2.right" timestamp="1613972447891">
+    <state width="1833" height="340" key="GridCell.Tab.2.left/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935171" />
+    <state width="1833" height="340" key="GridCell.Tab.2.right" timestamp="1614142935172">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state width="1833" height="340" key="GridCell.Tab.2.right/64.27.1856.1053@64.27.1856.1053" timestamp="1613972447891" />
+    <state width="1833" height="340" key="GridCell.Tab.2.right/64.27.1856.1053@64.27.1856.1053" timestamp="1614142935172" />
     <state x="798" y="237" width="378" height="640" key="RollbackChangesDialog" timestamp="1613540994092">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -681,10 +678,10 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1614003477747">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1614080682986">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1614003477747" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1614080682986" />
     <state x="164" y="127" width="1656" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613562263316">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
