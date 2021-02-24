@@ -11,3 +11,8 @@
     justify-content: center;
     align-items: center;
 }
+#popupContainerLA{
+    width: 20%;
+    height: 20%;
+    background-color: black;
+}
