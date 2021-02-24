@@ -24,6 +24,11 @@
     height: 40px;
     background-color: #fff;
     border-radius: 50%;
+    transition: 0.6s;
+    cursor: pointer;
+}
+#clickawayX:hover{
+    background-color: #000;
 }
 
 /*  ------------------------------------------------------------  */
