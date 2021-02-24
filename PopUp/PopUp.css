@@ -20,26 +20,26 @@
 /*  ------------------------------------------------------------  */
 
 /* Parent wrapper to carousel. Width can be changed as needed. */
-.PUcarousel-wrapper {
+.carousel-wrapper {
     overflow: hidden;
     width: 90%;
     margin: auto;
 }
 
 /* Apply 'border-box' to 'box-sizing' so border and padding is included in the width and height. */
-.PUcarousel-wrapper * {
+.carousel-wrapper * {
     box-sizing: border-box;
 }
 
 /* We'll be using the 'transform' property to move the carousel's items, so setting the 'transform-style' to 'preserve-3d' will make sure our nested elements are rendered properly in the 3D space. */
-.PUcarousel {
+.carousel {
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
 
 /* By default we're hiding items (except the initial one) until the JS initiates. Elements are absolutely positioned with a width of 100% (as we're styling for mobile first), letting the content's height dictate the height of the carousel. Our magic property here for all our animation needs is 'transition', taking the properties we wish to animate 'transform' and 'opacity', along with the length of time in seconds. */
-.PUcarousel__photo {
+.carousel__photo {
     opacity: 0;
     position: absolute;
     top:0;
@@ -51,32 +51,32 @@
 }
 
 /* Display the initial item and bring it to the front using 'z-index'. These styles also apply to the 'active' item. */
-.PUcarousel__photo.PUinitial,
-.PUcarousel__photo.active {
+.carousel__photo.initial,
+.carousel__photo.active {
     opacity: 1;
     position: relative;
     z-index: 900;
 }
 
 /* Set 'z-index' to sit behind our '.active' item. */
-.PUcarousel__photo.prev,
-.PUcarousel__photo.next {
+.carousel__photo.prev,
+.carousel__photo.next {
     z-index: 800;
 }
 
 /* Translate previous item to the left */
-.PUcarousel__photo.prev {
+.carousel__photo.prev {
     transform: translateX(-100%);
 }
 
 /* Translate next item to the right */
-.PUcarousel__photo.next {
+.carousel__photo.next {
     transform: translateX(100%);
 }
 
 /* Style navigation buttons to sit in the middle, either side of the carousel. */
-.PUcarousel__button--prev,
-.PUcarousel__button--next {
+.carousel__button--prev,
+.carousel__button--next {
     position: absolute;
     top:50%;
     width: 3rem;
@@ -91,17 +91,17 @@
       transition:opacity 1s;*/
 }
 
-.PUcarousel__button--prev {
+.carousel__button--prev {
     left:0;
 }
 
-.PUcarousel__button--next {
+.carousel__button--next {
     right:0;
 }
 
 /* Use pseudo elements to insert arrows inside of navigation buttons */
-.PUcarousel__button--prev::after,
-.PUcarousel__button--next::after {
+.carousel__button--prev::after,
+.carousel__button--next::after {
     content: " ";
     position: absolute;
     width: 10px;
@@ -113,7 +113,7 @@
     transform: translate(-50%, -50%) rotate(135deg);
 }
 
-.PUcarousel__button--next::after {
+.carousel__button--next::after {
     left: 47%;
     transform: translate(-50%, -50%) rotate(-45deg);
 }
