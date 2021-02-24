@@ -16,7 +16,11 @@
     height: 367px;
     background-color: transparent;
 }
-
+#clickawayX{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 /*  ------------------------------------------------------------  */
 
