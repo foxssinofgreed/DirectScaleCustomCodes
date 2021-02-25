@@ -36,7 +36,8 @@ $(function (){
             '    </div>\n' +
             '</div>';
 
-        containerForSlider.appendChild(xClickContainer);
+        var carousel__clickout = document.getElementsByClassName('carousel');
+        carousel__clickout.appendChild(xClickContainer);
 
         setInterval(function (){
             if(window.location.href === 'https://office2.businessbombshells.team/app.html#/Home' && !document.getElementById('notificationButtonPopup')) {
