@@ -26,8 +26,8 @@ $(function (){
             '      <button class="carousel__button--next"></button>\n' +
             '      <button class="carousel__button--prev"></button>\n' +*/
             '<div class="prev-next-control">\n' +
-            '        <button class="AchievementControlerClass carousel__button--next">❮</button>\n' +
-            '        <button class="AchievementControlerClassDos carousel__button--next">❯</button>\n' +
+            '        <a class="AchievementControlerClass carousel__button--next">❮</a>\n' +
+            '        <a class="AchievementControlerClassDos carousel__button--next">❯</a>\n' +
             '    </div>' +
             '\n' +
             '    </div>\n' +
