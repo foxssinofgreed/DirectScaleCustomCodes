@@ -104,11 +104,12 @@
 .carousel__controler{
     height: 50px;
     position: absolute;
-    top: 50%;
+    top: 45%;
     width: 100%;
     display: flex;
     justify-content: space-between;
     z-index: 1000;
+    padding: 1%;
 }
 .carousel__controler a{
     font-size: 30px;
