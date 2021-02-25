@@ -104,7 +104,7 @@
 .carousel__controler{
     height: 50px;
     position: absolute;
-    top: 55%;
+    top: 50%;
     width: 100%;
     display: flex;
     justify-content: space-between;
