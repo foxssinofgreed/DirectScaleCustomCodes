@@ -32,6 +32,16 @@
 #clickawayX:hover{
     background-color: #000;
 }
+#notificationButtonPopup{
+    width: 24px;
+    height: 24px;
+    margin-right: 35%;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+#notificationButtonPopup:hover{
+    background-color: #d9a19c;
+}
 
 /*  ------------------------------------------------------------  */
 
