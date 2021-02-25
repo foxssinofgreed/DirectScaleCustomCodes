@@ -10,8 +10,8 @@ $(function (){
         var containerForSlider = document.createElement('div');
         containerForSlider.setAttribute('id', 'popupContainerLA');
 
-        var xClickContainer = document.createElement('div');
-        xClickContainer.setAttribute('id', 'clickawayX');
+        /*var xClickContainer = document.createElement('div');
+        xClickContainer.setAttribute('id', 'clickawayX');*/
 
         container.appendChild(containerForSlider);
         container.appendChild(clickAwayContainer);
@@ -34,10 +34,8 @@ $(function (){
             '    </div>' +
             '\n' +
             '    </div>\n' +
+            '<div id="clickawayX"></div>' +
             '</div>';
-
-        var carousel__clickout = document.getElementsByClassName('carousel')[0];
-        carousel__clickout.appendChild(xClickContainer);
 
         setInterval(function (){
             if(window.location.href === 'https://office2.businessbombshells.team/app.html#/Home' && !document.getElementById('notificationButtonPopup')) {
