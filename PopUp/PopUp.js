@@ -22,9 +22,13 @@ $(function (){
             '      <img class="carousel__photo" src="https://az708413.vo.msecnd.net/bombshells/resources/2fd74432-504f-4e67-b41b-6d64b7248615/ground.png">\n' +
             '      <img class="carousel__photo" src="https://az708413.vo.msecnd.net/bombshells/resources/2fd74432-504f-4e67-b41b-6d64b7248615/ground.png">\n' +
             '      <img class="carousel__photo" src="https://az708413.vo.msecnd.net/bombshells/resources/2fd74432-504f-4e67-b41b-6d64b7248615/ground.png">\n' +
-            '\n' +
+            '\n' +/*
             '      <button class="carousel__button--next"></button>\n' +
-            '      <button class="carousel__button--prev"></button>\n' +
+            '      <button class="carousel__button--prev"></button>\n' +*/
+            '<div class="prev-next-control">\n' +
+            '        <button class="AchievementControlerClass carousel__button--next">❮</button>\n' +
+            '        <button class="AchievementControlerClassDos carousel__button--next">❯</button>\n' +
+            '    </div>' +
             '\n' +
             '    </div>\n' +
             '</div>';
