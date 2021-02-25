@@ -32,7 +32,7 @@ $(function (){
             '        <a class="carousel__button--prev">❮</a>\n' +
             '        <a class="carousel__button--next">❯</a>\n' +
             '    </div>' +
-            '<div id="clickawayX"></div>' +
+            '<div id="clickawayX"><div></div></div>' +
             '\n' +
             '    </div>\n' +
             '</div>';
