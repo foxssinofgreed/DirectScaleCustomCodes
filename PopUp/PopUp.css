@@ -36,14 +36,15 @@
     align-items: center;
 }
 #clickawayX div{
-    height: 100%;
-    width: 100%;
-    background: url("https://az708413.vo.msecnd.net/bombshells/resources/02516d32-30bb-4d25-995c-d30ec29bb869/close.png");
+    height: 60%;
+    width: 60%;
+    background-image: url("https://az708413.vo.msecnd.net/bombshells/resources/02516d32-30bb-4d25-995c-d30ec29bb869/close.png");
+    background-size: 17px;
+    background-repeat: no-repeat;
 }
-#clickawayX div:hover{
-    background: url("https://az708413.vo.msecnd.net/bombshells/resources/fdf331c9-8936-4eac-aced-da97c3341c59/close(1).png");
+#clickawayX:hover div{
+    background-image: url("https://az708413.vo.msecnd.net/bombshells/resources/fdf331c9-8936-4eac-aced-da97c3341c59/close(1).png");
 }
-
 #clickawayX:hover{
     background-color: #fe91b0;
 }
