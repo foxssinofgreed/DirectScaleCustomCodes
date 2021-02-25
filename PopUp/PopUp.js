@@ -1,20 +1,3 @@
-if(window.location.href === 'https://office2.businessbombshells.team/app.html#/Home') {
-    setTimeout(function () {
-        var notificationButtonPopup = document.createElement('div');
-        notificationButtonPopup.setAttribute('id', 'notificationButtonPopup');
-        var notificationIconPopup = document.createElement('img');
-        notificationIconPopup.setAttribute('src', 'https://az708413.vo.msecnd.net/bombshells/resources/bfcb41a0-4922-4b85-a0b8-20a571a53210/stack(1).svg');
-        notificationIconPopup.style.width = '24px';
-        notificationIconPopup.style.height = '24px';
-        notificationButtonPopup.appendChild(notificationIconPopup);
-        var headerNotificationsPopup = document.getElementsByClassName('header__right');
-        headerNotificationsPopup[0].insertBefore(notificationButtonPopup, headerNotificationsPopup[0].getElementsByTagName('div')[0]);
-
-        document.getElementById('notificationButtonPopup').onclick = function popUpClickAway() {
-            document.getElementById('hoverBackgroundContainer').style.visibility = 'visible';
-        }
-    }, 2000);
-}
 $(function (){
     if(window.location.href === 'https://office2.businessbombshells.team/app.html#/Home') {
 
@@ -45,6 +28,27 @@ $(function (){
             '\n' +
             '    </div>\n' +
             '</div>';
+
+        setInterval(function (){
+            if(window.location.href === 'https://office2.businessbombshells.team/app.html#/Home' && !document.getElementById('notificationButtonPopup')) {
+                setTimeout(function () {
+                    var notificationButtonPopup = document.createElement('div');
+                    notificationButtonPopup.setAttribute('id', 'notificationButtonPopup');
+                    var notificationIconPopup = document.createElement('img');
+                    notificationIconPopup.setAttribute('src', 'https://az708413.vo.msecnd.net/bombshells/resources/bfcb41a0-4922-4b85-a0b8-20a571a53210/stack(1).svg');
+                    notificationIconPopup.style.width = '24px';
+                    notificationIconPopup.style.height = '24px';
+                    notificationButtonPopup.appendChild(notificationIconPopup);
+                    var headerNotificationsPopup = document.getElementsByClassName('header__right');
+                    headerNotificationsPopup[0].insertBefore(notificationButtonPopup, headerNotificationsPopup[0].getElementsByTagName('div')[0]);
+
+                    document.getElementById('notificationButtonPopup').onclick = function popUpClickAway() {
+                        document.getElementById('hoverBackgroundContainer').style.visibility = 'visible';
+                    }
+                }, 1000);
+            }
+        }, 2000);
+
 
 
         /*
