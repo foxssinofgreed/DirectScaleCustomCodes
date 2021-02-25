@@ -14,7 +14,7 @@ $(function (){
         xClickContainer.setAttribute('id', 'clickawayX');
 
         container.appendChild(containerForSlider);
-        container.appendChild(xClickContainer);
+        containerForSlider.appendChild(xClickContainer);
         container.appendChild(clickAwayContainer);
 
         containerForSlider.innerHTML = '' +
