@@ -101,6 +101,26 @@
     transform: translateX(100%);
 }
 
+.carousel__controler{
+    height: 50px;
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+}
+.carousel__controler a{
+    font-size: 30px;
+    opacity: 0.5;
+    color: #fff;
+    transition: 0.5s;
+}
+.carousel__controler a:hover{
+    opacity: 1;
+    transition: 0.5s;
+}
+
 /* Style navigation buttons to sit in the middle, either side of the carousel. */
 /*.carousel__button--prev,
 .carousel__button--next {
@@ -118,15 +138,16 @@
       transition:opacity 1s;*!
 }*/
 
-.carousel__button--prev {
+/*.carousel__button--prev {
     left:0;
 }
 
 .carousel__button--next {
     right:0;
-}
+}*/
 
 /* Use pseudo elements to insert arrows inside of navigation buttons */
+/*
 .carousel__button--prev::after,
 .carousel__button--next::after {
     content: " ";
@@ -143,4 +164,4 @@
 .carousel__button--next::after {
     left: 47%;
     transform: translate(-50%, -50%) rotate(-45deg);
-}
+}*/
