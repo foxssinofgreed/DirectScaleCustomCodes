@@ -14,7 +14,6 @@ $(function (){
         xClickContainer.setAttribute('id', 'clickawayX');
 
         container.appendChild(containerForSlider);
-        containerForSlider.appendChild(xClickContainer);
         container.appendChild(clickAwayContainer);
 
         containerForSlider.innerHTML = '' +
@@ -36,6 +35,8 @@ $(function (){
             '\n' +
             '    </div>\n' +
             '</div>';
+
+        containerForSlider.appendChild(xClickContainer);
 
         setInterval(function (){
             if(window.location.href === 'https://office2.businessbombshells.team/app.html#/Home' && !document.getElementById('notificationButtonPopup')) {
