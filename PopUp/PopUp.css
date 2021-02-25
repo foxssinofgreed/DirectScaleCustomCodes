@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.2s;
 }
 #popupContainerLA{
     width: 652px;
@@ -20,8 +21,8 @@
 }
 #clickawayX{
     position: absolute;
-    top: 1%;
-    right: 1%;
+    top: 2%;
+    right: 1.5%;
     width: 30px;
     height: 30px;
     background-color: #fff;
@@ -29,6 +30,7 @@
     transition: 0.2s;
     cursor: pointer;
     opacity: 0.9;
+    z-index: 1000;
 }
 #clickawayX:hover{
     background-color: #fe91b0;
