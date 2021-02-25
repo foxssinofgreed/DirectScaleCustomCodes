@@ -22,66 +22,73 @@
 </div>
 
 <script>
-    let countDownDate = new Date("Apr 1, 2021 00:00:00").getTime();
-    let functionisUp = 2;
+    if(window.location.href === 'https://office2.businessbombshells.team/app.html#/Home' && document.readyState) {
+        let countDownDate = new Date("Apr 1, 2021 00:00:00").getTime();
+        let functionisUp = 2;
 
-    let CountDownBanner = setInterval(function() {
-        functionisUp--;
-        let now = new Date().getTime();
+        let CountDownBanner = setInterval(function () {
+            if(window.location.href === 'https://office2.businessbombshells.team/app.html#/Home') {
 
-        let distance = countDownDate - now;
+                functionisUp--;
+                let now = new Date().getTime();
 
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                let distance = countDownDate - now;
+
+                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-        $('#CD-Day')[0].innerHTML = days;
-        $('#CD-Hours')[0].innerHTML = hours;
-        $('#CD-Minutes')[0].innerHTML = minutes;
-        $('#CD-Seconds')[0].innerHTML = seconds;
+                $('#CD-Day')[0].innerHTML = days;
+                $('#CD-Hours')[0].innerHTML = hours;
+                $('#CD-Minutes')[0].innerHTML = minutes;
+                $('#CD-Seconds')[0].innerHTML = seconds;
 
-        if (distance < 0) {
-            clearInterval(CountDownBanner);
-            $('#CD-Day')[0].innerHTML = '0';
-            $('#CD-Hours')[0].innerHTML = '0';
-            $('#CD-Minutes')[0].innerHTML = '0';
-            $('#CD-Seconds')[0].innerHTML = '0';
+                if (distance < 0) {
+                    clearInterval(CountDownBanner);
+                    $('#CD-Day')[0].innerHTML = '0';
+                    $('#CD-Hours')[0].innerHTML = '0';
+                    $('#CD-Minutes')[0].innerHTML = '0';
+                    $('#CD-Seconds')[0].innerHTML = '0';
+                }
+            }
+        }, 1000);
+
+        function CDopenUp() {
+            CDanimationCountUp('#CD-Day');
+            CDanimationCountUp('#CD-Hours');
+            CDanimationCountUp('#CD-Minutes');
+            CDanimationCountUp('#CD-Seconds');
         }
-    }, 1000);
-    function CDopenUp(){
-        CDanimationCountUp('#CD-Day');
-        CDanimationCountUp('#CD-Hours');
-        CDanimationCountUp('#CD-Minutes');
-        CDanimationCountUp('#CD-Seconds');
+
+        const CDanimationDuration = 2000;
+        const CDframeDuration = 1000 / 60;
+        const CDtotalFrames = Math.round(CDanimationDuration / CDframeDuration);
+        const CDfadeOutFrames = CDfadeOutFramesT => CDfadeOutFramesT * (2 - CDfadeOutFramesT);
+
+        function CDanimationCountUp(element) {
+            let frame = 0;
+            let el = $(element)[0].innerHTML; /*  '#.element'  */
+            const countTo = parseInt(el, 10);
+            const counter = setInterval(() => {
+                frame++;
+                const progress = CDfadeOutFrames(frame / CDtotalFrames);
+
+                const currentCount = Math.round(countTo * progress);
+
+                if (parseInt(el, 10) !== currentCount) {
+                    $(element)[0].innerHTML = currentCount;
+                }
+
+                if (frame === CDtotalFrames) {
+                    clearInterval(counter);
+                }
+            }, CDframeDuration);
+        }
+
+        setTimeout(function () {
+            CDopenUp();
+        }, 1001);
     }
-
-    const CDanimationDuration = 2000;
-    const CDframeDuration = 1000/60;
-    const CDtotalFrames = Math.round( CDanimationDuration / CDframeDuration);
-    const CDfadeOutFrames = CDfadeOutFramesT => CDfadeOutFramesT * (2 - CDfadeOutFramesT);
-
-    function CDanimationCountUp(element){
-        let frame = 0;
-        let el = $(element)[0].innerHTML; /*  '#.element'  */
-        const countTo = parseInt( el, 10 );
-        const counter = setInterval( () => {
-            frame++;
-            const progress = CDfadeOutFrames( frame / CDtotalFrames );
-
-            const currentCount = Math.round( countTo * progress );
-
-            if ( parseInt( el, 10 ) !== currentCount ) {
-                $(element)[0].innerHTML = currentCount;
-            }
-
-            if ( frame === CDtotalFrames ) {
-                clearInterval( counter );
-            }
-        }, CDframeDuration );
-    }
-    setTimeout(function (){
-        CDopenUp();
-    }, 1001);
 </script>
