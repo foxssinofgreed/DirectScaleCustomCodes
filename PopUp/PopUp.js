@@ -36,7 +36,7 @@ $(function (){
             '    </div>\n' +
             '</div>';
 
-        var carousel__clickout = document.getElementsByClassName('carousel');
+        var carousel__clickout = document.getElementsByClassName('carousel')[0];
         carousel__clickout.appendChild(xClickContainer);
 
         setInterval(function (){
