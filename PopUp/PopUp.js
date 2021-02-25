@@ -4,6 +4,9 @@ $(function (){
         var container = document.createElement('div');
         container.setAttribute('id', 'hoverBackgroundContainer');
 
+        var clickAwayContainer = document.createElement('div');
+        clickAwayContainer.setAttribute('id', 'clickAwayContainer');
+
         var containerForSlider = document.createElement('div');
         containerForSlider.setAttribute('id', 'popupContainerLA');
 
@@ -12,6 +15,7 @@ $(function (){
 
         container.appendChild(containerForSlider);
         container.appendChild(xClickContainer);
+        container.appendChild(clickAwayContainer);
 
         containerForSlider.innerHTML = '' +
             '<div class="carousel-wrapper">\n' +
@@ -211,6 +215,9 @@ $(function (){
 
 
         document.getElementById('clickawayX').onclick = function popUpClickAway() {
+            document.getElementById('hoverBackgroundContainer').style.visibility = 'hidden';
+        }
+        document.getElementById('clickAwayContainer').onclick = function popUpClickAway() {
             document.getElementById('hoverBackgroundContainer').style.visibility = 'hidden';
         }
     }
