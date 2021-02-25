@@ -1,0 +1,71 @@
+.bPictureTwoBundleOffer{
+    width: 100%;
+    height: 367px;
+    background-image: url('https://az708413.vo.msecnd.net/bombshells/resources/303aebb3-3028-4a82-bb43-66d35b3458f6/Image%20from%20iOS.jpg');
+    background-size: cover;
+    border-radius: 1.5em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2),0 2px 10px rgba(0,0,0,.12);
+}
+.containerTwoBundleOffer{
+    position: absolute;
+    height: 100%;
+    width: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    padding-bottom: 4%;
+}
+.textTwoBundleOffer{
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: 2%;
+    text-align: center;
+}
+#span1TwoBundleOffer{
+    font-size: 400%;
+    color: #ffffff;
+}
+#span2TwoBundleOffer{
+    font-size: 200%;
+    color: #fe91b0;
+}
+#span3TwoBundleOffer{
+    font-size: 210%;
+    color: #ffffff;
+}
+.containerTwoBundleOffer button{
+    background-color: #ffffff;
+    padding: 0 0.5em;
+    border: 0;
+    color: #fe91b0;
+    width: 43%;
+    height: 17%;
+    transition: 0.4s;
+    text-transform: uppercase;
+    font-size: 160%;
+    box-shadow: 3px 3px 0 #fe91b0;
+}
+.containerTwoBundleOffer button:hover{
+    background-color: #fe91b0;
+    color: #FFFFFF;
+    box-shadow: none;
+}
+@media (max-width: 671px) {
+    .bPictureTwoBundleOffer{
+        height: 178px;
+    }
+    #span1TwoBundleOffer{
+        font-size: 220%;
+    }
+    #span2TwoBundleOffer{
+        font-size: 100%;
+    }
+    #span3TwoBundleOffer{
+        font-size: 100%;
+    }
+    .containerTwoBundleOffer button{
+        font-size: 80%;
+    }
+}

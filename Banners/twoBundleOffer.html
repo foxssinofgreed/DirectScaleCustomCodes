@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="bPictureTwoBundleOffer" id="bPictureTwoBundleOfferID">
+        <div class="containerTwoBundleOffer">
+            <span class="textTwoBundleOffer" id="span1TwoBundleOffer"></span>
+            <span class="textTwoBundleOffer" id="span2TwoBundleOffer"></span>
+            <span class="textTwoBundleOffer" id="span3TwoBundleOffer"></span>
+            <button id="buttonTwoBundleOffer">SHOP NOW</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function (){
+        var countryCodeTBO2 = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+        var amountTwoBundleOffer;
+        var LinkForTwoBundleOffer;
+        if (countryCodeTBO2 === 'AU'){
+            amountTwoBundleOffer = 'A$398'
+            LinkForTwoBundleOffer = 'https://au.businessbombshells.shop/products/2-bundle-offer?ref=@User.AssociateUserName';
+        }
+        else if(countryCodeTBO2 === 'GB'){
+            amountTwoBundleOffer = '£199'
+            LinkForTwoBundleOffer = 'https://businessbombshells.shop/products/2-bundle-offer?ref=@User.AssociateUserName';
+        }
+        else{
+            amountTwoBundleOffer = '€238.8'
+            LinkForTwoBundleOffer = 'https://eu.businessbombshells.shop/products/2-bundle-offer?ref=@User.AssociateUserName';
+        }
+        $('.textTwoBundleOffer')[0].innerHTML = 'PINK FRIDAY';
+        $('.textTwoBundleOffer')[1].innerHTML = 'SPECIAL OFFER';
+        $('.textTwoBundleOffer')[2].innerHTML = '2 BUNDLE OFFER' + '<br>' + 'ONLY FOR ' + amountTwoBundleOffer;
+
+
+        setTimeout(function (){
+            document.getElementById('buttonTwoBundleOffer').addEventListener('click', function (){
+                var NewWindow = window.open(LinkForTwoBundleOffer, '_blank');
+                NewWindow.focus();
+            });
+        }, 2000);
+         var counterIfPlayed = 0;
+        setInterval(function (){
+            if(screen.width < 671 && counterIfPlayed === 0){
+                setTimeout(function (){
+                    document.getElementById('bPictureTwoBundleOfferID').addEventListener('click', function (){
+                        var NewWindow = window.open(LinkForTwoBundleOffer, '_blank');
+                        NewWindow.focus();
+                    });
+                }, 2000);
+                counterIfPlayed++;
+            }
+        }, 2000);
+
+
+    });
+</script>

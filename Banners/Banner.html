@@ -1,9 +1,23 @@
 <div class="card minheight">
-    <div id="TrainingCoursesBanner" class="card-body">
-        <a href="app.html#/TrainingCourses" target="_blank"><img id="TrainingCoursesBanner_m" src="https://az708413.vo.msecnd.net/bombshells/resources/2bce4676-6805-4be5-b23d-d35ab8baea28/version2.png" alt="CountDown"></a>
+    <div id="bannerTwoBundleOfferContainer" class="card-body">
+        <a href="" target="_blank" id="bannerTwoBundleOfferLinks"><img id="bannerTwoBundleOfferContainer_m" src="https://az708413.vo.msecnd.net/bombshells/resources/89e16d98-a9e8-4ece-88c2-215a249b5536/widget.png" alt="CountDown"></a>
     </div>
 </div>
 
+<script>
+    setTimeout(function (){
+        var countryCodeTBO = $('#AssociateAssociateCountryKPI')[0].innerHTML;
+        if (countryCodeTBO === 'AU'){
+            $('#bannerTwoBundleOfferLinks')[0].setAttribute('href','https://au.businessbombshells.shop/products/2-bundle-offer');
+        }
+        else if(countryCodeTBO === 'GB'){
+            $('#bannerTwoBundleOfferLinks')[0].setAttribute('href','https://businessbombshells.shop/products/2-bundle-offer');
+        }
+        else{
+            $('#bannerTwoBundleOfferLinks')[0].setAttribute('href','https://eu.businessbombshells.shop/products/2-bundle-offer');
+        }
+    }, 2000);
+</script>
 <!--
 <div class="card minheight">
     <div id="CDB" class="card-body">
