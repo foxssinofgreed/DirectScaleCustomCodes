@@ -26,9 +26,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="35% rule Update">
-      <change beforePath="$PROJECT_DIR$/../Banners/Banner.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Banners/Banner.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Banners/Banner.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Banners/Banner.html" afterDir="false" />
+    <list default="true" id="f39194fd-fa61-4400-9870-8478d33c4510" name="Default Changelist" comment="Banner With Content NEW">
+      <change beforePath="$PROJECT_DIR$/../CCPercentRule/TeamSalesTotalForNextPromotion.css" beforeDir="false" afterPath="$PROJECT_DIR$/../CCPercentRule/TeamSalesTotalForNextPromotion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CCPercentRule/TeamSalesTotalForNextPromotion.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CCPercentRule/TeamSalesTotalForNextPromotion.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,14 +189,8 @@
       <workItem from="1614055984926" duration="15478000" />
       <workItem from="1614142709247" duration="27364000" />
       <workItem from="1614228113650" duration="22533000" />
-      <workItem from="1614275407849" duration="13011000" />
-    </task>
-    <task id="LOCAL-00012" summary="NEW Main Banner With PopUp">
-      <created>1609761543132</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1609761543132</updated>
+      <workItem from="1614275407849" duration="13048000" />
+      <workItem from="1614314321168" duration="7632000" />
     </task>
     <task id="LOCAL-00013" summary="Update EU dashboard codes">
       <created>1609857796260</created>
@@ -534,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614261681290</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Banner With Content NEW">
+      <created>1614292275653</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1614292275653</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +581,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="New Training Courses" />
     <MESSAGE value="New Countdown Widget Demo" />
     <MESSAGE value="New Countdown Widget" />
     <MESSAGE value="Update Countdown Widget" />
@@ -605,7 +605,8 @@
     <MESSAGE value="PopUp NEW" />
     <MESSAGE value="PopUp Update" />
     <MESSAGE value="35% rule Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="35% rule Update" />
+    <MESSAGE value="Banner With Content NEW" />
+    <option name="LAST_COMMIT_MESSAGE" value="Banner With Content NEW" />
   </component>
   <component name="WindowStateProjectService">
     <state x="704" y="420" width="555" height="279" key="#Updates" timestamp="1613884116318">
@@ -681,10 +682,10 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="480" y="188" width="1022" height="737" key="SettingsEditor/64.27.1856.1053@64.27.1856.1053" timestamp="1611207396242" />
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1614261687371">
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1614292279864">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
-    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1614261687371" />
+    <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053@64.27.1856.1053" timestamp="1614292279864" />
     <state x="164" y="127" width="1656" height="853" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613562263316">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>

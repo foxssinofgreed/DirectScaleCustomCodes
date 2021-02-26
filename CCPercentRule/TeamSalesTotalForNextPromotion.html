@@ -1,7 +1,4 @@
 <div class="card minheight" id="MainDivOfTSTNP">
-    <div id="NextPromotionBlurCover">
-
-    </div>
     <label for="MainDivOfTSTNPCheck">
         <input type="checkbox" id="MainDivOfTSTNPCheck"/>
         <div class="MainDivOfTSTNP_Flip">
@@ -33,6 +30,7 @@
             </div>
         </div>
     </label>
+    <div></div>
 </div>
 <div style="display: none;" id="AssociateAssociateCountryKPI">@User.AssociateAddressCountryCode</div>
 <div style="display: none;" id="AssociateAssociateRankKPI">@User.CommissionsRank</div>
@@ -65,6 +63,22 @@
         let nextrankname;
 
         switch (CurrentRank){
+            case '10':
+                result = 1400;
+                nextrankname = 'Star Bombshell';
+                break;
+            case '15':
+                result = 1400;
+                nextrankname = '1 Star';
+                break;
+            case '20':
+                result = 1400;
+                nextrankname = '2 Star';
+                break;
+            case '30':
+                result = 1400;
+                nextrankname = '3 Star';
+                break;
             case '40':
                 result = 1400;
                 nextrankname = '4 Star';
@@ -105,6 +119,17 @@
                 result = 0;
                 nextrankname = '';
         }
+        if(CurrentRank < 40){
+            document.getElementsByClassName('MainDivOfTSTNP_Flip_Main')[0].style.filter = 'blur(5px)';
+            document.getElementsByClassName('MainDivOfTSTNP_Flip_Main')[0].style.pointerEvents = 'none';
+            var newDivOverBlur = document.createElement('div');
+            newDivOverBlur.setAttribute('id', 'newDivOverBlur');
+            var textForBlurDiv = document.createElement('span');
+            textForBlurDiv.innerHTML = 'This widget unlocks when' + '<br>' + 'you hit 3 star';
+            newDivOverBlur.appendChild(textForBlurDiv);
+            document.getElementById('MainDivOfTSTNP').appendChild(newDivOverBlur);
+        }
+        /* <div><span></span></div>*/
         console.log(result);
         switch (CountryCode){
             case 'AU':
