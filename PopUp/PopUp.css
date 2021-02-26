@@ -29,7 +29,7 @@
     border-radius: 50%;
     transition: 0.2s;
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.6;
     z-index: 1000;
     display: flex;
     justify-content: center;
@@ -41,7 +41,6 @@
     background-image: url("https://az708413.vo.msecnd.net/bombshells/resources/02516d32-30bb-4d25-995c-d30ec29bb869/close.png");
     background-size: 17px;
     background-repeat: no-repeat;
-    transition: 0.2s;
 }
 #clickawayX:hover div{
     background-image: url("https://az708413.vo.msecnd.net/bombshells/resources/fdf331c9-8936-4eac-aced-da97c3341c59/close(1).png");
