@@ -130,6 +130,7 @@
 #newDivOverBlur{
     position: absolute;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -137,9 +138,20 @@
     text-align: center;
 }
 #newDivOverBlur span{
+    text-transform: uppercase;
     color: #f59eb6;
-    font-size: 20px;
+    font-size: 32px;
     font-weight: 700;
-    line-height: 33px;
-    text-shadow: 0px 0px 5px #FFF, 0 0 3px #fff, 0 0 2px #fff;
+    line-height: 60px;
+    text-shadow: 0 0 10px #FFF, 0 0 5px #fff, 0 0 5px #fff;
+}
+#newDivOverBlur div{
+    background-image: url("https://az708413.vo.msecnd.net/bombshells/resources/01dac1fb-221c-416d-b8c8-940506b81ff5/padlock(1).png");
+    background-size: cover;
+    height: 48px;
+    width: 48px;
+    transition: 0.6s;
+}
+#newDivOverBlur div:hover{
+    background-image: url("https://az708413.vo.msecnd.net/bombshells/resources/316fdfc3-11d7-4a7f-ade9-e0d219c63b53/padlock(2).png");
 }
